@@ -6,9 +6,13 @@ public abstract class Individuo<T> {
 	int[] tamGenes;
 	double[] min;
 	double[] max;
+	double valorError;
 	
 	public abstract double getValor();
 	public abstract double getFitness();
-	public abstract int tamGen();
+	
+	public int tamGen(double valorError , double min , double max) {
+		return (int) (Math.log10(((max-min ) / valorError) + 1) / Math.log10(2));
+	}
 
 }
