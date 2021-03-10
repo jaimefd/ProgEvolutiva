@@ -1,5 +1,6 @@
 package algoritmoGenetico.individuos;
-import java.util.*;
+
+import java.util.Random;
 
 public class IndividuoFuncion1 extends Individuo<Boolean> {	
 	
@@ -10,14 +11,15 @@ public class IndividuoFuncion1 extends Individuo<Boolean> {
 		this.min[1] = 4.100;
 		this.max[0] = 12.100;
 		this.max[1] = 5.800;
+		this.tamGenes = new int[2];
 		this.tamGenes[0] = this.tamGen(this.valorError, min[0], max[0]);
 		this.tamGenes[1] = this.tamGen(this.valorError, min[1], max[1]);
 		int tamTotal = tamGenes[0] + tamGenes[1];
 		this.cromosoma = new Boolean[tamTotal];
-		this.tamGenes = new int[2];
-				
+		
+		Random rd = new Random();
 		for(int i = 0; i < tamTotal; i++) {
-			this.cromosoma[i] = this.rand.nextBoolean();  // falta
+			this.cromosoma[i] = rd.nextBoolean();
 		}
 		
 	}
@@ -39,7 +41,30 @@ public class IndividuoFuncion1 extends Individuo<Boolean> {
 		double min = this.min[i];
 		double max = this.max[i];
 	
-		return min + binToDecimal(i)*((max-min)/(Math.pow(2, this.tamGenes[i])-1));  //falta binToDecimal
+		return min + genToDecimal(i)*((max-min)/(Math.pow(2, this.tamGenes[i])-1)); 
+	}
+	
+	public int genToDecimal(int i) {  
+		int acum = 0;
+		int b = getIndexCrom(i);
+		int exp = this.tamGenes[i]-1; //el valor mayor esta a la izquierda
+		
+		for(int x=0; x<this.tamGenes[i];x++) {
+			acum+=((this.cromosoma[b] ? 1 : 0)*(int)(Math.pow(2, exp)));  // 1o0 * la potencia de 2 correspondiente
+			exp--;
+			b++;
+		}
+		return acum;
+	}
+	
+	public int getIndexCrom(int gen) {  //para saber donde empieza un gen en un cromosoma
+		int index=0;
+		
+		for(int i=0;i<gen;i++) {
+			index+=this.tamGenes[i];
+		}
+		
+		return index;
 	}
 }
 
