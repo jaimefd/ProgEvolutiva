@@ -25,10 +25,40 @@ public class IndividuoFuncion2 extends Individuo<Boolean>{
 
 	@Override
 	public double getValor() {
-		// TODO Auto-generated method stub
-		return 0;
+		double result = Math.abs(Math.sin(getFenotipo(0)) * Math.cos(getFenotipo(1)) * 
+				Math.exp(Math.abs(1 - (Math.sqrt(Math.pow(getFenotipo(0),2) + Math.pow(getFenotipo(1), 2))/Math.PI))));
+		return result * (-1);
 	}
 
+	public double getFenotipo(int i) {
+		double min = this.min[i];
+		double max = this.max[i];
+	
+		return min + genToDecimal(i)*((max-min)/(Math.pow(2, this.tamGenes[i])-1)); 
+	}
+	
+	public int genToDecimal(int i) {  
+		int acum = 0;
+		int b = getIndexCrom(i);
+		int exp = this.tamGenes[i]-1; //el valor mayor esta a la izquierda
+		
+		for(int x=0; x<this.tamGenes[i];x++) {
+			acum+=((this.cromosoma[b] ? 1 : 0)*(int)(Math.pow(2, exp)));  // 1o0 * la potencia de 2 correspondiente
+			exp--;
+			b++;
+		}
+		return acum;
+	}
+	
+	public int getIndexCrom(int gen) {  //para saber donde empieza un gen en un cromosoma
+		int index=0;
+		
+		for(int i=0;i<gen;i++) {
+			index+=this.tamGenes[i];
+		}
+		
+		return index;
+	}
 	@Override
 	public double getFitness() {
 		// TODO Auto-generated method stub
