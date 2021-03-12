@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Generacion {
 	private ArrayList<Individuo> poblacion;  //Array con los individuos de la generacion
-	private ArrayList<Double> fitness;  //Array con el fitness de cada individuo
 	private ArrayList<Double> puntuaciones;  //Array con las puntuaciones de cada individuo
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
