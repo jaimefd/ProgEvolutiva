@@ -53,4 +53,8 @@ public class Generacion {
 	
 	
 	public void evaluarPoblacion() {}
+	
+	public void desplazamiento_minimizar() {}
+	
+	public void desplazamiento_maximizar() {}
 }
