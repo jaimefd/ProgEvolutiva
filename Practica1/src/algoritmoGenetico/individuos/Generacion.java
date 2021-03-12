@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 
 public class Generacion {
-	private ArrayList<Individuo> poblacion;
-	private ArrayList<Double> puntuaciones;
+	private ArrayList<Individuo> poblacion;  //Array con los individuos de la generacion
+	private ArrayList<Double> puntuaciones;  //Array con las puntuaciones de cada individuo
 	private int tamPobl;
-	private int pos_mejor;
-	private double media;
-	private Individuo elMejor;
-	private Individuo elPeor;
+
+	private double media;  //media de la generacion
+	private Individuo elMejor;  //el mejor individuo de la generacion
+	private Individuo elPeor;  //el peor individuo de la generacion
 	
 	
 	public Generacion(int tamañoPobl,int funcion,int numVariables4) {
