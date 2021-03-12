@@ -16,8 +16,8 @@ public class IndividuoFuncion3 extends Individuo<Boolean> {
 		this.tamGenes[1] = this.tamGen(this.valorError, min[1], max[1]);
 		int tamTotal = tamGenes[0] + tamGenes[1];
 		this.cromosoma = new Boolean[tamTotal];
-		this.rand = new Random();
-		for(int i = 0; i < tamTotal; i++) this.cromosoma[i] = this.rand.nextBoolean();
+		Random rd = new Random();
+		for(int i = 0; i < tamTotal; i++) this.cromosoma[i] = rd.nextBoolean();
 	}
 
 	@Override

@@ -9,7 +9,6 @@ public abstract class Individuo<T> {
 	double[] min;
 	double[] max;
 	double valorError;
-	Random rand;
 	
 	public abstract double getValor();
 	public abstract double getFitness();
