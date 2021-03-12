@@ -1,5 +1,5 @@
 package algoritmoGenetico.seleccion;
 
-public class Seleccion {
+public abstract class Seleccion {
 
 }
