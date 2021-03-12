@@ -25,9 +25,14 @@ public class IndividuoFuncion2 extends Individuo<Boolean>{
 
 	@Override
 	public double getValor() {
-		double result = Math.abs(Math.sin(getFenotipo(0)) * Math.cos(getFenotipo(1)) * 
-				Math.exp(Math.abs(1 - (Math.sqrt(Math.pow(getFenotipo(0),2) + Math.pow(getFenotipo(1), 2))/Math.PI))));
-		return result * (-1);
+		double ret=0,p1=0,p2=0;
+		for(int i=1; i<=5; i++)
+		{
+			p1 += i*Math.cos((i+1)*getFenotipo(0)+i);
+			p2 += i*Math.cos((i+1)*getFenotipo(1)+i);
+		}
+		ret=p1*p2;
+		return ret;
 	}
 
 	public double getFenotipo(int i) {
