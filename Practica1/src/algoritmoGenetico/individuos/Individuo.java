@@ -1,7 +1,5 @@
 package algoritmoGenetico.individuos;
 
-import java.util.Random;
-
 public abstract class Individuo<T> {
 	
 	T[] cromosoma;

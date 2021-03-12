@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class Generacion {
-	private ArrayList<Individuo> poblacion;  //Array con los individuos de la generacion
+	private ArrayList<Individuo<Boolean>> poblacion;  //Array con los individuos de la generacion
 	private ArrayList<Double> puntuaciones;  //Array con las puntuaciones de cada individuo
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
@@ -16,7 +16,7 @@ public class Generacion {
 	
 	public Generacion(int tamañoPobl,int funcion,int numVariables4) {
 
-		poblacion = new ArrayList<Individuo>();
+		poblacion = new ArrayList<Individuo<Boolean>>();
 		this.tamPobl = tamañoPobl;
 		this.puntuaciones = new ArrayList<Double>();
 		
@@ -54,6 +54,8 @@ public class Generacion {
 	
 	
 	public void evaluarPoblacion() {}
+	
+	public void seleccion() {}
 	
 	public void desplazamiento_minimizar() {}
 	
