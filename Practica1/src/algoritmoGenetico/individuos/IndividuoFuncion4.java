@@ -6,7 +6,8 @@ public class IndividuoFuncion4 extends Individuo<Boolean> {
 	
 	int numVariables;
 	
-	public IndividuoFuncion4(int numVariables) {
+	public IndividuoFuncion4(int numVariables,double valorError) {
+		this.valorError=valorError;
 		this.numVariables = numVariables;
 		this.tamGenes = new int[numVariables];
 		this.min = new double[numVariables];

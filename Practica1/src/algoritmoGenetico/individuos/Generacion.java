@@ -2,6 +2,8 @@ package algoritmoGenetico.individuos;
 
 import java.util.ArrayList;
 
+import algoritmoGenetico.seleccion.FactoriaSeleccion;
+
 
 public class Generacion {
 	private ArrayList<Individuo<Boolean>> poblacion;  //Array con los individuos de la generacion
@@ -17,7 +19,7 @@ public class Generacion {
 	private int pos_peor_fitness;
 	
 	
-	public Generacion(int tamañoPobl,int funcion,int numVariables4) {
+	public Generacion(int tamañoPobl,int funcion,int numVariables4,double valorError) {
 
 		poblacion = new ArrayList<Individuo<Boolean>>();
 		this.tamPobl = tamañoPobl;
@@ -28,28 +30,28 @@ public class Generacion {
 		if(funcion==1) {
 			for(int i = 0; i < tamPobl; i++)
 			{
-				Individuo<Boolean> indiv = new IndividuoFuncion1();
+				Individuo<Boolean> indiv = new IndividuoFuncion1(valorError);
 				poblacion.add(indiv);	
 			}
 		}
 		else if(funcion==2) {
 			for(int i = 0; i < tamPobl; i++)
 			{
-				Individuo<Boolean> indiv = new IndividuoFuncion2();
+				Individuo<Boolean> indiv = new IndividuoFuncion2(valorError);
 				poblacion.add(indiv);	
 			}
 		}
 		else if(funcion==3) {
 			for(int i = 0; i < tamPobl; i++)
 			{
-				Individuo<Boolean> indiv = new IndividuoFuncion3();
+				Individuo<Boolean> indiv = new IndividuoFuncion3(valorError);
 				poblacion.add(indiv);	
 			}
 		}
 		else if(funcion==4) {
 			for(int i = 0; i < tamPobl; i++)
 			{
-				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4);
+				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4,valorError);
 				poblacion.add(indiv);	
 			}
 		}
@@ -59,6 +61,7 @@ public class Generacion {
 	
 	
 	public void evaluarPoblacion() {
+		//¡¡¡No se si habria que vaciar los arrays de puntuaciones y reiniciar las variables!!!
 		double puntAcum=0; //puntuacion acumulada
 		double fitnessTotal=0; //fitness total
 		double fitnessActual=0; //fitness del individuo actual
@@ -122,7 +125,10 @@ public class Generacion {
 		
 	}
 	
-	public void seleccion() {}
+	public void seleccion(String algoritmo) {
+		this.poblacion = FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.tamPobl);
+		//evaluarPoblacion(); ???? No se si hay que evaluar la pobl. despues de hacer la seleccion
+	}
 	
 	public void desplazamiento_minimizar() {}  //Falta por hacer porque tengo dudas
 	

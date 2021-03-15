@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class IndividuoFuncion3 extends Individuo<Boolean> {
 	
-	public IndividuoFuncion3() {
+	public IndividuoFuncion3(double valorError) {
+		this.valorError=valorError;
 		this.tamGenes = new int[2];
 		this.min = new double[2];
 		this.max = new double[2];

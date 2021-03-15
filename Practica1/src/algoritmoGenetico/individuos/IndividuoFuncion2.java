@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class IndividuoFuncion2 extends Individuo<Boolean>{
 	
-	public IndividuoFuncion2() {
+	public IndividuoFuncion2(double valorError) {
+		this.valorError=valorError;
 		this.min = new double[2];
 		this.max = new double[2];
 		this.min[0] = -10.000;
