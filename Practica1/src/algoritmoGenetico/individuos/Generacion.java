@@ -128,8 +128,8 @@ public class Generacion {
 	
 	public void desplazamiento_maximizar() {}  //Falta por hacer porque tengo dudas
 	
-	public void generarElite() {}
-	public void introducirElite() {}
+	public void generarElite() {}  //FALTA
+	public void introducirElite() {}  //FALTA
 
 
 	public ArrayList<Individuo<Boolean>> getPoblacion() {

@@ -8,7 +8,28 @@ public class SeleccionTorneoDeterministico {
 
 	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
 			ArrayList<Double> puntAcu, int tamPobl) {
-		return null;
+		
+		ArrayList<Individuo<Boolean>> nuevaPobl = new ArrayList<Individuo<Boolean>>();
+		Individuo aux;
+		double fitnessAct=0;
+		double mejorFitness= Double.MIN_VALUE;
+		int pos_mejor=0;
+		
+		for(int i=0;i<tamPobl;i++) {
+			for(int j=0;j<3;j++) {  //Se pueden 2 o 3
+				int rand=(int) (Math.random()*tamPobl);
+				aux=poblacion.get(rand);
+				fitnessAct=aux.getFitness();
+				if(fitnessAct>mejorFitness) {
+					mejorFitness=fitnessAct;
+					pos_mejor=rand;
+				}
+			}
+			nuevaPobl.add(poblacion.get(pos_mejor)); //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
+			mejorFitness=0;
+			
+		}
+		return nuevaPobl;
 	}
 
 }
