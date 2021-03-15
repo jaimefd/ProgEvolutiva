@@ -38,6 +38,7 @@ public class AlgoritmoGenetico {
 		while(this.genActual < this.maxGeneraciones) {	
 			gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 			/* hay que guardar la media, el mejor de la generacion, el ,mejor absoluto, el peor de la generacion*/
+			
 			// seleccion
 			gen.seleccion(this.algoritmoSeleccion);
 			
