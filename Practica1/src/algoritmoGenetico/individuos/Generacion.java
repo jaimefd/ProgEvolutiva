@@ -124,7 +124,110 @@ public class Generacion {
 	
 	public void seleccion() {}
 	
-	public void desplazamiento_minimizar() {}
+	public void desplazamiento_minimizar() {}  //Falta por hacer porque tengo dudas
 	
-	public void desplazamiento_maximizar() {}
+	public void desplazamiento_maximizar() {}  //Falta por hacer porque tengo dudas
+	
+	public void generarElite() {}
+	public void introducirElite() {}
+
+
+	public ArrayList<Individuo<Boolean>> getPoblacion() {
+		return poblacion;
+	}
+
+
+	public void setPoblacion(ArrayList<Individuo<Boolean>> poblacion) {
+		this.poblacion = poblacion;
+	}
+
+
+	public ArrayList<Double> getPuntuaciones() {
+		return puntuaciones;
+	}
+
+
+	public void setPuntuaciones(ArrayList<Double> puntuaciones) {
+		this.puntuaciones = puntuaciones;
+	}
+
+
+	public ArrayList<Double> getPuntAcu() {
+		return puntAcu;
+	}
+
+
+	public void setPuntAcu(ArrayList<Double> puntAcu) {
+		this.puntAcu = puntAcu;
+	}
+
+
+	public int getTamPobl() {
+		return tamPobl;
+	}
+
+
+	public void setTamPobl(int tamPobl) {
+		this.tamPobl = tamPobl;
+	}
+
+
+	public int getFuncion() {
+		return funcion;
+	}
+
+
+	public void setFuncion(int funcion) {
+		this.funcion = funcion;
+	}
+
+
+	public double getMedia() {
+		return media;
+	}
+
+
+	public void setMedia(double media) {
+		this.media = media;
+	}
+
+
+	public Individuo getElMejor() {
+		return elMejor;
+	}
+
+
+	public void setElMejor(Individuo elMejor) {
+		this.elMejor = elMejor;
+	}
+
+
+	public Individuo getElPeor() {
+		return elPeor;
+	}
+
+
+	public void setElPeor(Individuo elPeor) {
+		this.elPeor = elPeor;
+	}
+
+
+	public int getPos_mejor_fitness() {
+		return pos_mejor_fitness;
+	}
+
+
+	public void setPos_mejor_fitness(int pos_mejor_fitness) {
+		this.pos_mejor_fitness = pos_mejor_fitness;
+	}
+
+
+	public int getPos_peor_fitness() {
+		return pos_peor_fitness;
+	}
+
+
+	public void setPos_peor_fitness(int pos_peor_fitness) {
+		this.pos_peor_fitness = pos_peor_fitness;
+	}
 }
