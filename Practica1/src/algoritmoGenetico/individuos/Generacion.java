@@ -3,6 +3,7 @@ package algoritmoGenetico.individuos;
 import java.util.ArrayList;
 
 import algoritmoGenetico.cruces.FactoriaCruce;
+import algoritmoGenetico.mutaciones.FactoriaMutacion;
 import algoritmoGenetico.seleccion.FactoriaSeleccion;
 
 
@@ -63,6 +64,8 @@ public class Generacion {
 	
 	public void evaluarPoblacion() {
 		//¡¡¡No se si habria que vaciar los arrays de puntuaciones y reiniciar las variables!!!
+		puntuaciones.clear();
+		puntAcu.clear();
 		double puntAcum=0; //puntuacion acumulada
 		double fitnessTotal=0; //fitness total
 		double fitnessActual=0; //fitness del individuo actual
@@ -133,6 +136,10 @@ public class Generacion {
 	
 	public void cruce(int tipoCruce,double probCruce) {
 		this.poblacion= FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl);
+	}
+	
+	public void mutar(int tipoMutacion,double probMutacion) {
+		this.poblacion=FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl);
 	}
 	
 	public void desplazamiento_minimizar() {}  //Falta por hacer porque tengo dudas

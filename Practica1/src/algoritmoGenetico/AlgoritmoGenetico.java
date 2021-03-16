@@ -19,10 +19,11 @@ public class AlgoritmoGenetico {
 	private double valorError; //precision
 	private String algoritmoSeleccion; //No se si es mejor string o int
 	private int tipoCruce; //No se si es mejor string o int
+	private int tipoMutacion; //No se si es mejor string o int
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,double valorError,String algoritmoSeleccion,int tipoCruce/*, int tamTorneo*/) {
+			double probMutacion,double valorError,String algoritmoSeleccion,int tipoCruce,int tipoMutacion/*, int tamTorneo*/) {
 		this.tipoFuncion = tipoFuncion;
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -31,14 +32,15 @@ public class AlgoritmoGenetico {
 		this.valorError=valorError;
 		this.algoritmoSeleccion=algoritmoSeleccion;
 		this.tipoCruce=tipoCruce;
+		this.tipoMutacion=tipoMutacion;
 		//this.tamTorneo = tamTorneo;
 	}
 
 	public void run() {
 		inicializar();
 		Generacion gen= new Generacion(this.tamPoblacion,this.tipoFuncion,7,this.valorError); //el 7 es por si es la funcion4
+		gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 		while(this.genActual < this.maxGeneraciones) {	
-			gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 			/* hay que guardar la media, el mejor de la generacion, el ,mejor absoluto, el peor de la generacion*/
 			
 			// seleccion
@@ -46,9 +48,15 @@ public class AlgoritmoGenetico {
 			
 			// cruce
 			gen.cruce(tipoCruce, probCruce);
-			// mutacion
 			
-			evaluar();
+			// mutacion
+			gen.mutar(tipoMutacion, probMutacion);
+			
+			//evaluar
+			gen.evaluarPoblacion();
+			
+			//obtener datos y pasarselos a grafica
+			
 			generarGrafica();
 			
 			this.genActual++;
@@ -59,9 +67,6 @@ public class AlgoritmoGenetico {
 		this.genActual = 1;
 	}
 	
-	public void evaluar() {
-		
-	}
 	
 	public void generarGrafica() {
 		
