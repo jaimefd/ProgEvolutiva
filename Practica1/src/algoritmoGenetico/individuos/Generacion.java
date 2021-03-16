@@ -129,7 +129,7 @@ public class Generacion {
 		
 	}
 	
-	public void seleccion(String algoritmo) {
+	public void seleccion(int algoritmo) {
 		this.poblacion = FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.tamPobl);
 		//evaluarPoblacion(); ???? No se si hay que evaluar la pobl. despues de hacer la seleccion
 	}

@@ -17,13 +17,13 @@ public class AlgoritmoGenetico {
 	private int posMejor;
 	private int genActual;
 	private double valorError; //precision
-	private String algoritmoSeleccion; //No se si es mejor string o int
-	private int tipoCruce; //No se si es mejor string o int
-	private int tipoMutacion; //No se si es mejor string o int
+	private int algoritmoSeleccion; // Es mejor int
+	private int tipoCruce; 
+	private int tipoMutacion;
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,double valorError,String algoritmoSeleccion,int tipoCruce,int tipoMutacion/*, int tamTorneo*/) {
+			double probMutacion,double valorError,int algoritmoSeleccion,int tipoCruce,int tipoMutacion/*, int tamTorneo*/) {
 		this.tipoFuncion = tipoFuncion;
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
