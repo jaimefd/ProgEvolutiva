@@ -16,8 +16,7 @@ public class Monopunto {
 			double rand = Math.random();
 			if(rand<probCruce) {
 				poblacion.get(i).setCruce(true);
-			}
-			else {
+			} else {
 				poblacion.get(i).setCruce(false);
 			}
 		}
@@ -31,7 +30,7 @@ public class Monopunto {
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
-						int rand =(int) Math.random()*tamañoCromosoma-1;
+						int rand =(int) Math.random()*(tamañoCromosoma-1);
 						Boolean[] aux1 = new Boolean[tamañoCromosoma];
 						Boolean[] aux2 = new Boolean[tamañoCromosoma];
 						//Cruce del primero
@@ -46,13 +45,11 @@ public class Monopunto {
 						nuevaPobl.add(poblacion.get(j));
 						poblacion.get(x).setCromosoma(aux2);
 						poblacion.get(x).setCruce(false); //ponemos cruce a false y cuando vuelva a salir se añadira a nuevaPobl en su posion
-					}
-					else {
+					} else {
 						x++;
 					}
 				}
-			}
-			else {
+			} else {
 				nuevaPobl.add(poblacion.get(j)); //Si no se cruzan los agregamos directamente en su posicion
 			}
 			//reiniciamos variables
