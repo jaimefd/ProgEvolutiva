@@ -16,12 +16,13 @@ public class AlgoritmoGenetico {
 	private Individuo elMejor;
 	private int posMejor;
 	private int genActual;
-	private double valorError;
-	private String algoritmoSeleccion;
+	private double valorError; //precision
+	private String algoritmoSeleccion; //No se si es mejor string o int
+	private int tipoCruce; //No se si es mejor string o int
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,double valorError,String algoritmoSeleccion/*, int tamTorneo*/) {
+			double probMutacion,double valorError,String algoritmoSeleccion,int tipoCruce/*, int tamTorneo*/) {
 		this.tipoFuncion = tipoFuncion;
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -29,6 +30,7 @@ public class AlgoritmoGenetico {
 		this.probMutacion = probMutacion;
 		this.valorError=valorError;
 		this.algoritmoSeleccion=algoritmoSeleccion;
+		this.tipoCruce=tipoCruce;
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -43,7 +45,7 @@ public class AlgoritmoGenetico {
 			gen.seleccion(this.algoritmoSeleccion);
 			
 			// cruce
-			
+			gen.cruce(tipoCruce, probCruce);
 			// mutacion
 			
 			evaluar();

@@ -2,6 +2,7 @@ package algoritmoGenetico.individuos;
 
 import java.util.ArrayList;
 
+import algoritmoGenetico.cruces.FactoriaCruce;
 import algoritmoGenetico.seleccion.FactoriaSeleccion;
 
 
@@ -128,6 +129,10 @@ public class Generacion {
 	public void seleccion(String algoritmo) {
 		this.poblacion = FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.tamPobl);
 		//evaluarPoblacion(); ???? No se si hay que evaluar la pobl. despues de hacer la seleccion
+	}
+	
+	public void cruce(int tipoCruce,double probCruce) {
+		this.poblacion= FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl);
 	}
 	
 	public void desplazamiento_minimizar() {}  //Falta por hacer porque tengo dudas

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import algoritmoGenetico.individuos.Individuo;
 
-public class Cruce {
+public class FactoriaCruce {
 	
 	
-	public static ArrayList<Individuo<Boolean>> getAlgoritmoSeleccion (int cruce, ArrayList<Individuo<Boolean>> poblacion,
+	public static ArrayList<Individuo<Boolean>> getTipoCruce (int cruce, ArrayList<Individuo<Boolean>> poblacion,
 			double probCruce,int tamPobl) {
 		switch (cruce) {
 			case 1:
