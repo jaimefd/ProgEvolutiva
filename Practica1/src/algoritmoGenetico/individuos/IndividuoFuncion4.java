@@ -8,11 +8,12 @@ public class IndividuoFuncion4 extends Individuo<Boolean> {
 	
 	public IndividuoFuncion4(int numVariables,double valorError) {
 		this.valorError=valorError;
+		this.cruce=false;
 		this.numVariables = numVariables;
 		this.tamGenes = new int[numVariables];
 		this.min = new double[numVariables];
 		this.max = new double[numVariables];
-		int tamTotal = 0;
+		this.tamTotal = 0;
 		for(int i = 0; i < numVariables; i++) {
 			this.min[i] = 0;
 			this.max[i] = Math.PI;

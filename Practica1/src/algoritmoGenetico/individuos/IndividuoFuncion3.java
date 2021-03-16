@@ -6,6 +6,7 @@ public class IndividuoFuncion3 extends Individuo<Boolean> {
 	
 	public IndividuoFuncion3(double valorError) {
 		this.valorError=valorError;
+		this.cruce=false;
 		this.tamGenes = new int[2];
 		this.min = new double[2];
 		this.max = new double[2];
@@ -15,7 +16,7 @@ public class IndividuoFuncion3 extends Individuo<Boolean> {
 		this.max[1] = 10.000;
 		this.tamGenes[0] = this.tamGen(this.valorError, min[0], max[0]);
 		this.tamGenes[1] = this.tamGen(this.valorError, min[1], max[1]);
-		int tamTotal = tamGenes[0] + tamGenes[1];
+		this.tamTotal = tamGenes[0] + tamGenes[1];
 		this.cromosoma = new Boolean[tamTotal];
 		Random rd = new Random();
 		for(int i = 0; i < tamTotal; i++) this.cromosoma[i] = rd.nextBoolean();
