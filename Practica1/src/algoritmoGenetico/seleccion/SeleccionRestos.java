@@ -23,11 +23,10 @@ public class SeleccionRestos {
 			}
 		}
 		
-		if(nuevaPobl.size()<tamPobl) {
-			int rand = (int) Math.random() * (tamPobl-1);
-			while(nuevaPobl.size()!=tamPobl) {
-				nuevaPobl.add(poblacion.get(rand));
-			}
+		
+		while(nuevaPobl.size()!=tamPobl) { //por si faltan por añadir los introducimos aleatoriamente
+			int rand = (int) Math.random()*(tamPobl-1);
+			nuevaPobl.add(poblacion.get(rand));
 		}
 		
 		return nuevaPobl;
