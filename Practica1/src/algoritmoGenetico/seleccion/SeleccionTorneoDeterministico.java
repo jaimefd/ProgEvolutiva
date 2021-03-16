@@ -10,7 +10,7 @@ public class SeleccionTorneoDeterministico {
 			ArrayList<Double> puntAcu, int tamPobl) {
 		
 		ArrayList<Individuo<Boolean>> nuevaPobl = new ArrayList<Individuo<Boolean>>();
-		Individuo aux;
+		Individuo<Boolean> aux;
 		double fitnessAct=0;
 		double mejorFitness= Double.MIN_VALUE;
 		int pos_mejor=0;
@@ -26,7 +26,7 @@ public class SeleccionTorneoDeterministico {
 				}
 			}
 			nuevaPobl.add(poblacion.get(pos_mejor)); //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
-			mejorFitness=0;
+			mejorFitness= Double.MIN_VALUE;
 			
 		}
 		return nuevaPobl;

@@ -10,7 +10,7 @@ public class SeleccionTorneoProbabilistico {
 			ArrayList<Double> puntAcu, int tamPobl) {
 		
 		ArrayList<Individuo<Boolean>> nuevaPobl = new ArrayList<Individuo<Boolean>>();
-		Individuo aux;
+		Individuo<Boolean> aux;
 		double fitnessAct=0;
 		double mejorFitness=Double.MIN_VALUE;
 		double peorFitness=Double.MAX_VALUE;
@@ -22,23 +22,23 @@ public class SeleccionTorneoProbabilistico {
 				int rand=(int) (Math.random()*tamPobl);
 				aux=poblacion.get(rand);
 				fitnessAct=aux.getFitness();
-				if(fitnessAct>mejorFitness) {
+				if (fitnessAct>mejorFitness) {
 					mejorFitness=fitnessAct;
 					pos_mejor=rand;
 				}
-				if(fitnessAct<peorFitness) {
+				if (fitnessAct<peorFitness) {
 					peorFitness=fitnessAct;
 					pos_peor=rand;
 				}
 			}	
 		    double p = Math.random();
-		    if(p>=0.5) {
-			nuevaPobl.add(poblacion.get(pos_mejor)); //añadimos el mejor si es 0.5 o mayor
+		    if (p >= 0.5) {
+		    	nuevaPobl.add(poblacion.get(pos_mejor)); //añadimos el mejor si es 0.5 o mayor
+		    } else {
+		    	nuevaPobl.add(poblacion.get(pos_peor));//añadimos el peor si el random es menos que 0.5
 		    }
-		    else {
-		    nuevaPobl.add(poblacion.get(pos_peor));//añadimos el peor si el random es menos que 0.5
-		    }
-			mejorFitness=0;
+		    mejorFitness=Double.MIN_VALUE;
+			peorFitness=Double.MAX_VALUE;
 			
 		}
 		return nuevaPobl;
