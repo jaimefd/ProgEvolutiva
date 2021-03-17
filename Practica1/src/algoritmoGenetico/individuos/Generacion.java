@@ -13,6 +13,7 @@ public class Generacion {
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
 	private int funcion;
+	private double valorError;
 
 	private double media;  //media de la generacio para la grafica!
 	private Individuo<Boolean> elMejor;  //el mejor individuo de la generacion para la grafica!
@@ -26,38 +27,11 @@ public class Generacion {
 		poblacion = new ArrayList<Individuo<Boolean>>();
 		this.tamPobl = tamañoPobl;
 		this.puntuaciones = new ArrayList<Double>();
+		this.puntAcu=new ArrayList<Double>();
 		this.funcion=funcion;
+		this.valorError=valorError;
 	
-		
-		if(funcion==1) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion1(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==2) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion2(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==3) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion3(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==4) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4,valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		
+		iniciarIndividuos(this.funcion,this.valorError,numVariables4,this.tamPobl,this.poblacion);
 		
 	}
 	
@@ -124,16 +98,16 @@ public class Generacion {
 	}
 	
 	public void seleccion(int algoritmo) {
-		this.poblacion = FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl);
+		this.poblacion = new ArrayList<Individuo<Boolean>>(FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl));
 		//evaluarPoblacion(); ???? No se si hay que evaluar la pobl. despues de hacer la seleccion
 	}
 	
 	public void cruce(int tipoCruce,double probCruce) {
-		this.poblacion= FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl);
+		this.poblacion= new ArrayList<Individuo<Boolean>>(FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl));
 	}
 	
 	public void mutar(int tipoMutacion,double probMutacion) {
-		this.poblacion=FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl);
+		this.poblacion=new ArrayList<Individuo<Boolean>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
 	}
 	
 	
@@ -152,7 +126,26 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite) {}  //FALTA
+	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite,ArrayList<Double> puntuacionElite,ArrayList<Double> puntuacionAcElite) {
+		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
+		
+		for(int i=0;i<tamElite;i++) {
+			double mejorFitness=this.poblacion.get(0).getFitness();
+			int pos=0;
+			for(int j=1;j<this.tamPobl;j++) {
+				if((this.poblacion.get(j).getFitness()>mejorFitness) && (this.poblacion.get(j).isElite()==false)){
+					mejorFitness=this.poblacion.get(j).getFitness();
+					pos=j;
+				}
+			}
+			
+			elite.get(i).setCromosoma(this.poblacion.get(pos).getCromosoma());
+			puntuacionElite.add(this.puntuaciones.get(pos));
+			puntuacionAcElite.add(this.puntAcu.get(pos));
+			this.poblacion.get(pos).setElite(true);
+		}
+	}  
+	
 	public void introducirElite() {}  //FALTA
 
 
@@ -253,5 +246,36 @@ public class Generacion {
 
 	public void setPos_peor_fitness(int pos_peor_fitness) {
 		this.pos_peor_fitness = pos_peor_fitness;
+	}
+	
+	public void iniciarIndividuos(int funcion,double valorError,int numVariables4,int tamPobl,ArrayList<Individuo<Boolean>> poblacion) {
+		if(funcion==1) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion1(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==2) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion2(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==3) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion3(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==4) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4,valorError);
+				poblacion.add(indiv);	
+			}
+		}
 	}
 }

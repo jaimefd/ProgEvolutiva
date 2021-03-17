@@ -12,7 +12,7 @@ public class MutacionBasica {
 		for(int i=0;i<tamPobl;i++) {
 			int tamañoCromosoma =poblacion.get(i).getTamTotal();
 			Boolean[] aux=new Boolean[tamañoCromosoma]; //creamos un array auxiliar
-			aux=poblacion.get(i).getCromosoma(); //lo igualamos al cromosoma del individuo
+			aux=poblacion.get(i).getCromosoma(); //lo igualamos al cromosoma del individuo ¡puede que haya que usar .clone!
 			
 			for(int j=0;j<tamañoCromosoma;j++) {  
 				double rand= Math.random();

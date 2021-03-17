@@ -33,7 +33,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 		return cromosoma;
 	}
 	public void setCromosoma(T[] cromosoma) {
-		this.cromosoma = cromosoma;
+		this.cromosoma = (T[])cromosoma.clone();
 	}
 	public int getTamTotal() {
 		return tamTotal;
@@ -50,18 +50,6 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	public void setElite(boolean elite) {
 		this.elite = elite;
 	}
-	
-	public void copia(Individuo<T> indiv) {
-		this.cromosoma=indiv.cromosoma;
-		this.cruce=indiv.cruce;
-		this.elite=false;
-		this.max=indiv.max;
-		this.min=indiv.min;
-		this.tamGenes=indiv.tamGenes;
-		this.tamTotal=indiv.tamTotal;
-		this.valorError=indiv.valorError;
-	}
-	
 	
 
 }
