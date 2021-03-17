@@ -15,8 +15,8 @@ public class Generacion {
 	private int funcion;
 
 	private double media;  //media de la generacio para la grafica!
-	private Individuo elMejor;  //el mejor individuo de la generacion para la grafica!
-	private Individuo elPeor;  //el peor individuo de la generacion para la grafica!
+	private Individuo<Boolean> elMejor;  //el mejor individuo de la generacion para la grafica!
+	private Individuo<Boolean> elPeor;  //el peor individuo de la generacion para la grafica!
 	private int pos_mejor_fitness;
 	private int pos_peor_fitness;
 	
@@ -120,13 +120,7 @@ public class Generacion {
 		
 		this.media=fitnessTotal/this.tamPobl;
 		
-		if(this.funcion==1) {
-			desplazamiento_maximizar();
-		}
-		else {
-			desplazamiento_minimizar();
-		}
-		
+		desplazamiento_maximizar(); //por si hay valores negativos para seleccion
 	}
 	
 	public void seleccion(int algoritmo) {
@@ -142,11 +136,23 @@ public class Generacion {
 		this.poblacion=FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl);
 	}
 	
-	public void desplazamiento_minimizar() {}  //Falta por hacer porque tengo dudas
 	
-	public void desplazamiento_maximizar() {}  //Falta por hacer porque tengo dudas
+	public void desplazamiento_maximizar() {
+		double Fmin = elPeor.getFitness() * 1.01; //en este caso el mejor es el mas grande
+		
+		double nuevoFitnessTotal=0;
+		for(int i=0; i<this.puntuaciones.size(); i++)
+		{
+			puntuaciones.set(i,Math.abs(poblacion.get(i).getFitness()-Fmin));
+			nuevoFitnessTotal+=(puntuaciones.get(i));
+		}
+		
+		for(int j=0;j<this.puntAcu.size();j++) {
+			puntAcu.set(j, (puntuaciones.get(j)/nuevoFitnessTotal));
+		}
+	}
 	
-	public void generarElite() {}  //FALTA
+	public void generarElite(int tamElite) {}  //FALTA
 	public void introducirElite() {}  //FALTA
 
 

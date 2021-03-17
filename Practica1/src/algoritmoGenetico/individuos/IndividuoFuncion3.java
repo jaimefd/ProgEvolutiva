@@ -6,6 +6,7 @@ public class IndividuoFuncion3 extends Individuo<Boolean> {
 	
 	public IndividuoFuncion3(double valorError) {
 		this.valorError=valorError;
+		this.elite=false;
 		this.cruce=false;
 		this.tamGenes = new int[2];
 		this.min = new double[2];
