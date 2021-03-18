@@ -28,7 +28,7 @@ public class AlgoritmoGenetico {
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,double valorError,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double tamElite/*, int tamTorneo*/) {
+			double probMutacion,double valorError,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite/*, int tamTorneo*/) {
 		this.tipoFuncion = tipoFuncion;
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -39,7 +39,7 @@ public class AlgoritmoGenetico {
 		this.tipoCruce=tipoCruce;
 		this.tipoMutacion=tipoMutacion;
 		this.hayElite=hayElite;
-		this.tamElite=((int) tamElite*this.tamPoblacion);
+		this.tamElite=(int) (probElite*this.tamPoblacion*0.01);
 		this.media=new double[this.maxGeneraciones];
 		this.mejorGeneracion=new double[this.maxGeneraciones];
 		//this.tamTorneo = tamTorneo;
@@ -56,19 +56,25 @@ public class AlgoritmoGenetico {
 		
 		ArrayList<Individuo<Boolean>> elite = new ArrayList<Individuo<Boolean>>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
-			/* hay que guardar la media, el mejor de la generacion, el ,mejor absoluto, el peor de la generacion*/
 			
 			if(hayElite) {
 				gen.generarElite(tamElite, elite);
 			}
 			// seleccion
-			gen.seleccion(this.algoritmoSeleccion);
+			gen.seleccion(this.algoritmoSeleccion); 
+			/*hay que pasarle a la factoria un array nuevo inicializado y 
+			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id
+			como en elite*/
 			
 			// cruce
 			gen.cruce(tipoCruce, probCruce);
+			/*hay que pasarle a la factoria un array nuevo inicializado y 
+			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id*/
 			
 			// mutacion
 			gen.mutar(tipoMutacion, probMutacion);
+			/*hay que pasarle a la factoria un array nuevo inicializado y 
+			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id*/
 			
 			if(hayElite) {
 				gen.introducirElite(tamElite, elite);

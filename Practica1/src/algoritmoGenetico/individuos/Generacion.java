@@ -92,7 +92,7 @@ public class Generacion {
 			puntAcum+=this.puntuaciones.get(i); //sumo a la puntuacion acumulada la del indiv actual
 		}
 		
-		this.media=fitnessTotal/this.tamPobl;
+		this.media= (fitnessTotal/this.tamPobl);
 		
 		desplazamiento_maximizar(); //por si hay valores negativos para seleccion
 	}
@@ -126,7 +126,7 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) {
+	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) { //hay que ver si se puede repetir el mismo individuo varias veces que seria mas facil sino hay que cambiar
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
