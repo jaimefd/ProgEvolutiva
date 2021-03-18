@@ -126,7 +126,7 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite,ArrayList<Double> puntuacionElite,ArrayList<Double> puntuacionAcElite) {
+	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) {
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
@@ -140,13 +140,27 @@ public class Generacion {
 			}
 			
 			elite.get(i).setCromosoma(this.poblacion.get(pos).getCromosoma());
-			puntuacionElite.add(this.puntuaciones.get(pos));
-			puntuacionAcElite.add(this.puntAcu.get(pos));
 			this.poblacion.get(pos).setElite(true);
 		}
 	}  
 	
-	public void introducirElite() {}  //FALTA
+	public void introducirElite(int tamElite,ArrayList<Individuo<Boolean>> elite) {
+		for(int i=0;i<tamElite;i++) {
+			double peorFitness=this.poblacion.get(0).getFitness();
+			int pos=0;
+			this.poblacion.get(0).setElite(false);
+			for(int j=1;j<this.tamPobl;j++) {
+				this.poblacion.get(0).setElite(false); //volvemos a poner todos a false
+				if((this.poblacion.get(j).getFitness()<peorFitness)){
+					peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
+					pos=j;
+				}
+			}
+			this.poblacion.get(pos).setCromosoma(elite.get(i).getCromosoma());
+		}
+		elite.clear(); //dejamos vacio array elite
+		
+	}
 
 
 	public ArrayList<Individuo<Boolean>> getPoblacion() {
