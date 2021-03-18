@@ -9,21 +9,22 @@ public class AlgoritmoGenetico {
 	
 	private int tipoFuncion;
 	private int tamPoblacion;
-	private Individuo[] poblacion;
-	private double[] fitness;
 	private int maxGeneraciones;
 	private double probCruce;
 	private double probMutacion;
 	//private int tamTorneo;  he puesto directamente 3
-	private Individuo elMejor;
-	private int posMejor;
 	private int genActual;
 	private double valorError; //precision
-	private int algoritmoSeleccion; // Es mejor int
+	//Tipos selecc. , cruce y mutacion
+	private int algoritmoSeleccion; 
 	private int tipoCruce; 
 	private int tipoMutacion;
 	private boolean hayElite; //si ha seleccionado elite
 	private int tamElite; //tamaño elite
+	//Grafica
+	private double[] media;
+	private double[] mejorGeneracion;
+	private double mejorAbsoluto;
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
@@ -38,7 +39,9 @@ public class AlgoritmoGenetico {
 		this.tipoCruce=tipoCruce;
 		this.tipoMutacion=tipoMutacion;
 		this.hayElite=hayElite;
-		this.tamElite=tamElite;
+		this.tamElite=((int) tamElite*this.tamPoblacion);
+		this.media=new double[this.maxGeneraciones];
+		this.mejorGeneracion=new double[this.maxGeneraciones];
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -46,6 +49,11 @@ public class AlgoritmoGenetico {
 		inicializar();
 		Generacion gen= new Generacion(this.tamPoblacion,this.tipoFuncion,7,this.valorError); //el 7 es por si es la funcion4
 		gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
+		media[0]=gen.getMedia();
+		mejorGeneracion[0]=gen.getElMejor().getFitness();
+		mejorAbsoluto=mejorGeneracion[0];
+		
+		
 		ArrayList<Individuo<Boolean>> elite = new ArrayList<Individuo<Boolean>>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
 			/* hay que guardar la media, el mejor de la generacion, el ,mejor absoluto, el peor de la generacion*/
@@ -69,7 +77,13 @@ public class AlgoritmoGenetico {
 			gen.evaluarPoblacion();
 			
 			//obtener datos y pasarselos a grafica
+			media[this.genActual]=gen.getMedia();
+			mejorGeneracion[this.genActual]=gen.getElMejor().getFitness();
+			if(mejorGeneracion[this.genActual]>mejorAbsoluto) {
+				this.mejorAbsoluto=mejorGeneracion[this.genActual];
+			}
 			
+
 			generarGrafica();
 			
 			this.genActual++;
