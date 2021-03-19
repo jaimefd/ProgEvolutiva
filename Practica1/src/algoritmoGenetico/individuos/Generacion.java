@@ -120,7 +120,7 @@ public class Generacion {
 	
 	public void desplazamiento_maximizar() {
 		double Fmin = elPeor.getFitness() * 1.01; //en este caso el mejor es el mas grande
-		
+		double puntAcumu=0;
 		double nuevoFitnessTotal=0;
 		for(int i=0; i<this.puntuaciones.size(); i++)
 		{
@@ -129,7 +129,8 @@ public class Generacion {
 		}
 		
 		for(int j=0;j<this.puntAcu.size();j++) {
-			puntAcu.set(j, (puntuaciones.get(j)/nuevoFitnessTotal));
+			puntAcumu+=puntuaciones.get(j)/nuevoFitnessTotal;
+			puntAcu.set(j, puntAcumu);
 		}
 	}
 	
