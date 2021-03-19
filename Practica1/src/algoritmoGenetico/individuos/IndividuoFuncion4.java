@@ -31,8 +31,8 @@ public class IndividuoFuncion4 extends Individuo<Boolean> {
 	public double getValor() {
 		double result = 0;
 		
-		for (int i = 1; i <= this.numVariables; i++) {
-			double xi = getFenotipo(i-1);
+		for (int i = 0; i < this.numVariables; i++) {
+			double xi = getFenotipo(i);
 			result += Math.sin(xi)*Math.pow(Math.sin(((i + 1)*Math.pow(xi, 2))/Math.PI), 20);
 		}
 		
