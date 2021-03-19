@@ -7,9 +7,8 @@ import algoritmoGenetico.individuos.Individuo;
 public class SeleccionTorneoDeterministico {
 
 	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl) {
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
 		
-		ArrayList<Individuo<Boolean>> nuevaPobl = new ArrayList<Individuo<Boolean>>();
 		Individuo<Boolean> aux;
 		double fitnessAct=0;
 		double mejorFitness= Double.MIN_VALUE;
@@ -25,7 +24,7 @@ public class SeleccionTorneoDeterministico {
 					pos_mejor=rand;
 				}
 			}
-			nuevaPobl.add(poblacion.get(pos_mejor)); //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
+			nuevaPobl.get(i).setCromosoma(poblacion.get(pos_mejor).getCromosoma());  //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
 			mejorFitness= Double.MIN_VALUE;
 			
 		}

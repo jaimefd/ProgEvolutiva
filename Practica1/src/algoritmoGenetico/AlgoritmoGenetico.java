@@ -62,19 +62,12 @@ public class AlgoritmoGenetico {
 			}
 			// seleccion
 			gen.seleccion(this.algoritmoSeleccion); 
-			/*hay que pasarle a la factoria un array nuevo inicializado y 
-			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id
-			como en elite*/
 			
 			// cruce
 			gen.cruce(tipoCruce, probCruce);
-			/*hay que pasarle a la factoria un array nuevo inicializado y 
-			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id*/
 			
 			// mutacion
 			gen.mutar(tipoMutacion, probMutacion);
-			/*hay que pasarle a la factoria un array nuevo inicializado y 
-			luego solo cambiar cromosoma con set para que no salgan indiv con mismo id*/
 			
 			if(hayElite) {
 				gen.introducirElite(tamElite, elite);

@@ -6,8 +6,7 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class Uniforme {
 	static ArrayList<Individuo<Boolean>> cruce(int cruce, ArrayList<Individuo<Boolean>> poblacion,
-			double probCruce,int tamPobl) {
-		ArrayList<Individuo<Boolean>> nuevaPobl =new ArrayList<Individuo<Boolean>>();
+			double probCruce,int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
 		
 		for(int i=0;i<tamPobl;i++) { //ponemos cruce a true para los individuos que cumplen rand < ProbCruce
 			double rand = Math.random();
@@ -45,15 +44,18 @@ public class Uniforme {
 						
 						poblacion.get(j).setCromosoma(nuevo1); //cambiamos el cromosoma antiguo por el nuevo
 						poblacion.get(j).setCruce(false); //ponemos cruce a false para no volver a cruzarlo
-						nuevaPobl.add(poblacion.get(j));
+						nuevaPobl.get(j).setCromosoma(poblacion.get(j).getCromosoma());
 						poblacion.get(x).setCromosoma(nuevo2);
 						poblacion.get(x).setCruce(false); //ponemos cruce a false y cuando vuelva a salir se añadira a nuevaPobl en su posion
 					} else {
 						x++;
 					}
 				}
+				if(encontrado==false) {
+					nuevaPobl.get(j).setCromosoma(poblacion.get(j).getCromosoma()); 
+				}
 			} else {
-				nuevaPobl.add(poblacion.get(j)); //Si no se cruzan los agregamos directamente en su posicion
+				nuevaPobl.get(j).setCromosoma(poblacion.get(j).getCromosoma()); //Si no se cruzan los agregamos directamente en su posicion
 			}
 			//reiniciamos variables
 			x=j+2; //para que siempre este uno por encima de la j

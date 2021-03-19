@@ -14,6 +14,7 @@ public class Generacion {
 	private int tamPobl;
 	private int funcion;
 	private double valorError;
+	private int numVariables4;
 
 	private double media;  //media de la generacio para la grafica!
 	private Individuo<Boolean> elMejor;  //el mejor individuo de la generacion para la grafica!
@@ -30,6 +31,7 @@ public class Generacion {
 		this.puntAcu=new ArrayList<Double>();
 		this.funcion=funcion;
 		this.valorError=valorError;
+		this.numVariables4=numVariables4;
 	
 		iniciarIndividuos(this.funcion,this.valorError,numVariables4,this.tamPobl,this.poblacion);
 		
@@ -98,12 +100,17 @@ public class Generacion {
 	}
 	
 	public void seleccion(int algoritmo) {
-		this.poblacion = new ArrayList<Individuo<Boolean>>(FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl));
-		//evaluarPoblacion(); ???? No se si hay que evaluar la pobl. despues de hacer la seleccion
+		ArrayList<Individuo<Boolean>> nueva= new ArrayList<Individuo<Boolean>>();
+		iniciarIndividuos(this.funcion,this.valorError,this.numVariables4,this.tamPobl,nueva);
+		FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl,nueva);
+		this.poblacion=nueva;
 	}
 	
 	public void cruce(int tipoCruce,double probCruce) {
-		this.poblacion= new ArrayList<Individuo<Boolean>>(FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl));
+		ArrayList<Individuo<Boolean>> nueva= new ArrayList<Individuo<Boolean>>();
+		iniciarIndividuos(this.funcion,this.valorError,this.numVariables4,this.tamPobl,nueva);
+		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva);
+		this.poblacion=nueva;
 	}
 	
 	public void mutar(int tipoMutacion,double probMutacion) {
@@ -126,7 +133,7 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) { //hay que ver si se puede repetir el mismo individuo varias veces que seria mas facil sino hay que cambiar
+	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) { //se puede repetir asi que hay que cambiarla
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
