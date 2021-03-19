@@ -9,25 +9,24 @@ public class SeleccionRestos {
 	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
 			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Double> puntuaciones,ArrayList<Individuo<Boolean>> nuevaPobl) {
 		
-		/*
-		for(int i=0;i<tamPobl && nuevaPobl.size()<tamPobl;i++) {
-			double pik= puntuaciones.get(i)*tamPobl; //puntuacion * individuos a seleccionar
+		int introducidos=0;
+		for(int i=0;i<tamPobl && introducidos<tamPobl;i++) {
+			double pik= ((puntuaciones.get(i)*tamPobl)/100); //puntuacion * individuos a seleccionar
 			if(pik>1) {
 				pik=Math.round(pik);
 				int j=0;
-				while(j<pik && nuevaPobl.size()<tamPobl) {
-					nuevaPobl.get(i).setCromosoma(poblacion.get(i).getCromosoma()); 
+				while(j<pik && introducidos<tamPobl) {
+					nuevaPobl.get(introducidos).setCromosoma(poblacion.get(i).getCromosoma()); 
+					introducidos++;
 					j++;
 				}
 			}
 		}
 		
-		
-		while(nuevaPobl.size()!=tamPobl) { //por si faltan por añadir los introducimos aleatoriamente
-			int rand = (int) Math.random()*(tamPobl-1);
-			nuevaPobl.get(i).setCromosoma(poblacion.get(i).getCromosoma()); //MAL
+		if(introducidos<tamPobl) {
+			SeleccionRuleta.seleccionRuletaRestos(poblacion, puntAcu, tamPobl,introducidos,nuevaPobl);
 		}
-		*/ //esta mal, hay que volver a hacerlo
+
 		return nuevaPobl;
 	}
 

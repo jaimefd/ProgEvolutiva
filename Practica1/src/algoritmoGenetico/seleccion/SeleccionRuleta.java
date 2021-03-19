@@ -19,4 +19,17 @@ public class SeleccionRuleta {
 		return nuevaPobl;
 	}
 	
+	static ArrayList<Individuo<Boolean>> seleccionRuletaRestos (ArrayList<Individuo<Boolean>> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,int introducidos,ArrayList<Individuo<Boolean>> nuevaPobl) {
+		double prob;
+		int posi;
+		for (int i = introducidos; i < tamPobl; i++) {
+			prob = Math.random();
+			posi = 0;
+			while (prob > puntAcu.get(posi) && posi < tamPobl - 1) posi++;
+			nuevaPobl.get(i).setCromosoma(poblacion.get(posi).getCromosoma()); 
+		}
+		return nuevaPobl;
+	}
+	
 }
