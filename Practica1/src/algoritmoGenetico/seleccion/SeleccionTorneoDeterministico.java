@@ -11,7 +11,7 @@ public class SeleccionTorneoDeterministico {
 		
 		Individuo<Boolean> aux;
 		double fitnessAct=0;
-		double mejorFitness= Double.MIN_VALUE;
+		double mejorFitness= Double.NEGATIVE_INFINITY;
 		int pos_mejor=0;
 		
 		for(int i=0;i<tamPobl;i++) {
@@ -25,7 +25,7 @@ public class SeleccionTorneoDeterministico {
 				}
 			}
 			nuevaPobl.get(i).setCromosoma(poblacion.get(pos_mejor).getCromosoma());  //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
-			mejorFitness= Double.MIN_VALUE;
+			mejorFitness= Double.NEGATIVE_INFINITY;
 			
 		}
 		return nuevaPobl;

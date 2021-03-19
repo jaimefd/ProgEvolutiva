@@ -70,7 +70,7 @@ public class IndividuoFuncion2 extends Individuo<Boolean>{
 	@Override
 	public double getFitness() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.getValor();
 	}
 
 }

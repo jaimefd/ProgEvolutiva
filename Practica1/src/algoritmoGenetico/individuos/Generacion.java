@@ -68,7 +68,7 @@ public class Generacion {
 		}
 		else {
 			double mejorFitness=Double.MAX_VALUE;
-			double peorFitness=Double.MIN_VALUE;
+			double peorFitness=Double.NEGATIVE_INFINITY;
 			
 			for(int i=0;i<this.tamPobl;i++) {
 				fitnessActual=this.poblacion.get(i).getFitness();

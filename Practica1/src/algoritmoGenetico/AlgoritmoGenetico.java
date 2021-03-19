@@ -78,8 +78,16 @@ public class AlgoritmoGenetico {
 			//obtener datos y pasarselos a grafica
 			media[this.genActual]=gen.getMedia();
 			mejorGeneracion[this.genActual]=gen.getElMejor().getFitness();
-			if(mejorGeneracion[this.genActual]>mejorAbsoluto) {
-				this.mejorAbsoluto=mejorGeneracion[this.genActual];
+			
+			if(this.tipoFuncion==1) {
+				if(mejorGeneracion[this.genActual]>mejorAbsoluto) {
+					this.mejorAbsoluto=mejorGeneracion[this.genActual];
+				}
+			}
+			else {
+				if(mejorGeneracion[this.genActual]<mejorAbsoluto) {
+					this.mejorAbsoluto=mejorGeneracion[this.genActual];
+				}
 			}
 			
 
