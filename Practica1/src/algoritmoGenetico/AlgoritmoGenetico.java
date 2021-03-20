@@ -26,6 +26,9 @@ public class AlgoritmoGenetico {
 	private double[] mejorGeneracion;
 	private double mejorAbsoluto;
 	private int numVariables4;
+	//EXTRA
+	private double[] peorGeneracion;
+	private double peorAbsoluto;
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
@@ -44,6 +47,7 @@ public class AlgoritmoGenetico {
 		this.media=new double[this.maxGeneraciones];
 		this.mejorGeneracion=new double[this.maxGeneraciones];
 		this.numVariables4=numVariables4;
+		this.peorGeneracion=new double[this.maxGeneraciones];
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -54,6 +58,9 @@ public class AlgoritmoGenetico {
 		media[0]=gen.getMedia();
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
 		mejorAbsoluto=mejorGeneracion[0];
+		
+		peorGeneracion[0]=gen.getElPeor().getFitness();//EXTRA
+		peorAbsoluto=peorGeneracion[0]; //EXTRA
 		
 		
 		ArrayList<Individuo> elite = new ArrayList<Individuo>(); //luego vaciar
@@ -81,19 +88,29 @@ public class AlgoritmoGenetico {
 			media[this.genActual]=gen.getMedia();
 			mejorGeneracion[this.genActual]=gen.getElMejor().getFitness();
 			
+			peorGeneracion[this.genActual]=gen.getElPeor().getFitness();//EXTRA
+			
 			if(this.tipoFuncion==1) {
 				if(mejorGeneracion[this.genActual]>mejorAbsoluto) {
 					this.mejorAbsoluto=mejorGeneracion[this.genActual];
+				}
+				
+				if(peorGeneracion[this.genActual]<peorAbsoluto) { //EXTRA
+					this.peorAbsoluto=peorGeneracion[this.genActual];
 				}
 			}
 			else {
 				if(mejorGeneracion[this.genActual]<mejorAbsoluto) {
 					this.mejorAbsoluto=mejorGeneracion[this.genActual];
 				}
+				
+				if(peorGeneracion[this.genActual]>peorAbsoluto) { //EXTRA
+					this.peorAbsoluto=peorGeneracion[this.genActual];
+				}
 			}
 			
 
-			generarGrafica(this.media,this.mejorAbsoluto,this.mejorGeneracion);
+			generarGrafica(this.media,this.mejorAbsoluto,this.mejorGeneracion,this.peorAbsoluto);
 			
 			this.genActual++;
 		}
@@ -104,7 +121,7 @@ public class AlgoritmoGenetico {
 	}
 	
 	
-	public void generarGrafica(double[]media,double mejorFitnessAbsoluto,double[]mejorGeneracion) {
+	public void generarGrafica(double[]media,double mejorFitnessAbsoluto,double[]mejorGeneracion,double peorAbsoluto) {
 		
 	}
 	

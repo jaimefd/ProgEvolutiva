@@ -8,16 +8,33 @@ public class FactoriaCruce {
 	
 	
 	public static ArrayList<Individuo> getTipoCruce (int cruce, ArrayList<Individuo> poblacion,
-			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl) {
+			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl,boolean real) {
 		switch (cruce) {
 			case 1:
+				if(!real) {
 				return Monopunto.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
+				else {
+					return Monopunto.cruceReal(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
 			case 2:
-				return Uniforme.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				if(!real) {
+					return Uniforme.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
+				else {
+					return Uniforme.cruceReal(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
 			case 3:
-				return Aritmetico.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				if(real) {
+					return Aritmetico.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl,real);
+				}
 			default:
-				return Monopunto.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				if(!real) {
+					return Monopunto.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
+				else {
+					return Monopunto.cruceReal(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				}
 		}
 	}
 }

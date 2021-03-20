@@ -21,6 +21,7 @@ public class Generacion {
 	private Individuo elPeor;  //el peor individuo de la generacion para la grafica!
 	private int pos_mejor_fitness;
 	private int pos_peor_fitness;
+	private boolean real;
 	
 	
 	public Generacion(int tamañoPobl,int funcion,int numVariables4,double valorError) {
@@ -32,6 +33,7 @@ public class Generacion {
 		this.funcion=funcion;
 		this.valorError=valorError;
 		this.numVariables4=numVariables4;
+		real=(this.funcion==5)?true:false;
 	
 		iniciarIndividuos(this.funcion,this.valorError,numVariables4,this.tamPobl,this.poblacion);
 		
@@ -109,7 +111,8 @@ public class Generacion {
 	public void cruce(int tipoCruce,double probCruce) {
 		ArrayList<Individuo> nueva= new ArrayList<Individuo>();
 		iniciarIndividuos(this.funcion,this.valorError,this.numVariables4,this.tamPobl,nueva);
-		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva);
+		
+		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva,real);
 		this.poblacion=nueva;
 	}
 	
