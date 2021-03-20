@@ -6,8 +6,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class SeleccionRestos {
 
-	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Double> puntuaciones,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	public static ArrayList<Individuo> seleccion(ArrayList<Individuo> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Double> puntuaciones,ArrayList<Individuo> nuevaPobl) {
 		
 		int introducidos=0;
 		for(int i=0;i<tamPobl && introducidos<tamPobl;i++) {

@@ -7,8 +7,8 @@ import algoritmoGenetico.individuos.Individuo;
 public class FactoriaCruce {
 	
 	
-	public static ArrayList<Individuo<Boolean>> getTipoCruce (int cruce, ArrayList<Individuo<Boolean>> poblacion,
-			double probCruce,int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	public static ArrayList<Individuo> getTipoCruce (int cruce, ArrayList<Individuo> poblacion,
+			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		switch (cruce) {
 			case 1:
 				return Monopunto.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);

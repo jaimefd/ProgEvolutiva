@@ -6,8 +6,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class SeleccionTorneoDeterministico {
 
-	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	public static ArrayList<Individuo> seleccion(ArrayList<Individuo> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		
 		Individuo<Boolean> aux;
 		double fitnessAct=0;

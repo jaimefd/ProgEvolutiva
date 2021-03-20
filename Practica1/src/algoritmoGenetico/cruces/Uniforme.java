@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import algoritmoGenetico.individuos.Individuo;
 
 public class Uniforme {
-	static ArrayList<Individuo<Boolean>> cruce(int cruce, ArrayList<Individuo<Boolean>> poblacion,
-			double probCruce,int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	static ArrayList<Individuo> cruce(int cruce, ArrayList<Individuo> poblacion,
+			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		
 		for(int i=0;i<tamPobl;i++) { //ponemos cruce a true para los individuos que cumplen rand < ProbCruce
 			double rand = Math.random();
@@ -26,8 +26,8 @@ public class Uniforme {
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
-						Boolean[] viejo1 = poblacion.get(j).getCromosoma();
-						Boolean[] viejo2 = poblacion.get(x).getCromosoma();
+						Boolean[] viejo1 = (Boolean[]) poblacion.get(j).getCromosoma();
+						Boolean[] viejo2 = (Boolean[]) poblacion.get(x).getCromosoma();
 						Boolean[] nuevo1 = new Boolean[tamañoCromosoma];
 						Boolean[] nuevo2 = new Boolean[tamañoCromosoma];
 						

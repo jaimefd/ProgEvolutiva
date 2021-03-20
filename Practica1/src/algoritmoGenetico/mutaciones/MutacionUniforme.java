@@ -6,10 +6,10 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class MutacionUniforme {
 
-	static ArrayList<Individuo<Boolean>> mutar(int tipo, ArrayList<Individuo<Boolean>> poblacion,
+	static ArrayList<Individuo> mutar(int tipo, ArrayList<Individuo> poblacion,
 			double probMutacion,int tamPobl) {
 		
-		ArrayList<Individuo<Boolean>> nuevaPobl =new ArrayList<Individuo<Boolean>>();
+		ArrayList<Individuo> nuevaPobl =new ArrayList<Individuo>();
 		
 		return nuevaPobl;
 	}

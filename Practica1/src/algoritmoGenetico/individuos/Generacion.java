@@ -8,7 +8,7 @@ import algoritmoGenetico.seleccion.FactoriaSeleccion;
 
 
 public class Generacion {
-	private ArrayList<Individuo<Boolean>> poblacion;  //Array con los individuos de la generacion
+	private ArrayList<Individuo> poblacion;  //Array con los individuos de la generacion
 	private ArrayList<Double> puntuaciones;  //Array con las puntuaciones de cada individuo
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
@@ -17,15 +17,15 @@ public class Generacion {
 	private int numVariables4;
 
 	private double media;  //media de la generacio para la grafica!
-	private Individuo<Boolean> elMejor;  //el mejor individuo de la generacion para la grafica!
-	private Individuo<Boolean> elPeor;  //el peor individuo de la generacion para la grafica!
+	private Individuo elMejor;  //el mejor individuo de la generacion para la grafica!
+	private Individuo elPeor;  //el peor individuo de la generacion para la grafica!
 	private int pos_mejor_fitness;
 	private int pos_peor_fitness;
 	
 	
 	public Generacion(int tamañoPobl,int funcion,int numVariables4,double valorError) {
 
-		poblacion = new ArrayList<Individuo<Boolean>>();
+		poblacion = new ArrayList<Individuo>();
 		this.tamPobl = tamañoPobl;
 		this.puntuaciones = new ArrayList<Double>();
 		this.puntAcu=new ArrayList<Double>();
@@ -100,21 +100,21 @@ public class Generacion {
 	}
 	
 	public void seleccion(int algoritmo) {
-		ArrayList<Individuo<Boolean>> nueva= new ArrayList<Individuo<Boolean>>();
+		ArrayList<Individuo> nueva= new ArrayList<Individuo>();
 		iniciarIndividuos(this.funcion,this.valorError,this.numVariables4,this.tamPobl,nueva);
 		FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl,nueva);
 		this.poblacion=nueva;
 	}
 	
 	public void cruce(int tipoCruce,double probCruce) {
-		ArrayList<Individuo<Boolean>> nueva= new ArrayList<Individuo<Boolean>>();
+		ArrayList<Individuo> nueva= new ArrayList<Individuo>();
 		iniciarIndividuos(this.funcion,this.valorError,this.numVariables4,this.tamPobl,nueva);
 		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva);
 		this.poblacion=nueva;
 	}
 	
 	public void mutar(int tipoMutacion,double probMutacion) {
-		this.poblacion=new ArrayList<Individuo<Boolean>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
+		this.poblacion=new ArrayList<Individuo>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
 	}
 	
 	
@@ -134,7 +134,7 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo<Boolean>> elite) { //se puede repetir asi que hay que cambiarla
+	public void generarElite(int tamElite,ArrayList<Individuo> elite) { //se puede repetir asi que hay que cambiarla
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
@@ -152,7 +152,7 @@ public class Generacion {
 		}
 	}  
 	
-	public void introducirElite(int tamElite,ArrayList<Individuo<Boolean>> elite) {
+	public void introducirElite(int tamElite,ArrayList<Individuo> elite) {
 		for(int i=0;i<tamElite;i++) {
 			double peorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
@@ -171,12 +171,12 @@ public class Generacion {
 	}
 
 
-	public ArrayList<Individuo<Boolean>> getPoblacion() {
+	public ArrayList<Individuo> getPoblacion() {
 		return poblacion;
 	}
 
 
-	public void setPoblacion(ArrayList<Individuo<Boolean>> poblacion) {
+	public void setPoblacion(ArrayList<Individuo> poblacion) {
 		this.poblacion = poblacion;
 	}
 
@@ -270,7 +270,7 @@ public class Generacion {
 		this.pos_peor_fitness = pos_peor_fitness;
 	}
 	
-	public void iniciarIndividuos(int funcion,double valorError,int numVariables4,int tamPobl,ArrayList<Individuo<Boolean>> poblacion) {
+	public void iniciarIndividuos(int funcion,double valorError,int numVariables4,int tamPobl,ArrayList<Individuo> poblacion) {
 		if(funcion==1) {
 			for(int i = 0; i < tamPobl; i++)
 			{

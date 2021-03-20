@@ -5,7 +5,7 @@ import algoritmoGenetico.individuos.Individuo;
 
 
 public class FactoriaMutacion {
-	public static ArrayList<Individuo<Boolean>> getTipoMutacion (int tipo, ArrayList<Individuo<Boolean>> poblacion,
+	public static ArrayList<Individuo> getTipoMutacion (int tipo, ArrayList<Individuo> poblacion,
 			double probMutacion,int tamPobl) {
 		switch (tipo) {
 			case 1:

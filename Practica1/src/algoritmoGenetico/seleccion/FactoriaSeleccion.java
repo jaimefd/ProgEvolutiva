@@ -6,8 +6,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class FactoriaSeleccion {
 
-	public static ArrayList<Individuo<Boolean>> getAlgoritmoSeleccion (int algoritmo, ArrayList<Individuo<Boolean>> poblacion,
-			ArrayList<Double> puntAcu, ArrayList<Double> punt,int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	public static ArrayList<Individuo> getAlgoritmoSeleccion (int algoritmo, ArrayList<Individuo> poblacion,
+			ArrayList<Double> puntAcu, ArrayList<Double> punt,int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		switch (algoritmo) {
 			case 1:
 				return SeleccionEstocasticoUniversal.seleccion(poblacion, puntAcu, tamPobl,nuevaPobl);

@@ -7,8 +7,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class SeleccionTruncamiento {
 	
-	public static ArrayList<Individuo<Boolean>> seleccion(ArrayList<Individuo<Boolean>> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Boolean>> nuevaPobl) {
+	public static ArrayList<Individuo> seleccion(ArrayList<Individuo> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		double trunc = 0.5; // umbral de truncamiento, puede hacerse que le llegue como parámetro
 		Collections.sort(poblacion);
 		int tamElite = (int) (tamPobl*trunc); // cantidad de mejores elementos de la poblacion original que se van a repetir

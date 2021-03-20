@@ -32,8 +32,8 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	public T[] getCromosoma() {
 		return cromosoma;
 	}
-	public void setCromosoma(T[] cromosoma) {
-		this.cromosoma = (T[])cromosoma.clone();
+	public void setCromosoma(Object[] objects) {
+		this.cromosoma = (T[]) objects.clone();
 	}
 	public int getTamTotal() {
 		return tamTotal;

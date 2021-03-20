@@ -54,7 +54,7 @@ public class AlgoritmoGenetico {
 		mejorAbsoluto=mejorGeneracion[0];
 		
 		
-		ArrayList<Individuo<Boolean>> elite = new ArrayList<Individuo<Boolean>>(); //luego vaciar
+		ArrayList<Individuo> elite = new ArrayList<Individuo>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
 			
 			if(hayElite) {
