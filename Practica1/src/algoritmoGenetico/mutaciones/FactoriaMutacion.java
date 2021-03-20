@@ -6,14 +6,27 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class FactoriaMutacion {
 	public static ArrayList<Individuo> getTipoMutacion (int tipo, ArrayList<Individuo> poblacion,
-			double probMutacion,int tamPobl) {
+			double probMutacion,int tamPobl,boolean real) {
 		switch (tipo) {
 			case 1:
-				return MutacionBasica.mutar(tipo, poblacion, probMutacion,tamPobl);
+				if(!real) {
+					return MutacionBasica.mutar(tipo, poblacion, probMutacion,tamPobl);
+				}
+				else {
+					return MutacionBasica.mutarReal(tipo,poblacion,probMutacion,tamPobl);
+				}
+				
 			case 2:
-				return MutacionUniforme.mutar(tipo, poblacion, probMutacion,tamPobl);
+				if(real) {
+					return MutacionUniforme.mutar(tipo, poblacion, probMutacion,tamPobl);
+				}
 			default:
-				return MutacionBasica.mutar(tipo, poblacion, probMutacion,tamPobl);
+				if(!real) {
+					return MutacionBasica.mutar(tipo, poblacion, probMutacion,tamPobl);
+				}
+				else {
+					return MutacionBasica.mutarReal(tipo,poblacion,probMutacion,tamPobl);
+				}
 		}
 	}
 

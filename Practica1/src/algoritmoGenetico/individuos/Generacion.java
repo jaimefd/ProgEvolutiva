@@ -117,7 +117,7 @@ public class Generacion {
 	}
 	
 	public void mutar(int tipoMutacion,double probMutacion) {
-		this.poblacion=new ArrayList<Individuo>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
+		this.poblacion=new ArrayList<Individuo>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl,this.real));
 	}
 	
 	

@@ -50,6 +50,12 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	public void setElite(boolean elite) {
 		this.elite = elite;
 	}
+	public double getMin(int i) {
+		return min[i];
+	}
+	public double getMax(int i) {
+		return min[i];
+	}
 	
 
 }
