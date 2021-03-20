@@ -25,10 +25,11 @@ public class AlgoritmoGenetico {
 	private double[] media;
 	private double[] mejorGeneracion;
 	private double mejorAbsoluto;
+	private int numVariables4;
 	
 
 	public AlgoritmoGenetico(int tipoFuncion, int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,double valorError,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite/*, int tamTorneo*/) {
+			double probMutacion,double valorError,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,int numVariables4/*, int tamTorneo*/) {
 		this.tipoFuncion = tipoFuncion;
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -42,12 +43,13 @@ public class AlgoritmoGenetico {
 		this.tamElite=(int) (probElite*this.tamPoblacion*0.01);
 		this.media=new double[this.maxGeneraciones];
 		this.mejorGeneracion=new double[this.maxGeneraciones];
+		this.numVariables4=numVariables4;
 		//this.tamTorneo = tamTorneo;
 	}
 
 	public void run() {
 		inicializar();
-		Generacion gen= new Generacion(this.tamPoblacion,this.tipoFuncion,7,this.valorError); //el 7 es por si es la funcion4
+		Generacion gen= new Generacion(this.tamPoblacion,this.tipoFuncion,this.numVariables4,this.valorError); //numVariables4 es el numero de variables para la funcion4
 		gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 		media[0]=gen.getMedia();
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
@@ -91,7 +93,7 @@ public class AlgoritmoGenetico {
 			}
 			
 
-			generarGrafica();
+			generarGrafica(this.media,this.mejorAbsoluto,this.mejorGeneracion);
 			
 			this.genActual++;
 		}
@@ -102,7 +104,7 @@ public class AlgoritmoGenetico {
 	}
 	
 	
-	public void generarGrafica() {
+	public void generarGrafica(double[]media,double mejorFitnessAbsoluto,double[]mejorGeneracion) {
 		
 	}
 	

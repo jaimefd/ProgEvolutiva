@@ -15,8 +15,8 @@ public class IndividuoFuncion4Double extends Individuo<Double> {
 		for(int i = 0; i < numVariables; i++) {
 			this.min[i] = 0;
 			this.max[i] = Math.PI;
-			this.tamGenes[i] = this.tamGen(this.valorError, min[i], max[i]);
-			tamTotal += this.tamGenes[i];
+			this.tamGenes[i]=1;
+			this.tamTotal += 1;
 		}
 		this.cromosoma = new Double[tamTotal];
 		

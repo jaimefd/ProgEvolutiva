@@ -299,5 +299,11 @@ public class Generacion {
 				poblacion.add(indiv);	
 			}
 		}
+		else if(funcion==5) {
+			for(int i=0;i<tamPobl;i++) {
+				Individuo<Double> indiv=new IndividuoFuncion4Double(numVariables4,valorError);
+					poblacion.add(indiv);
+			}
+		}
 	}
 }
