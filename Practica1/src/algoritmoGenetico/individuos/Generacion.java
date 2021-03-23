@@ -137,16 +137,24 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo> elite) { //se puede repetir asi que hay que cambiarla
+	public void generarElite(int tamElite,ArrayList<Individuo> elite,boolean min) { //se puede repetir asi que hay que cambiarla
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
 			double mejorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
 			for(int j=1;j<this.tamPobl;j++) {
-				if((this.poblacion.get(j).getFitness()>mejorFitness) && (this.poblacion.get(j).isElite()==false)){
-					mejorFitness=this.poblacion.get(j).getFitness();
-					pos=j;
+				if(!min) {
+					if((this.poblacion.get(j).getFitness()>mejorFitness) && (this.poblacion.get(j).isElite()==false)){
+						mejorFitness=this.poblacion.get(j).getFitness();
+						pos=j;
+					}
+				}
+				else {
+					if((this.poblacion.get(j).getFitness()<mejorFitness) && (this.poblacion.get(j).isElite()==false)){
+						mejorFitness=this.poblacion.get(j).getFitness();
+						pos=j;
+					}
 				}
 			}
 			
@@ -155,16 +163,24 @@ public class Generacion {
 		}
 	}  
 	
-	public void introducirElite(int tamElite,ArrayList<Individuo> elite) {
+	public void introducirElite(int tamElite,ArrayList<Individuo> elite,boolean min) {
 		for(int i=0;i<tamElite;i++) {
 			double peorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
 			this.poblacion.get(0).setElite(false);
 			for(int j=1;j<this.tamPobl;j++) {
 				this.poblacion.get(0).setElite(false); //volvemos a poner todos a false
-				if((this.poblacion.get(j).getFitness()<peorFitness)){
-					peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
-					pos=j;
+				if(!min) {
+					if((this.poblacion.get(j).getFitness()<peorFitness)){
+						peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
+						pos=j;
+					}
+				}
+				else {
+					if((this.poblacion.get(j).getFitness()>peorFitness)){
+						peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
+						pos=j;
+					}
 				}
 			}
 			this.poblacion.get(pos).setCromosoma(elite.get(i).getCromosoma());
