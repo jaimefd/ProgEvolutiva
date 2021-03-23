@@ -21,7 +21,7 @@ public class Generacion {
 	private Individuo elPeor;  //el peor individuo de la generacion para la grafica!
 	private int pos_mejor_fitness;
 	private int pos_peor_fitness;
-	private boolean real;
+	private boolean real; //para saber si es boolean o double
 	
 	
 	public Generacion(int tamañoPobl,int funcion,int numVariables4,double valorError) {
@@ -41,7 +41,7 @@ public class Generacion {
 	
 	
 	public void evaluarPoblacion() {
-		//¡¡¡No se si habria que vaciar los arrays de puntuaciones y reiniciar las variables!!!
+		//Vaciamos Arrays para volver a calcular puntuaciones
 		puntuaciones.clear();
 		puntAcu.clear();
 		double puntAcum=0; //puntuacion acumulada
@@ -137,14 +137,14 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo> elite,boolean min) { //se puede repetir asi que hay que cambiarla
+	public void generarElite(int tamElite,ArrayList<Individuo> elite,boolean min) { 
 		iniciarIndividuos(this.funcion,this.valorError,0,tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
 			double mejorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
 			for(int j=1;j<this.tamPobl;j++) {
-				if(!min) {
+				if(!min) {   //diferenciamos si es maximizacion o minimizacion
 					if((this.poblacion.get(j).getFitness()>mejorFitness) && (this.poblacion.get(j).isElite()==false)){
 						mejorFitness=this.poblacion.get(j).getFitness();
 						pos=j;
@@ -189,6 +189,42 @@ public class Generacion {
 		
 	}
 
+	public void iniciarIndividuos(int funcion,double valorError,int numVariables4,int tamPobl,ArrayList<Individuo> poblacion) {
+		if(funcion==1) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion1(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==2) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion2(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==3) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion3(valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==4) {
+			for(int i = 0; i < tamPobl; i++)
+			{
+				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4,valorError);
+				poblacion.add(indiv);	
+			}
+		}
+		else if(funcion==5) {
+			for(int i=0;i<tamPobl;i++) {
+				Individuo<Double> indiv=new IndividuoFuncion4Double(numVariables4,valorError);
+					poblacion.add(indiv);
+			}
+		}
+	}
 
 	public ArrayList<Individuo> getPoblacion() {
 		return poblacion;
@@ -289,40 +325,5 @@ public class Generacion {
 		this.pos_peor_fitness = pos_peor_fitness;
 	}
 	
-	public void iniciarIndividuos(int funcion,double valorError,int numVariables4,int tamPobl,ArrayList<Individuo> poblacion) {
-		if(funcion==1) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion1(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==2) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion2(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==3) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion3(valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==4) {
-			for(int i = 0; i < tamPobl; i++)
-			{
-				Individuo<Boolean> indiv = new IndividuoFuncion4(numVariables4,valorError);
-				poblacion.add(indiv);	
-			}
-		}
-		else if(funcion==5) {
-			for(int i=0;i<tamPobl;i++) {
-				Individuo<Double> indiv=new IndividuoFuncion4Double(numVariables4,valorError);
-					poblacion.add(indiv);
-			}
-		}
-	}
+
 }

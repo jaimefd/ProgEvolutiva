@@ -28,7 +28,8 @@ public class Panel {
 
 	private JFrame frmPractica;
 	
-
+	//Declaracion de variables
+	
 	public static Plot2DPanel _plot;
 	private JSpinner generaciones;
 	private JSpinner tamPobl;
