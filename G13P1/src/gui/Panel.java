@@ -199,7 +199,7 @@ public class Panel {
 		panel.add(probMut);
 		
 	    func = new JComboBox();
-		func.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		func.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4","5"}));
 		func.setBounds(127, 452, 107, 21);
 		panel.add(func);
 		
