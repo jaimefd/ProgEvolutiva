@@ -195,7 +195,7 @@ public class Panel {
 		probMut= new JSpinner();
 		probMut.setToolTipText("");
 		probMut.setBounds(127, 353, 41, 20);
-		probMut.setModel(new SpinnerNumberModel(20.0, 0.0, 100.0, 1.0));
+		probMut.setModel(new SpinnerNumberModel(5.0, 0.0, 100.0, 1.0));
 		panel.add(probMut);
 		
 	    func = new JComboBox();
