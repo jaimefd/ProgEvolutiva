@@ -21,7 +21,7 @@ public class Generacion {
 	private int pos_peor_fitness;
 	
 	
-	public Generacion(int tamañoPobl,int funcion) {
+	public Generacion(int tamañoPobl) {
 
 		poblacion = new ArrayList<Individuo>();
 		this.tamPobl = tamañoPobl;
