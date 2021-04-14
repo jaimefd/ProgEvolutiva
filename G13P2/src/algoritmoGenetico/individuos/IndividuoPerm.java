@@ -34,6 +34,7 @@ public class IndividuoPerm extends Individuo<Character> {
 
 		@Override
 		public double getValor() { //FALTA HACER LA FUNCION DE FITNESS CON N-GRAMS ¡IMPORTANTE!
+			//PODEMOS HACER LA 2 OPCION SIN N-GRAMS QUE PARECE MAS FACIL
 			return 0;
 		}
 
