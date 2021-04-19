@@ -182,12 +182,12 @@ public class Panel {
 		panel.add(selecc);
 		
 		cruce = new JComboBox();
-		cruce.setModel(new DefaultComboBoxModel(new String[] {"Monopunto", "Uniforme", "Aritmetico"}));
+		cruce.setModel(new DefaultComboBoxModel(new String[] {"PMX", "OX", "CX","ERX","CO","OX-PP"}));
 		cruce.setBounds(128, 155, 107, 21);
 		panel.add(cruce);
 		
 		mutacion = new JComboBox();
-		mutacion.setModel(new DefaultComboBoxModel(new String[] {"Basica", "Uniforme"}));
+		mutacion.setModel(new DefaultComboBoxModel(new String[] {"Insercion", "Intercambio","Inversion","Heuristica"}));
 		mutacion.setBounds(127, 191, 107, 21);
 		panel.add(mutacion);
 		
