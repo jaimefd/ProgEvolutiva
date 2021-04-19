@@ -74,7 +74,7 @@ public class IndividuoPerm extends Individuo<Character> {
 		}
 		
 		//FUNCION PARA TRADUCIR TEXTO CIFRADO EN BASE A NUESTRO CROMOSOMA
-		private String traducirTexto(String texto) {
+		public String traducirTexto(String texto) {
 			int pos;
 			String txt="";
 			for (int i = 0; i < texto.length(); i++) {
@@ -89,10 +89,13 @@ public class IndividuoPerm extends Individuo<Character> {
 			return txt;
 		}
 		
-		
-		// HACER TO STRING PARA QUE SE VEA EL CROMOSOMA EN UN CUADRADITO EN LA GUI
-
-		
+		public String getCrom() {
+			String crom=" ";
+			for(int i=0;i<this.tamTotal;i++) {
+				crom+=this.cromosoma[i]+" ";
+			}
+			return crom;
+		}
 
 
 }

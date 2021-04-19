@@ -23,6 +23,7 @@ public class AlgoritmoGenetico {
 	private int tipoMutacion;
 	private boolean hayElite; //si ha seleccionado elite
 	private int tamElite; //tamaño elite
+	private String mejorTraduccion;
 	//Grafica
 	private double[] media;
 	private double[] mejorGeneracion;
@@ -32,10 +33,14 @@ public class AlgoritmoGenetico {
 	private double[] peorGeneracion;
 	private double[] peorAbsoluto;
 	
+	//PANEL MEJOR INDIVIDUO
+	JTextField mejorFitnessPanel;
+	JTextField mejorCromosomaPanel;
 	private Plot2DPanel _plot;
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
-			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/) {
+			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
+			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel) {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -53,6 +58,9 @@ public class AlgoritmoGenetico {
 		this.peorAbsoluto=new double[this.maxGeneraciones];
 		this.gener=new double[this.maxGeneraciones];
 		_plot=plot;
+		this.mejorCromosomaPanel=mejorCromosomaPanel;
+		this.mejorFitnessPanel=mejorFitnessPanel;
+		this.mejorTraduccion="";
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -63,6 +71,7 @@ public class AlgoritmoGenetico {
 		media[0]=gen.getMedia();
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
 		mejorAbsoluto[0]=mejorGeneracion[0];
+		this.mejorTraduccion=gen.getElMejor().getCrom();
 		
 		gener[0]=1;
 		
@@ -100,6 +109,7 @@ public class AlgoritmoGenetico {
 			
 			if(mejorGeneracion[this.genActual]>mejorAbsoluto[(genActual-1)]) {
 				this.mejorAbsoluto[this.genActual]=mejorGeneracion[this.genActual];
+				this.mejorTraduccion=gen.getElMejor().getCrom();
 			}
 			else {
 				this.mejorAbsoluto[this.genActual]=this.mejorAbsoluto[genActual-1];
@@ -130,6 +140,9 @@ public class AlgoritmoGenetico {
 		_plot.addLinePlot("Mejor Generacion", this.gener, mejorGeneracion);
 		_plot.addLinePlot("Media", this.gener, media);
 		_plot.addLinePlot("Peor Absoluto", this.gener, peorAbsoluto);
+		//Actualizamos panel mejor individuo
+		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto));
+		mejorCromosomaPanel.setText(this.mejorTraduccion);
 	}
 	
 }
