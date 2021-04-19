@@ -28,9 +28,11 @@ public class OxPp {
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
-						int tamañoCruce = (int) (Math.random()*(tamañoCromosoma-2)) + 1;
-						int punto1 =(int) (Math.random()*(tamañoCromosoma-tamañoCruce+1));
-						int punto2 = punto1 + tamañoCruce;
+						int punto1 =(int) (Math.random()*(tamañoCromosoma-1));
+						int punto2 =(int) (Math.random()*(tamañoCromosoma-1));
+						while (punto2 == punto1) {
+							punto2 =(int) (Math.random()*(tamañoCromosoma-1));
+						}
 						
 						ArrayList<Character> aux1 = new ArrayList<Character>();
 						ArrayList<Character> aux2 = new ArrayList<Character>();
