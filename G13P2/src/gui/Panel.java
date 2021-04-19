@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -21,9 +22,14 @@ import org.math.plot.*;
 import algoritmoGenetico.AlgoritmoGenetico;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
+import javax.swing.JTextArea;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 
 public class Panel {
@@ -42,6 +48,8 @@ public class Panel {
 	private JSpinner elite;
 	private JSpinner probCruce;
 	private JSpinner probMut;
+	private JTextField mejorCromosoma;
+	private JTextField fitnessMejor;
 	
 	private int gen;
 	private int pobl;
@@ -52,6 +60,7 @@ public class Panel {
 	private double elit;
 	private double probCruc;
 	private double probMu;
+	
 	
 
 	/**
@@ -89,6 +98,7 @@ public class Panel {
 		frmPractica.setBounds(100, 100, 1401, 783);
 		frmPractica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPractica.getContentPane().setLayout(null);
+		frmPractica.setLocationRelativeTo(null); //para centrarlo en pantalla
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Practica 2 PE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -103,27 +113,60 @@ public class Panel {
 		frmPractica.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(10, 47, 350, 202);
-		panel_1.add(textPane);
-		
-		JLabel lblNewLabel_9 = new JLabel("SALIDA");
+		JLabel lblNewLabel_9 = new JLabel("TEXTO SALIDA");
+		lblNewLabel_9.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_9.setToolTipText("SALIDA");
-		lblNewLabel_9.setBounds(550, 24, 45, 13);
+		lblNewLabel_9.setBounds(523, 24, 92, 13);
 		panel_1.add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_10 = new JLabel("ENTRADA");
+		JLabel lblNewLabel_10 = new JLabel("TEXTO ENTRADA");
+		lblNewLabel_10.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_10.setForeground(Color.BLACK);
 		lblNewLabel_10.setBackground(new Color(0, 0, 0));
-		lblNewLabel_10.setBounds(148, 24, 55, 13);
+		lblNewLabel_10.setBounds(109, 24, 100, 13);
 		panel_1.add(lblNewLabel_10);
+		
+		//TEXTO DE ENTRADA
+		JTextArea textoEntrada = new JTextArea();
+		textoEntrada.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JScrollPane scroll = new JScrollPane (textoEntrada); 
+	    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setLocation(10, 43);
+		scroll.setSize( 325, 189 );
+		panel_1.add(scroll);
+		
+		//TEXTO DE SALIDA
+		JTextArea textoSalida = new JTextArea();
+		textoSalida.setEditable(false);
+		textoSalida.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JScrollPane scroll2 = new JScrollPane (textoSalida); 
+	    scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll2.setLocation(410, 43);
+		scroll2.setSize( 325, 189 );
+		panel_1.add(scroll2);
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Mejor Individuo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_2.setBounds(10, 477, 353, 259);
 		frmPractica.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		mejorCromosoma = new JTextField();
+		mejorCromosoma.setSelectedTextColor(Color.BLACK);
+		mejorCromosoma.setBounds(67, 74, 205, 19);
+		panel_2.add(mejorCromosoma);
+		mejorCromosoma.setColumns(10);
+		
+		fitnessMejor = new JTextField();
+		fitnessMejor.setSelectedTextColor(Color.BLACK);
+		fitnessMejor.setBounds(67, 178, 205, 19);
+		panel_2.add(fitnessMejor);
+		fitnessMejor.setColumns(10);
 		
 		//LABELS
 		
@@ -162,6 +205,14 @@ public class Panel {
 		JLabel lblNewLabel_8 = new JLabel("Probabilidad Mutacion");
 		lblNewLabel_8.setBounds(10, 356, 107, 13);
 		panel.add(lblNewLabel_8);
+		
+		JLabel lblMejorCromosoma = new JLabel("Mejor cromosoma");
+		lblMejorCromosoma.setBounds(108, 41, 104, 13);
+		panel_2.add(lblMejorCromosoma);
+		
+		JLabel lblNewLabel_11 = new JLabel("         Fitness");
+		lblNewLabel_11.setBounds(108, 148, 104, 13);
+		panel_2.add(lblNewLabel_11);
 		
 		//Variables
 		
@@ -232,7 +283,7 @@ public class Panel {
 				_plot.removeAllPlots();
 				
 				//Cuando obtenemos todas las variables ejecutamos el AG
-				AlgoritmoGenetico alg= new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot);
+				AlgoritmoGenetico alg= new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma);
 				alg.run();
 			}
 		});

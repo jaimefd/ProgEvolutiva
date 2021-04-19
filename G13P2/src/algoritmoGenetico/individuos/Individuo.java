@@ -15,6 +15,8 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	
 	public abstract double getValor();
 	public abstract double getFitness();
+	public abstract String traducirTexto(String texto);
+	public abstract String getCrom();
 	
 	
 	
