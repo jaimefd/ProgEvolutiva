@@ -26,7 +26,7 @@ public class Aritmetico {
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
-						int rand =(int) Math.random()*(tamañoCromosoma-1);
+						int rand =(int) (Math.random()*(tamañoCromosoma-1));
 						Double[] aux1 = new Double[tamañoCromosoma];
 						Double[] aux2 = new Double[tamañoCromosoma];
 						Double[] aux3 = new Double[tamañoCromosoma];
