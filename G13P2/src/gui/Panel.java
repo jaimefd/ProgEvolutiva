@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -21,9 +22,14 @@ import org.math.plot.*;
 import algoritmoGenetico.AlgoritmoGenetico;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
+import javax.swing.JTextArea;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 
 public class Panel {
@@ -89,6 +95,7 @@ public class Panel {
 		frmPractica.setBounds(100, 100, 1401, 783);
 		frmPractica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPractica.getContentPane().setLayout(null);
+		frmPractica.setLocationRelativeTo(null); //para centrarlo en pantalla
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Practica 2 PE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -103,22 +110,29 @@ public class Panel {
 		frmPractica.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(10, 47, 350, 202);
-		panel_1.add(textPane);
-		
 		JLabel lblNewLabel_9 = new JLabel("SALIDA");
+		lblNewLabel_9.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_9.setToolTipText("SALIDA");
 		lblNewLabel_9.setBounds(550, 24, 45, 13);
 		panel_1.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_10 = new JLabel("ENTRADA");
+		lblNewLabel_10.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_10.setForeground(Color.BLACK);
 		lblNewLabel_10.setBackground(new Color(0, 0, 0));
 		lblNewLabel_10.setBounds(148, 24, 55, 13);
 		panel_1.add(lblNewLabel_10);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JScrollPane scroll = new JScrollPane (textArea); 
+	    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setLocation(10, 43);
+		scroll.setSize( 325, 189 );
+		panel_1.add(scroll);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Mejor Individuo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
