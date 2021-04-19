@@ -73,7 +73,22 @@ public class IndividuoPerm extends Individuo<Character> {
 			return this.getValor();
 		}
 		
-		//FALTA FUNCION PARA TRADUCIR TEXTO CIFRADO EN BASE A NUESTRO CROMOSOMA
+		//FUNCION PARA TRADUCIR TEXTO CIFRADO EN BASE A NUESTRO CROMOSOMA
+		private String traducirTexto(String texto) {
+			int pos;
+			String txt="";
+			for (int i = 0; i < texto.length(); i++) {
+				if (((int) texto.charAt(i)) >= 97 || ((int) texto.charAt(i))< 122 ) {
+					pos = dic.indexOf(texto.charAt(i));
+					txt += this.cromosoma[pos];
+				}
+				else {
+					txt+=texto.charAt(i);
+				}
+			}
+			return txt;
+		}
+		
 		
 		// HACER TO STRING PARA QUE SE VEA EL CROMOSOMA EN UN CUADRADITO EN LA GUI
 
