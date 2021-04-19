@@ -6,7 +6,6 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class FactoriaCruce {
 	
-	
 	public static ArrayList<Individuo> getTipoCruce (int cruce, ArrayList<Individuo> poblacion,
 			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl) {
 		switch (cruce) {
