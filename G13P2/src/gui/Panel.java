@@ -23,6 +23,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
+import javax.swing.border.EtchedBorder;
 
 
 public class Panel {
@@ -84,13 +85,13 @@ public class Panel {
 	private void initialize() {
 		frmPractica = new JFrame();
 		frmPractica.setFont(new Font("Dialog", Font.BOLD, 12));
-		frmPractica.setTitle("Practica 1");
+		frmPractica.setTitle("Practica 2");
 		frmPractica.setBounds(100, 100, 1401, 783);
 		frmPractica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPractica.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Practica 1 PE", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Practica 2 PE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(10, 10, 353, 440);
 		frmPractica.getContentPane().add(panel);
 		panel.setLayout(null);
