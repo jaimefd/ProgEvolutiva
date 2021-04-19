@@ -1,6 +1,5 @@
 package algoritmoGenetico.individuos;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,8 +8,8 @@ public class TextoEntrada {
 	String texto;
 	private static HashMap<String, Integer> bigramastxt   = new HashMap<String, Integer>();
 	private static HashMap<String, Integer> trigramastxt = new HashMap<String, Integer>();
-	private int frecBigramas;
-	private int frecTrigramas;
+	private static int frecBigramas;
+	private static int frecTrigramas;
 	
 	public TextoEntrada(String texto) {
 		
@@ -87,20 +86,20 @@ public class TextoEntrada {
 		TextoEntrada.trigramastxt = trigramastxt;
 	}
 
-	public int getFrecBigramas() {
+	public static int getFrecBigramas() {
 		return frecBigramas;
 	}
 
 	public void setFrecBigramas(int frecBigramas) {
-		this.frecBigramas = frecBigramas;
+		TextoEntrada.frecBigramas = frecBigramas;
 	}
 
-	public int getFrecTrigramas() {
+	public static int getFrecTrigramas() {
 		return frecTrigramas;
 	}
 
 	public void setFrecTrigramas(int frecTrigramas) {
-		this.frecTrigramas = frecTrigramas;
+		TextoEntrada.frecTrigramas = frecTrigramas;
 	}
 
 	

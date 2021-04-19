@@ -2,6 +2,10 @@ package algoritmoGenetico.individuos;
 
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import algoritmoGenetico.ficheros.Ngrams;
 
 
 public class IndividuoPerm extends Individuo<Character> {
@@ -14,28 +18,53 @@ public class IndividuoPerm extends Individuo<Character> {
 			this.tamTotal=tamGenes[0];
 			this.cromosoma = new Character[tamTotal];
 			this.textoTraducido="";
+			this.dic=new ArrayList<Character>();
 			
 			//Inicializamos nuestro cromosoma de forma aleatoria
-			ArrayList<Character> dic = new ArrayList<Character>(); //arraylist para guardar todas las letras ordenadas
+			ArrayList<Character> dicc = new ArrayList<Character>(); //arraylist para guardar todas las letras ordenadas
 			int rand = 0;
 			
 			for (int i = 0; i < tamTotal; i++) {
-				dic.add((char) (i + 97)); //97 = a
+				dicc.add((char) (i + 97)); //97 = a / 122 = z
+				dic.add((char) (i+97));
 			}
 			
 			for (int i = 0; i < tamTotal; i++) {  //llenamos nuestro cromosoma obteniendo las letras de forma aleatoria del arraylist ordenado
-				rand = ((int) (Math.random() * (dic.size())));
+				rand = ((int) (Math.random() * (dicc.size())));
 				
-				this.cromosoma[i]=dic.get(rand);
+				this.cromosoma[i]=dicc.get(rand);
 				
-				dic.remove(rand);
+				dicc.remove(rand);
 			}
 		}
 
 		@Override
-		public double getValor() { //FALTA HACER LA FUNCION DE FITNESS CON N-GRAMS ¡IMPORTANTE!
-			//PODEMOS HACER LA 2 OPCION SIN N-GRAMS QUE PARECE MAS FACIL
-			return 0;
+		public double getValor() { 
+			double bigrama = 0,trigrama=0,porc=0,ret;
+			
+			for (Map.Entry<String, Integer> bi : TextoEntrada.getBigramastxt().entrySet()) {
+				porc= (double) (bi.getValue()/TextoEntrada.getFrecBigramas()); //calculamos frecuencia del bigrama en el texto
+				bigrama += Math.abs(porc*(Math.log(Ngrams.getBigramas_ing().get(traducirNgram(bi))/Math.log(2)))); //multiplicamos la frec * log de fec del bigrama traducido
+			}
+			
+			for (Map.Entry<String, Integer> tri : TextoEntrada.getBigramastxt().entrySet()) {
+				porc= (double) (tri.getValue()/TextoEntrada.getFrecTrigramas());
+				trigrama += Math.abs(porc*(Math.log(Ngrams.getTrigramas_ing().get(traducirNgram(tri))/Math.log(2))));
+			}
+			
+			ret = 0.7*bigrama + 0.3*trigrama;
+			return ret;
+
+		}
+
+		private String traducirNgram(Entry<String, Integer> ngram) {
+			int j;
+			String ngramtxt="";
+			for (int i = 0; i < ngram.getKey().length(); i++) {
+				j = dic.indexOf(ngram.getKey().charAt(i));
+				ngramtxt += this.cromosoma[j];
+			}
+			return ngramtxt;
 		}
 
 		@Override

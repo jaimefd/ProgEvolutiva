@@ -1,5 +1,6 @@
 package algoritmoGenetico.individuos;
 
+import java.util.ArrayList;
 
 public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	
@@ -9,6 +10,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	boolean cruce;
 	boolean elite;
 	String textoTraducido;
+	ArrayList<Character> dic;
 	
 	
 	public abstract double getValor();
