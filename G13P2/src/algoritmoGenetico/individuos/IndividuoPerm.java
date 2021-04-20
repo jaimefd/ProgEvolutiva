@@ -45,13 +45,13 @@ public class IndividuoPerm extends Individuo<Character> {
 			for (Map.Entry<String, Integer> bi : TextoEntrada.getBigramastxt().entrySet()) {
 				frec=TextoEntrada.getFrecBigramas();
 				porc=(double)((bi.getValue())/frec); //calculamos frecuencia del bigrama en el texto
-				bigrama += Math.abs(porc*(Math.log(Ngrams.getBigramas_ing().get(traducirNgram(bi))/Math.log(2)))); //multiplicamos la frec * log de fec del bigrama traducido
+				bigrama += Math.abs(porc*((Math.log(Ngrams.getBigramas_ing().get(traducirNgram(bi)))/(Math.log(2))))); //multiplicamos la frec * log de fec del bigrama traducido
 			}
 			
 			for (Map.Entry<String, Integer> tri : TextoEntrada.getTrigramastxt().entrySet()) {
 				frec=TextoEntrada.getFrecTrigramas();
 				porc=(double)((tri.getValue())/frec);
-				trigrama += Math.abs(porc*(Math.log(Ngrams.getTrigramas_ing().get(traducirNgram(tri))/Math.log(2))));
+				trigrama += Math.abs(porc*((Math.log(Ngrams.getTrigramas_ing().get(traducirNgram(tri)))/(Math.log(2)))));
 			}
 			
 			ret = 0.3*bigrama + 0.7*trigrama;

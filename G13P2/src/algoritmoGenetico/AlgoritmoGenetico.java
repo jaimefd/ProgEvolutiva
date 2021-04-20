@@ -104,7 +104,7 @@ public class AlgoritmoGenetico {
 		//	gen.cruce(tipoCruce, probCruce);
 			
 			// mutacion
-		//	gen.mutar(tipoMutacion, probMutacion);
+			gen.mutar(tipoMutacion, probMutacion);
 			
 			if(hayElite) {
 				gen.introducirElite(tamElite, elite);
@@ -119,7 +119,7 @@ public class AlgoritmoGenetico {
 			peorGeneracion[this.genActual]=gen.getElPeor().getFitness();//EXTRA
 			
 			
-			if(mejorGeneracion[this.genActual]>mejorAbsoluto[(genActual-1)]) {
+			if(mejorGeneracion[this.genActual]<mejorAbsoluto[(genActual-1)]) {
 				this.mejorAbsoluto[this.genActual]=mejorGeneracion[this.genActual];
 				this.mejorTraduccion=gen.getElMejor().getCrom();
 				this.mejorTexto=gen.getElMejor().traducirTexto(this.textoEntrada);
@@ -128,7 +128,7 @@ public class AlgoritmoGenetico {
 				this.mejorAbsoluto[this.genActual]=this.mejorAbsoluto[genActual-1];
 			}
 			
-			if(peorGeneracion[this.genActual]<peorAbsoluto[(genActual-1)]) { //EXTRA
+			if(peorGeneracion[this.genActual]>=peorAbsoluto[(genActual-1)]) { //EXTRA
 				this.peorAbsoluto[this.genActual]=peorGeneracion[this.genActual];
 			}
 			else {

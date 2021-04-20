@@ -42,23 +42,24 @@ public class Generacion {
 		double fitnessActual=0; //fitness del individuo actual
 		
 
-		double mejorFitness=Double.MIN_VALUE; //mejor fitness de la generacion
-		double peorFitness=Double.MAX_VALUE;
+		double mejorFitness=Double.MAX_VALUE;
+		double peorFitness=Double.NEGATIVE_INFINITY;
 		
 		for(int i=0;i<this.tamPobl;i++) {
 			fitnessActual=this.poblacion.get(i).getFitness();
 			fitnessTotal+=fitnessActual;
-			if(fitnessActual>mejorFitness) {
+			if(fitnessActual<mejorFitness) {
 				mejorFitness=fitnessActual;
 				pos_mejor_fitness=i;
 				elMejor=this.poblacion.get(pos_mejor_fitness);
 			}
 			
-			if(fitnessActual<peorFitness) {
+			if(fitnessActual>peorFitness) {
 				peorFitness=fitnessActual;
 				pos_peor_fitness=i;
 				elPeor=this.poblacion.get(pos_peor_fitness);
 			}
+		
 		}
 		
 		
@@ -116,10 +117,10 @@ public class Generacion {
 			double mejorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
 			for(int j=1;j<this.tamPobl;j++) {
-					if((this.poblacion.get(j).getFitness()>mejorFitness) && (this.poblacion.get(j).isElite()==false)){
-						mejorFitness=this.poblacion.get(j).getFitness();
-						pos=j;
-					}	
+				if((this.poblacion.get(j).getFitness()<mejorFitness) && (this.poblacion.get(j).isElite()==false)){
+					mejorFitness=this.poblacion.get(j).getFitness();
+					pos=j;
+				}
 			}
 			
 			elite.get(i).setCromosoma(this.poblacion.get(pos).getCromosoma());
@@ -134,10 +135,10 @@ public class Generacion {
 			this.poblacion.get(0).setElite(false);
 			for(int j=1;j<this.tamPobl;j++) {
 				this.poblacion.get(0).setElite(false); //volvemos a poner todos a false
-					if((this.poblacion.get(j).getFitness()<peorFitness)){
-						peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
-						pos=j;
-					}
+				if((this.poblacion.get(j).getFitness()>peorFitness)){
+					peorFitness=this.poblacion.get(j).getFitness(); //sustituimos elite por los que peor fitness tengan
+					pos=j;
+				}
 				
 			}
 			this.poblacion.get(pos).setCromosoma(elite.get(i).getCromosoma());
