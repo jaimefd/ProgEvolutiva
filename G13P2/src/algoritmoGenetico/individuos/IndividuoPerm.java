@@ -40,21 +40,27 @@ public class IndividuoPerm extends Individuo<Character> {
 
 		@Override
 		public double getValor() { 
-			double bigrama = 0.0,trigrama=0.0,porc=0.0,ret,frec;
+			double bigrama = 0.0,trigrama=0.0,monograma=0.0,porc=0.0,ret,frec;
+			
+			for (Map.Entry<String, Integer> mon: TextoEntrada.getMonogramastxt().entrySet()) {
+				frec=TextoEntrada.getFrecMonogramas();
+				porc=(double)((mon.getValue())/frec);
+				monograma += Math.abs(porc*(Math.log((Ngrams.getMonogramas_ing().get(traducirNgram(mon)))/(Math.log(2)))));
+			}
 			
 			for (Map.Entry<String, Integer> bi : TextoEntrada.getBigramastxt().entrySet()) {
 				frec=TextoEntrada.getFrecBigramas();
 				porc=(double)((bi.getValue())/frec); //calculamos frecuencia del bigrama en el texto
-				bigrama += Math.abs(porc*((Math.log(Ngrams.getBigramas_ing().get(traducirNgram(bi)))/(Math.log(2))))); //multiplicamos la frec * log de fec del bigrama traducido
+				bigrama += Math.abs(porc*(Math.log((Ngrams.getBigramas_ing().get(traducirNgram(bi)))/(Math.log(2))))); //multiplicamos la frec * log de fec del bigrama traducido
 			}
 			
 			for (Map.Entry<String, Integer> tri : TextoEntrada.getTrigramastxt().entrySet()) {
 				frec=TextoEntrada.getFrecTrigramas();
 				porc=(double)((tri.getValue())/frec);
-				trigrama += Math.abs(porc*((Math.log(Ngrams.getTrigramas_ing().get(traducirNgram(tri)))/(Math.log(2)))));
+				trigrama += Math.abs(porc*(Math.log((Ngrams.getTrigramas_ing().get(traducirNgram(tri)))/(Math.log(2)))));
 			}
 			
-			ret = 0.3*bigrama + 0.7*trigrama;
+			ret = 0.05*monograma+0.25*bigrama + 0.7*trigrama;
 			return ret;
 
 		}

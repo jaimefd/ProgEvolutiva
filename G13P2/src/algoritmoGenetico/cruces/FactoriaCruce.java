@@ -17,9 +17,9 @@ public class FactoriaCruce {
 			case 3:
 				return CX.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
 			case 4:
-				return ERX.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				//return ERX.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
 			case 5:
-				return CO.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
+				//return CO.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
 			case 6:
 				return OxPp.cruce(cruce, poblacion, probCruce, tamPobl, nuevaPobl);
 				
