@@ -3,7 +3,7 @@ package algoritmoGenetico.mutaciones;
 import java.util.ArrayList;
 import algoritmoGenetico.individuos.Individuo;
 
-public class insercion {
+public class intercambio {
 		
 		static ArrayList<Individuo<Character>> mutar(int tipo, ArrayList<Individuo<Character>> poblacion,
 				double probMutacion,int tamPobl) {
@@ -15,10 +15,11 @@ public class insercion {
 					int posIni=(int)(Math.random()*poblacion.get(i).getTamTotal());
 					int posFin=(int)(Math.random()*poblacion.get(i).getTamTotal());
 					if(posIni>posFin) {
-						Character aux1;
+						Character aux1,aux2;
 						aux1=poblacion.get(i).getCromosoma().get(posIni);		
-						poblacion.get(i).getCromosoma().add(posFin, aux1);
-						poblacion.get(i).getCromosoma().remove(posIni+1);
+						aux2=poblacion.get(i).getCromosoma().get(posFin);
+						poblacion.get(i).getCromosoma().set(posIni, aux2);
+						poblacion.get(i).getCromosoma().set(posFin, aux1);
 					}
 					
 				}
