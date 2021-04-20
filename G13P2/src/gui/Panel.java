@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -53,6 +54,7 @@ public class Panel {
 	private JTextField fitnessMejor;
 	JTextArea textoEntrada;
 	private JTextArea textoSalida;
+	private String dic;
 	
 	private int gen;
 	private int pobl;
@@ -64,6 +66,7 @@ public class Panel {
 	private double probCruc;
 	private double probMu;
 	private String textoIntr;
+	private JTextField abecedario;
 	
 
 	/**
@@ -103,6 +106,11 @@ public class Panel {
 		frmPractica.getContentPane().setLayout(null);
 		frmPractica.setLocationRelativeTo(null); //para centrarlo en pantalla
 		
+		this.dic=" ";
+		for (int i = 0; i < 26; i++) {
+			dic+=((char) (i+97)) + " ";
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Practica 2 PE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(10, 10, 353, 440);
@@ -116,15 +124,15 @@ public class Panel {
 		frmPractica.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_9 = new JLabel("TEXTO SALIDA");
-		lblNewLabel_9.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		JLabel lblNewLabel_9 = new JLabel("Texto Salida");
+		lblNewLabel_9.setBorder(null);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_9.setToolTipText("SALIDA");
 		lblNewLabel_9.setBounds(523, 24, 92, 13);
 		panel_1.add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_10 = new JLabel("TEXTO ENTRADA");
-		lblNewLabel_10.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		JLabel lblNewLabel_10 = new JLabel("Texto Entrada");
+		lblNewLabel_10.setBorder(null);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_10.setForeground(Color.BLACK);
 		lblNewLabel_10.setBackground(new Color(0, 0, 0));
@@ -164,7 +172,7 @@ public class Panel {
 		mejorCromosoma.setHorizontalAlignment(JTextField.CENTER);
 		mejorCromosoma.setEditable(false);
 		mejorCromosoma.setSelectedTextColor(Color.BLACK);
-		mejorCromosoma.setBounds(25, 74, 282, 19);
+		mejorCromosoma.setBounds(25, 99, 282, 19);
 		panel_2.add(mejorCromosoma);
 		mejorCromosoma.setColumns(10);
 		
@@ -176,6 +184,16 @@ public class Panel {
 		fitnessMejor.setBounds(25, 178, 282, 19);
 		panel_2.add(fitnessMejor);
 		fitnessMejor.setColumns(10);
+		
+		abecedario = new JTextField();
+		abecedario.setFont(new Font("Tahoma", Font.BOLD, 10));
+		abecedario.setBorder(null);
+		abecedario.setEditable(false);
+		abecedario.setBounds(25, 70, 282, 19);
+		panel_2.add(abecedario);
+		abecedario.setColumns(10);
+		abecedario.setText(this.dic);
+		abecedario.setHorizontalAlignment(JTextField.CENTER);
 		
 		//LABELS
 		
@@ -216,12 +234,14 @@ public class Panel {
 		panel.add(lblNewLabel_8);
 		
 		JLabel lblMejorCromosoma = new JLabel("Mejor cromosoma");
-		lblMejorCromosoma.setBounds(108, 41, 104, 13);
+		lblMejorCromosoma.setBounds(108, 37, 104, 13);
 		panel_2.add(lblMejorCromosoma);
 		
 		JLabel lblNewLabel_11 = new JLabel("Mejor Fitness");
 		lblNewLabel_11.setBounds(108, 155, 104, 13);
 		panel_2.add(lblNewLabel_11);
+		
+		
 		
 		//Variables
 		
