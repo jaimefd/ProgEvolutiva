@@ -34,8 +34,8 @@ public class OX {
 						
 						ArrayList<Character> aux1 = new ArrayList<Character>();
 						ArrayList<Character> aux2 = new ArrayList<Character>();
-						ArrayList<Character> padre1 = (ArrayList<Character>) Arrays.asList(poblacion.get(j).getCromosoma());
-						ArrayList<Character> padre2 = (ArrayList<Character>) Arrays.asList(poblacion.get(x).getCromosoma());
+						ArrayList<Character> padre1 = new ArrayList<Character>(poblacion.get(j).getCromosoma());
+						ArrayList<Character> padre2 = new ArrayList<Character>(poblacion.get(x).getCromosoma());
 						
 						for (int i = 0; i < tamañoCromosoma; i++) {
 							aux1.add('-');
@@ -91,10 +91,10 @@ public class OX {
 							aux2.set(i, elem2);
 						}
 						
-						poblacion.get(j).setCromosoma(aux1.toArray(new Character[tamañoCromosoma])); //cambiamos el cromosoma antiguo por el nuevo
+						poblacion.get(j).setCromosoma(aux1); //cambiamos el cromosoma antiguo por el nuevo
 						poblacion.get(j).setCruce(false); //ponemos cruce a false para no volver a cruzarlo
 						nuevaPobl.get(j).setCromosoma(poblacion.get(j).getCromosoma()); 
-						poblacion.get(x).setCromosoma(aux2.toArray(new Character[tamañoCromosoma]));
+						poblacion.get(x).setCromosoma(aux2);
 						poblacion.get(x).setCruce(false); //ponemos cruce a false y cuando vuelva a salir se añadira a nuevaPobl en su posion
 					} else {
 						x++;
