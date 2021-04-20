@@ -16,7 +16,7 @@ public class Ngrams {
 		String[] ngrams = {"bigramas.txt", "trigramas.txt"};
 		
 		//Cargamos los ngrams de los txt en HashMaps
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<2;i++) {
 			
 			File archivo = new File ("algoritmoGenetico/ficheros/"+ngrams[i]);
 			FileReader fr = new FileReader(archivo);
@@ -27,9 +27,9 @@ public class Ngrams {
 				String linea[] = lr.split(" "); // string[0]= ngrama y string[1]=frecuencia
 				switch(i) {
 					//Guardamos en los datos en los HasMaps
-					case 1:
+					case 0:
 						bigramas_ing.put(linea[0], Double.parseDouble(linea[1]));
-					case 2:
+					case 1:
 						trigramas_ing.put(linea[0], Double.parseDouble(linea[1]));	
 				}
 			}

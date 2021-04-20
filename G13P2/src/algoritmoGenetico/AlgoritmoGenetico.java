@@ -1,12 +1,15 @@
 package algoritmoGenetico;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import org.math.plot.*;
 import org.math.plot.Plot2DPanel;
 
+import algoritmoGenetico.ficheros.Ngrams;
 import algoritmoGenetico.individuos.Generacion;
 import algoritmoGenetico.individuos.Individuo;
+import algoritmoGenetico.individuos.TextoEntrada;
 
 public class AlgoritmoGenetico {
 	
@@ -24,6 +27,7 @@ public class AlgoritmoGenetico {
 	private boolean hayElite; //si ha seleccionado elite
 	private int tamElite; //tamaño elite
 	private String mejorTraduccion;
+	private String textoEntrada;
 	//Grafica
 	private double[] media;
 	private double[] mejorGeneracion;
@@ -40,7 +44,7 @@ public class AlgoritmoGenetico {
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
 			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
-			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel) {
+			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,String textoIntr) throws IOException {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -61,6 +65,10 @@ public class AlgoritmoGenetico {
 		this.mejorCromosomaPanel=mejorCromosomaPanel;
 		this.mejorFitnessPanel=mejorFitnessPanel;
 		this.mejorTraduccion="";
+		this.textoEntrada=textoIntr;
+		new TextoEntrada(this.textoEntrada);
+		new Ngrams();
+		
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -89,10 +97,10 @@ public class AlgoritmoGenetico {
 			gen.seleccion(this.algoritmoSeleccion); 
 			
 			// cruce
-			gen.cruce(tipoCruce, probCruce);
+		//	gen.cruce(tipoCruce, probCruce);
 			
 			// mutacion
-			gen.mutar(tipoMutacion, probMutacion);
+		//	gen.mutar(tipoMutacion, probMutacion);
 			
 			if(hayElite) {
 				gen.introducirElite(tamElite, elite);
@@ -141,7 +149,7 @@ public class AlgoritmoGenetico {
 		_plot.addLinePlot("Media", this.gener, media);
 		_plot.addLinePlot("Peor Absoluto", this.gener, peorAbsoluto);
 		//Actualizamos panel mejor individuo
-		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto));
+		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto[this.genActual-1]));
 		mejorCromosomaPanel.setText(this.mejorTraduccion);
 	}
 	

@@ -17,7 +17,6 @@ public class IndividuoPerm extends Individuo<Character> {
 			this.tamGenes[0]=26;  //Tenemos 1 gen con 26 posiciones
 			this.tamTotal=tamGenes[0];
 			this.cromosoma = new Character[tamTotal];
-			this.textoTraducido="";
 			this.dic=new ArrayList<Character>();
 			
 			//Inicializamos nuestro cromosoma de forma aleatoria
@@ -40,19 +39,21 @@ public class IndividuoPerm extends Individuo<Character> {
 
 		@Override
 		public double getValor() { 
-			double bigrama = 0,trigrama=0,porc=0,ret;
+			double bigrama = 0.0,trigrama=0.0,porc=0.0,ret,frec;
 			
 			for (Map.Entry<String, Integer> bi : TextoEntrada.getBigramastxt().entrySet()) {
-				porc= (double) (bi.getValue()/TextoEntrada.getFrecBigramas()); //calculamos frecuencia del bigrama en el texto
+				frec=TextoEntrada.getFrecBigramas();
+				porc=(double)((bi.getValue())/frec); //calculamos frecuencia del bigrama en el texto
 				bigrama += Math.abs(porc*(Math.log(Ngrams.getBigramas_ing().get(traducirNgram(bi))/Math.log(2)))); //multiplicamos la frec * log de fec del bigrama traducido
 			}
 			
-			for (Map.Entry<String, Integer> tri : TextoEntrada.getBigramastxt().entrySet()) {
-				porc= (double) (tri.getValue()/TextoEntrada.getFrecTrigramas());
+			for (Map.Entry<String, Integer> tri : TextoEntrada.getTrigramastxt().entrySet()) {
+				frec=TextoEntrada.getFrecTrigramas();
+				porc=(double)((tri.getValue())/frec);
 				trigrama += Math.abs(porc*(Math.log(Ngrams.getTrigramas_ing().get(traducirNgram(tri))/Math.log(2))));
 			}
 			
-			ret = 0.7*bigrama + 0.3*trigrama;
+			ret = 0.3*bigrama + 0.7*trigrama;
 			return ret;
 
 		}

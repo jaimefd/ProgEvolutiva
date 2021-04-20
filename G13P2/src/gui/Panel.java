@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -60,6 +61,7 @@ public class Panel {
 	private double elit;
 	private double probCruc;
 	private double probMu;
+	private String textoIntr;
 	
 	
 
@@ -157,14 +159,20 @@ public class Panel {
 		panel_2.setLayout(null);
 		
 		mejorCromosoma = new JTextField();
+		mejorCromosoma.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		mejorCromosoma.setHorizontalAlignment(JTextField.CENTER);
+		mejorCromosoma.setEditable(false);
 		mejorCromosoma.setSelectedTextColor(Color.BLACK);
-		mejorCromosoma.setBounds(67, 74, 205, 19);
+		mejorCromosoma.setBounds(25, 74, 282, 19);
 		panel_2.add(mejorCromosoma);
 		mejorCromosoma.setColumns(10);
 		
 		fitnessMejor = new JTextField();
+		fitnessMejor.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fitnessMejor.setHorizontalAlignment(JTextField.CENTER);
+		fitnessMejor.setEditable(false);
 		fitnessMejor.setSelectedTextColor(Color.BLACK);
-		fitnessMejor.setBounds(67, 178, 205, 19);
+		fitnessMejor.setBounds(25, 178, 282, 19);
 		panel_2.add(fitnessMejor);
 		fitnessMejor.setColumns(10);
 		
@@ -210,8 +218,8 @@ public class Panel {
 		lblMejorCromosoma.setBounds(108, 41, 104, 13);
 		panel_2.add(lblMejorCromosoma);
 		
-		JLabel lblNewLabel_11 = new JLabel("         Fitness");
-		lblNewLabel_11.setBounds(108, 148, 104, 13);
+		JLabel lblNewLabel_11 = new JLabel("Mejor Fitness");
+		lblNewLabel_11.setBounds(108, 155, 104, 13);
 		panel_2.add(lblNewLabel_11);
 		
 		//Variables
@@ -281,9 +289,16 @@ public class Panel {
 				probCruc=((double)probCruce.getValue())/100;
 				probMu=((double)probMut.getValue())/100;
 				_plot.removeAllPlots();
+				textoIntr=textoEntrada.getText().trim().toLowerCase();
 				
 				//Cuando obtenemos todas las variables ejecutamos el AG
-				AlgoritmoGenetico alg= new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma);
+				AlgoritmoGenetico alg = null;
+				try {
+					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,textoIntr);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				alg.run();
 			}
 		});

@@ -9,7 +9,6 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	int tamTotal;
 	boolean cruce;
 	boolean elite;
-	String textoTraducido;
 	ArrayList<Character> dic;
 	
 	
@@ -61,12 +60,6 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	}
 	public void setElite(boolean elite) {
 		this.elite = elite;
-	}
-	public String getTextoTraducido() {
-		return textoTraducido;
-	}
-	public void setTextoTraducido(String textoTraducido) {
-		this.textoTraducido = textoTraducido;
 	}
 	
 	
