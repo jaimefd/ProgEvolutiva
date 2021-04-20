@@ -11,7 +11,7 @@ public class SeleccionTorneoDeterministico {
 		
 		Individuo<Character> aux;
 		double fitnessAct=0;
-		double mejorFitness= Double.NEGATIVE_INFINITY;
+		double mejorFitness= Double.MAX_VALUE;
 		int pos_mejor=0;
 		
 		for(int i=0;i<tamPobl;i++) {
@@ -19,13 +19,13 @@ public class SeleccionTorneoDeterministico {
 				int rand=(int) (Math.random()*tamPobl);
 				aux=poblacion.get(rand);
 				fitnessAct=aux.getFitness();
-				if(fitnessAct>mejorFitness) {
+				if(fitnessAct<mejorFitness) {
 					mejorFitness=fitnessAct;
 					pos_mejor=rand;
 				}
 			}
 			nuevaPobl.get(i).setCromosoma(poblacion.get(pos_mejor).getCromosoma());  //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
-			mejorFitness= Double.NEGATIVE_INFINITY;
+			mejorFitness= Double.MAX_VALUE;
 			
 		}
 		return nuevaPobl;

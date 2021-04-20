@@ -11,7 +11,6 @@ public class FactoriaMutacion {
 			case 1:
 				return insercion.mutar(tipo, poblacion, probMutacion,tamPobl);			
 			case 2:
-			
 				return intercambio.mutar(tipo, poblacion, probMutacion,tamPobl);
 			case 3:
 				return inversion.mutar(tipo, poblacion, probMutacion,tamPobl);

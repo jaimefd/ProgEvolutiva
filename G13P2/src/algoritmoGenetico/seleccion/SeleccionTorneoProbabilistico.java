@@ -11,8 +11,8 @@ public class SeleccionTorneoProbabilistico {
 		
 		Individuo<Character> aux;
 		double fitnessAct=0;
-		double mejorFitness=Double.NEGATIVE_INFINITY;
-		double peorFitness=Double.MAX_VALUE;
+		double mejorFitness=Double.MAX_VALUE;
+		double peorFitness=Double.NEGATIVE_INFINITY;
 		int pos_mejor=0;
 		int pos_peor=0;
 		
@@ -21,11 +21,11 @@ public class SeleccionTorneoProbabilistico {
 				int rand=(int) (Math.random()*tamPobl);
 				aux=poblacion.get(rand);
 				fitnessAct=aux.getFitness();
-				if (fitnessAct>mejorFitness) {
+				if (fitnessAct<=mejorFitness) {
 					mejorFitness=fitnessAct;
 					pos_mejor=rand;
 				}
-				if (fitnessAct<peorFitness) {
+				if (fitnessAct>peorFitness) {
 					peorFitness=fitnessAct;
 					pos_peor=rand;
 				}
@@ -36,8 +36,8 @@ public class SeleccionTorneoProbabilistico {
 		    } else {
 		    	nuevaPobl.get(i).setCromosoma(poblacion.get(pos_peor).getCromosoma());//añadimos el peor si el random es menos que 0.5
 		    }
-		    mejorFitness=Double.NEGATIVE_INFINITY;
-			peorFitness=Double.MAX_VALUE;
+		    mejorFitness=Double.MAX_VALUE;
+			peorFitness=Double.NEGATIVE_INFINITY;
 			
 		}
 		return nuevaPobl;
