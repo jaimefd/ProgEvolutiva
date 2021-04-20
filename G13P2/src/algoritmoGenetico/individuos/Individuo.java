@@ -46,7 +46,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 		return cromosoma;
 	}
 	public void setCromosoma(ArrayList<T> cromosoma) {
-		this.cromosoma = cromosoma;
+		this.cromosoma = (ArrayList<T>) cromosoma.clone();
 	}
 	public void setTamGenes(int[] tamGenes) {
 		this.tamGenes = tamGenes;
