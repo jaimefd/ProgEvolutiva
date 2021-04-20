@@ -8,15 +8,16 @@ import java.util.HashMap;
 
 public class Ngrams {
 
+	private static HashMap<String, Double> monogramas_ing   = new HashMap<String, Double>();
 	private static HashMap<String, Double> bigramas_ing   = new HashMap<String, Double>();
 	private static HashMap<String, Double> trigramas_ing  = new HashMap<String, Double>();
 	
 	public Ngrams() throws IOException {
 		
-		String[] ngrams = {"bigramas.txt", "trigramas.txt"};
+		String[] ngrams = {"monogramas.txt","bigramas.txt","trigramas.txt"};
 		
 		//Cargamos los ngrams de los txt en HashMaps
-		for(int i=0;i<2;i++) {
+		for(int i=0;i<3;i++) {
 			
 			File archivo = new File ("algoritmoGenetico/ficheros/"+ngrams[i]);
 			FileReader fr = new FileReader(archivo);
@@ -28,8 +29,10 @@ public class Ngrams {
 				switch(i) {
 					//Guardamos en los datos en los HasMaps
 					case 0:
-						bigramas_ing.put(linea[0], Double.parseDouble(linea[1]));
+						monogramas_ing.put(linea[0], Double.parseDouble(linea[1]));
 					case 1:
+						bigramas_ing.put(linea[0], Double.parseDouble(linea[1]));
+					case 2:
 						trigramas_ing.put(linea[0], Double.parseDouble(linea[1]));	
 				}
 			}
@@ -37,6 +40,10 @@ public class Ngrams {
 		}
 	}
 
+	
+	public static HashMap<String, Double> getMonogramas_ing() {
+		return monogramas_ing;
+	}
 	public static HashMap<String, Double> getBigramas_ing() {
 		return bigramas_ing;
 	}
