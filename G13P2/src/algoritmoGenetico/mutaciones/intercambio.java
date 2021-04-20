@@ -14,14 +14,21 @@ public class intercambio {
 				if(prob<probMutacion) {
 					int posIni=(int)(Math.random()*poblacion.get(i).getTamTotal());
 					int posFin=(int)(Math.random()*poblacion.get(i).getTamTotal());
+					while(posIni==posFin) {
+						posFin=(int)(Math.random()*poblacion.get(i).getTamTotal());
+					}
 					if(posIni>posFin) {
-						Character aux1,aux2;
-						aux1=poblacion.get(i).getCromosoma().get(posIni);		
-						aux2=poblacion.get(i).getCromosoma().get(posFin);
-						poblacion.get(i).getCromosoma().set(posIni, aux2);
-						poblacion.get(i).getCromosoma().set(posFin, aux1);
+						int aux=posIni;
+						posIni=posFin;
+						posFin=aux;
 					}
 					
+					Character aux1,aux2;
+					aux1=poblacion.get(i).getCromosoma().get(posIni);		
+					aux2=poblacion.get(i).getCromosoma().get(posFin);
+					poblacion.get(i).getCromosoma().set(posIni, aux2);
+					poblacion.get(i).getCromosoma().set(posFin, aux1);
+			
 				}
 			}
 			
