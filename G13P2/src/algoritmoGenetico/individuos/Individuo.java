@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	
-	T[] cromosoma;
+	//T[] cromosoma;
+	ArrayList<T> cromosoma;
 	int[] tamGenes;
 	int tamTotal;
 	boolean cruce;
@@ -31,14 +32,21 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	}
 	
 	
-	public T[] getCromosoma() {
+	/*public T[] getCromosoma() {
 		return cromosoma;
 	}
 	public void setCromosoma(T[] cromosoma) {
 		this.cromosoma = cromosoma;
-	}
+	}*/
+	
 	public int[] getTamGenes() {
 		return tamGenes;
+	}
+	public ArrayList<T> getCromosoma() {
+		return cromosoma;
+	}
+	public void setCromosoma(ArrayList<T> cromosoma) {
+		this.cromosoma = cromosoma;
 	}
 	public void setTamGenes(int[] tamGenes) {
 		this.tamGenes = tamGenes;

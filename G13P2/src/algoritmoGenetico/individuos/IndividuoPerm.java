@@ -16,7 +16,8 @@ public class IndividuoPerm extends Individuo<Character> {
 			this.tamGenes=new int[1];
 			this.tamGenes[0]=26;  //Tenemos 1 gen con 26 posiciones
 			this.tamTotal=tamGenes[0];
-			this.cromosoma = new Character[tamTotal];
+			//this.cromosoma = new Character[tamTotal];
+			this.cromosoma=new ArrayList<Character>();
 			this.dic=new ArrayList<Character>();
 			
 			//Inicializamos nuestro cromosoma de forma aleatoria
@@ -31,8 +32,8 @@ public class IndividuoPerm extends Individuo<Character> {
 			for (int i = 0; i < tamTotal; i++) {  //llenamos nuestro cromosoma obteniendo las letras de forma aleatoria del arraylist ordenado
 				rand = ((int) (Math.random() * (dicc.size())));
 				
-				this.cromosoma[i]=dicc.get(rand);
-				
+				//this.cromosoma[i]=dicc.get(rand);
+				this.cromosoma.add(i, dicc.get(rand));
 				dicc.remove(rand);
 			}
 		}
@@ -63,7 +64,8 @@ public class IndividuoPerm extends Individuo<Character> {
 			String ngramtxt="";
 			for (int i = 0; i < ngram.getKey().length(); i++) {
 				j = dic.indexOf(ngram.getKey().charAt(i));
-				ngramtxt += this.cromosoma[j];
+				//ngramtxt += this.cromosoma[j];
+				ngramtxt += this.cromosoma.get(j);
 			}
 			return ngramtxt;
 		}
@@ -81,7 +83,8 @@ public class IndividuoPerm extends Individuo<Character> {
 			for (int i = 0; i < texto.length(); i++) {
 				if (((int) texto.charAt(i)) >= 97 && ((int) texto.charAt(i))<= 122 ) {
 					pos = dic.indexOf(texto.charAt(i));
-					txt += this.cromosoma[pos];
+					//txt += this.cromosoma[pos];
+					txt += this.cromosoma.get(pos);
 				}
 				else {
 					txt+=texto.charAt(i);
@@ -93,7 +96,8 @@ public class IndividuoPerm extends Individuo<Character> {
 		public String getCrom() {
 			String crom=" ";
 			for(int i=0;i<this.tamTotal;i++) {
-				crom+=this.cromosoma[i]+" ";
+				//crom+=this.cromosoma[i]+" ";
+				crom+=this.cromosoma.get(i)+ " ";
 			}
 			return crom;
 		}
