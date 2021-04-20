@@ -79,7 +79,7 @@ public class IndividuoPerm extends Individuo<Character> {
 			int pos;
 			String txt="";
 			for (int i = 0; i < texto.length(); i++) {
-				if (((int) texto.charAt(i)) >= 97 || ((int) texto.charAt(i))< 122 ) {
+				if (((int) texto.charAt(i)) >= 97 && ((int) texto.charAt(i))<= 122 ) {
 					pos = dic.indexOf(texto.charAt(i));
 					txt += this.cromosoma[pos];
 				}

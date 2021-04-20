@@ -28,6 +28,7 @@ public class AlgoritmoGenetico {
 	private int tamElite; //tamaño elite
 	private String mejorTraduccion;
 	private String textoEntrada;
+	private String mejorTexto;
 	//Grafica
 	private double[] media;
 	private double[] mejorGeneracion;
@@ -40,11 +41,12 @@ public class AlgoritmoGenetico {
 	//PANEL MEJOR INDIVIDUO
 	JTextField mejorFitnessPanel;
 	JTextField mejorCromosomaPanel;
+	JTextArea textoSalida;
 	private Plot2DPanel _plot;
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
 			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
-			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,String textoIntr) throws IOException {
+			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,String textoIntr,JTextArea textoSalida) throws IOException {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -68,6 +70,8 @@ public class AlgoritmoGenetico {
 		this.textoEntrada=textoIntr;
 		new TextoEntrada(this.textoEntrada);
 		new Ngrams();
+		this.textoSalida=textoSalida;
+		this.mejorTexto="";
 		
 		//this.tamTorneo = tamTorneo;
 	}
@@ -80,7 +84,7 @@ public class AlgoritmoGenetico {
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
 		mejorAbsoluto[0]=mejorGeneracion[0];
 		this.mejorTraduccion=gen.getElMejor().getCrom();
-		
+		this.mejorTexto=gen.getElMejor().traducirTexto(this.textoEntrada);
 		gener[0]=1;
 		
 		peorGeneracion[0]=gen.getElPeor().getFitness();//EXTRA
@@ -118,6 +122,7 @@ public class AlgoritmoGenetico {
 			if(mejorGeneracion[this.genActual]>mejorAbsoluto[(genActual-1)]) {
 				this.mejorAbsoluto[this.genActual]=mejorGeneracion[this.genActual];
 				this.mejorTraduccion=gen.getElMejor().getCrom();
+				this.mejorTexto=gen.getElMejor().traducirTexto(this.textoEntrada);
 			}
 			else {
 				this.mejorAbsoluto[this.genActual]=this.mejorAbsoluto[genActual-1];
@@ -151,6 +156,7 @@ public class AlgoritmoGenetico {
 		//Actualizamos panel mejor individuo
 		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto[this.genActual-1]));
 		mejorCromosomaPanel.setText(this.mejorTraduccion);
+		textoSalida.setText(mejorTexto);
 	}
 	
 }

@@ -51,6 +51,8 @@ public class Panel {
 	private JSpinner probMut;
 	private JTextField mejorCromosoma;
 	private JTextField fitnessMejor;
+	JTextArea textoEntrada;
+	private JTextArea textoSalida;
 	
 	private int gen;
 	private int pobl;
@@ -62,7 +64,6 @@ public class Panel {
 	private double probCruc;
 	private double probMu;
 	private String textoIntr;
-	
 	
 
 	/**
@@ -131,7 +132,7 @@ public class Panel {
 		panel_1.add(lblNewLabel_10);
 		
 		//TEXTO DE ENTRADA
-		JTextArea textoEntrada = new JTextArea();
+		textoEntrada = new JTextArea();
 		textoEntrada.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		JScrollPane scroll = new JScrollPane (textoEntrada); 
 	    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -141,7 +142,7 @@ public class Panel {
 		panel_1.add(scroll);
 		
 		//TEXTO DE SALIDA
-		JTextArea textoSalida = new JTextArea();
+		textoSalida = new JTextArea();
 		textoSalida.setEditable(false);
 		textoSalida.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		JScrollPane scroll2 = new JScrollPane (textoSalida); 
@@ -291,10 +292,11 @@ public class Panel {
 				_plot.removeAllPlots();
 				textoIntr=textoEntrada.getText().trim().toLowerCase();
 				
+				
 				//Cuando obtenemos todas las variables ejecutamos el AG
 				AlgoritmoGenetico alg = null;
 				try {
-					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,textoIntr);
+					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,textoIntr,textoSalida);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
