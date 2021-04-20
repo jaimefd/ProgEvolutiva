@@ -87,7 +87,7 @@ public class AlgoritmoGenetico {
 		peorAbsoluto[0]=peorGeneracion[0]; //EXTRA
 		
 		
-		ArrayList<Individuo> elite = new ArrayList<Individuo>(); //luego vaciar
+		ArrayList<Individuo<Character>> elite = new ArrayList<Individuo<Character>>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
 			
 			if(hayElite) {

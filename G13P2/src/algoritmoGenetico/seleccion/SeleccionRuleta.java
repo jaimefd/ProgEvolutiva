@@ -6,8 +6,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class SeleccionRuleta {
 
-	static ArrayList<Individuo> seleccion (ArrayList<Individuo> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo> nuevaPobl) {
+	static ArrayList<Individuo<Character>> seleccion (ArrayList<Individuo<Character>> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Character>> nuevaPobl) {
 		double prob;
 		int posi;
 		for (int i = 0; i < tamPobl; i++) {
@@ -19,8 +19,8 @@ public class SeleccionRuleta {
 		return nuevaPobl;
 	}
 	
-	static ArrayList<Individuo> seleccionRuletaRestos (ArrayList<Individuo> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,int introducidos,ArrayList<Individuo> nuevaPobl) {
+	static ArrayList<Individuo<Character>> seleccionRuletaRestos (ArrayList<Individuo<Character>> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,int introducidos,ArrayList<Individuo<Character>> nuevaPobl) {
 		double prob;
 		int posi;
 		for (int i = introducidos; i < tamPobl; i++) {

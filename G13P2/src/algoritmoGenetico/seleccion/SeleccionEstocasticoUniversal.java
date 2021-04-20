@@ -6,8 +6,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class SeleccionEstocasticoUniversal {
 
-	public static ArrayList<Individuo> seleccion(ArrayList<Individuo> poblacion,
-			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo> nuevaPobl) {
+	public static ArrayList<Individuo<Character>> seleccion(ArrayList<Individuo<Character>> poblacion,
+			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Character>> nuevaPobl) {
 		
 		double tamaño=tamPobl;
 		double prob = Math.random()/tamaño;

@@ -8,7 +8,7 @@ import algoritmoGenetico.seleccion.FactoriaSeleccion;
 
 
 public class Generacion {
-	private ArrayList<Individuo> poblacion;  //Array con los individuos de la generacion
+	private ArrayList<Individuo<Character>> poblacion;  //Array con los individuos de la generacion
 	private ArrayList<Double> puntuaciones;  //Array con las puntuaciones de cada individuo
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
@@ -23,7 +23,7 @@ public class Generacion {
 	
 	public Generacion(int tamañoPobl) {
 
-		poblacion = new ArrayList<Individuo>();
+		poblacion = new ArrayList<Individuo<Character>>();
 		this.tamPobl = tamañoPobl;
 		this.puntuaciones = new ArrayList<Double>();
 		this.puntAcu=new ArrayList<Double>();
@@ -74,14 +74,14 @@ public class Generacion {
 	}
 	
 	public void seleccion(int algoritmo) {
-		ArrayList<Individuo> nueva= new ArrayList<Individuo>();
+		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
 		iniciarIndividuos(this.tamPobl,nueva);
 		FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl,nueva);
 		this.poblacion=nueva;
 	}
 	
 	public void cruce(int tipoCruce,double probCruce) {
-		ArrayList<Individuo> nueva= new ArrayList<Individuo>();
+		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
 		iniciarIndividuos(this.tamPobl,nueva);
 		
 		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva);
@@ -89,7 +89,7 @@ public class Generacion {
 	}
 	
 	public void mutar(int tipoMutacion,double probMutacion) {
-		this.poblacion=new ArrayList<Individuo>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
+		this.poblacion=new ArrayList<Individuo<Character>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
 	}
 	
 	
@@ -109,7 +109,7 @@ public class Generacion {
 		}
 	}
 	
-	public void generarElite(int tamElite,ArrayList<Individuo> elite) { 
+	public void generarElite(int tamElite,ArrayList<Individuo<Character>> elite) { 
 		iniciarIndividuos(tamElite,elite);
 		
 		for(int i=0;i<tamElite;i++) {
@@ -127,7 +127,7 @@ public class Generacion {
 		}
 	}  
 	
-	public void introducirElite(int tamElite,ArrayList<Individuo> elite) {
+	public void introducirElite(int tamElite,ArrayList<Individuo<Character>> elite) {
 		for(int i=0;i<tamElite;i++) {
 			double peorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
@@ -146,7 +146,7 @@ public class Generacion {
 		
 	}
 
-	public void iniciarIndividuos(int tamPobl,ArrayList<Individuo> poblacion) {
+	public void iniciarIndividuos(int tamPobl,ArrayList<Individuo<Character>> poblacion) {
 			for(int i = 0; i < tamPobl; i++)
 			{
 				Individuo<Character> indiv = new IndividuoPerm();
@@ -155,12 +155,12 @@ public class Generacion {
 		
 	}
 
-	public ArrayList<Individuo> getPoblacion() {
+	public ArrayList<Individuo<Character>> getPoblacion() {
 		return poblacion;
 	}
 
 
-	public void setPoblacion(ArrayList<Individuo> poblacion) {
+	public void setPoblacion(ArrayList<Individuo<Character>> poblacion) {
 		this.poblacion = poblacion;
 	}
 
