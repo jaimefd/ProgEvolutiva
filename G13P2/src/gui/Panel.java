@@ -262,7 +262,7 @@ public class Panel {
 		panel.add(selecc);
 		
 		cruce = new JComboBox();
-		cruce.setModel(new DefaultComboBoxModel(new String[] {"PMX", "OX", "CX","ERX","CO","OX-PP"}));
+		cruce.setModel(new DefaultComboBoxModel(new String[] {"PMX", "OX", "CX","ERX","CO","OX-PP","RVI"}));
 		cruce.setBounds(128, 155, 107, 21);
 		panel.add(cruce);
 		
