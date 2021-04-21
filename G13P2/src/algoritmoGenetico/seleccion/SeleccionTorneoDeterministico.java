@@ -19,7 +19,7 @@ public class SeleccionTorneoDeterministico {
 				int rand=(int) (Math.random()*tamPobl);
 				aux=poblacion.get(rand);
 				fitnessAct=aux.getFitness();
-				if(fitnessAct<mejorFitness) {
+				if(fitnessAct<=mejorFitness) {
 					mejorFitness=fitnessAct;
 					pos_mejor=rand;
 				}

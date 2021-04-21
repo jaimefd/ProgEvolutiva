@@ -9,7 +9,7 @@ public class SeleccionTruncamiento {
 	
 	public static ArrayList<Individuo<Character>> seleccion(ArrayList<Individuo<Character>> poblacion,
 			ArrayList<Double> puntAcu, int tamPobl,ArrayList<Individuo<Character>> nuevaPobl) {
-		double trunc = 0.5; // umbral de truncamiento, puede hacerse que le llegue como parámetro
+		double trunc = 0.2; // umbral de truncamiento, puede hacerse que le llegue como parámetro
 		Collections.sort(poblacion);
 		int tamElite = (int) (tamPobl*trunc); // cantidad de mejores elementos de la poblacion original que se van a repetir
 		int x = 0, j = 0;

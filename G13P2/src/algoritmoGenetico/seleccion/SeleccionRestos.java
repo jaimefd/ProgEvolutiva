@@ -11,7 +11,7 @@ public class SeleccionRestos {
 		
 		int introducidos=0;
 		for(int i=0;i<tamPobl && introducidos<tamPobl;i++) {
-			double pik= ((puntuaciones.get(i)*tamPobl)/100); //puntuacion * individuos a seleccionar
+			double pik= (puntuaciones.get(i)*tamPobl); //puntuacion * individuos a seleccionar
 			if(pik>1) {
 				pik=Math.round(pik);
 				int j=0;

@@ -71,7 +71,7 @@ public class Generacion {
 		
 		this.media= (fitnessTotal/this.tamPobl);
 		
-		desplazamiento_maximizar(); //por si hay valores negativos para seleccion
+		desplazamiento_minimizar(); //por si hay valores negativos para seleccion
 	}
 	
 	public void seleccion(int algoritmo) {
@@ -94,18 +94,22 @@ public class Generacion {
 	}
 	
 	
-	public void desplazamiento_maximizar() {
-		double Fmin = elPeor.getFitness() * 1.01; //en este caso el mejor es el mas grande
+	public void desplazamiento_minimizar() {
+		double Fmax = elPeor.getFitness() * 1.05; //en este caso el mejor es el mas grande
 		double puntAcumu=0;
 		double nuevoFitnessTotal=0;
 		for(int i=0; i<this.puntuaciones.size(); i++)
 		{
-			puntuaciones.set(i,Math.abs(poblacion.get(i).getFitness()-Fmin));
+			puntuaciones.set(i,Math.abs(Fmax-poblacion.get(i).getFitness()));
 			nuevoFitnessTotal+=(puntuaciones.get(i));
 		}
 		
+		for(int i=0;i<this.puntuaciones.size(); i++) {
+			puntuaciones.set(i, (puntuaciones.get(i)/nuevoFitnessTotal));
+		}
+		
 		for(int j=0;j<this.puntAcu.size();j++) {
-			puntAcumu+=puntuaciones.get(j)/nuevoFitnessTotal;
+			puntAcumu+=puntuaciones.get(j);
 			puntAcu.set(j, puntAcumu);
 		}
 	}
