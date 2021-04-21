@@ -22,7 +22,8 @@ public class FactoriaCruce {
 				return CO.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
 			case 6:
 				return OxPp.cruce(cruce, poblacion, probCruce, tamPobl, nuevaPobl);
-				
+			case 7:
+				return RVI.cruce(cruce, poblacion, probCruce, tamPobl, nuevaPobl);
 			default:
 				return PMX.cruce(cruce, poblacion, probCruce,tamPobl,nuevaPobl);
 				
