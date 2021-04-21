@@ -267,7 +267,7 @@ public class Panel {
 		panel.add(cruce);
 		
 		mutacion = new JComboBox();
-		mutacion.setModel(new DefaultComboBoxModel(new String[] {"Insercion", "Intercambio","Inversion","Heuristica"}));
+		mutacion.setModel(new DefaultComboBoxModel(new String[] {"Insercion", "Intercambio","Inversion","Heuristica","Mutacion13"}));
 		mutacion.setBounds(127, 191, 107, 21);
 		panel.add(mutacion);
 		

@@ -16,6 +16,8 @@ public class FactoriaMutacion {
 				return inversion.mutar(tipo, poblacion, probMutacion,tamPobl);
 			case 4:
 				return heuristica.mutar(tipo, poblacion, probMutacion,tamPobl);
+			case 5:
+				return mutacion13.mutar(tipo, poblacion, probMutacion, tamPobl);
 			default:
 				return insercion.mutar(tipo, poblacion, probMutacion,tamPobl);
 			
