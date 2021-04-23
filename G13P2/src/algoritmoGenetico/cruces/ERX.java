@@ -73,10 +73,19 @@ public class ERX {
 							tablaRutasCopia[i] = new HashSet<Integer>(tablaRutas[i]);
 				        }
 						
+						for (int i = 0; i < tamañoCromosoma; i++) {
+							System.out.println(((char) (i + 97)) + " " + tablaRutas[i]);
+				        }
+						
 						aux1.add(padre2.get(0));
 						for (int r = 0; r < tamañoCromosoma; r++) tablaRutas[r].remove(((int) padre2.get(0)) - 97);
 						for (int i = 1; i < tamañoCromosoma; i++) {
-							ArrayList<Integer> opciones = new ArrayList<Integer>(tablaRutas[((int) aux1.get(i-1)) - 97]);
+							int index = i;
+							ArrayList<Integer> opciones = new ArrayList<Integer>(tablaRutas[((int) aux1.get(index-1)) - 97]);
+							while(opciones.size() <= 0) {
+								index--;
+								opciones = new ArrayList<Integer>(tablaRutas[((int) aux1.get(index-1)) - 97]);
+							}
 							int mejor = opciones.get(0);
 							for (int k = 1; k < opciones.size(); k++) {
 								int candidato = opciones.get(1);

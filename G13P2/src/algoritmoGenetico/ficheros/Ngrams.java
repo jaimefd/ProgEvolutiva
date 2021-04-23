@@ -19,7 +19,7 @@ public class Ngrams {
 		//Cargamos los ngrams de los txt en HashMaps
 		for(int i=0;i<3;i++) {
 			
-			File archivo = new File ("algoritmoGenetico/ficheros/"+ngrams[i]);
+			File archivo = new File ("src/algoritmoGenetico/ficheros/"+ngrams[i]);
 			FileReader fr = new FileReader(archivo);
 			BufferedReader br = new BufferedReader(fr);		
 			String lr;
