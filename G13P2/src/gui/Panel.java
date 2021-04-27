@@ -300,7 +300,7 @@ public class Panel {
 		panel.add(isElite);
 		
 		elite = new JSpinner();
-		elite.setModel(new SpinnerNumberModel(10.0, 5.0, 100.0, 1.0));
+		elite.setModel(new SpinnerNumberModel(10.0, 1.0, 100.0, 1.0));
 		elite.setBounds(127, 271, 41, 20);
 		panel.add(elite);
 		
