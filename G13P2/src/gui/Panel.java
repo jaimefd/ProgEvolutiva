@@ -67,6 +67,8 @@ public class Panel {
 	private double probMu;
 	private String textoIntr;
 	private JTextField abecedario;
+	private JTextField totMut;
+	private JTextField totCruc;
 	
 
 	/**
@@ -241,6 +243,28 @@ public class Panel {
 		lblNewLabel_11.setBounds(108, 155, 104, 13);
 		panel_2.add(lblNewLabel_11);
 		
+		JLabel lblNewLabel_12 = new JLabel("Cruces:");
+		lblNewLabel_12.setBounds(25, 221, 53, 13);
+		panel_2.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("Mutaciones:");
+		lblNewLabel_13.setBounds(167, 221, 72, 13);
+		panel_2.add(lblNewLabel_13);
+		
+		totCruc = new JTextField();
+		totCruc.setEditable(false);
+		totCruc.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		totCruc.setBounds(88, 218, 37, 19);
+		panel_2.add(totCruc);
+		totCruc.setColumns(10);
+		
+		totMut = new JTextField();
+		totMut.setEditable(false);
+		totMut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		totMut.setBounds(249, 218, 37, 19);
+		panel_2.add(totMut);
+		totMut.setColumns(10);
+		
 		
 		
 		//Variables
@@ -316,7 +340,7 @@ public class Panel {
 				//Cuando obtenemos todas las variables ejecutamos el AG
 				AlgoritmoGenetico alg = null;
 				try {
-					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,textoIntr,textoSalida);
+					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,textoIntr,textoSalida,totCruc,totMut);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

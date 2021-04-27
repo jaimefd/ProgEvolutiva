@@ -8,12 +8,13 @@ import algoritmoGenetico.individuos.IndividuoPerm;
 
 public class mutacion13 {
 	static ArrayList<Individuo<Character>> mutar(int tipo, ArrayList<Individuo<Character>> poblacion,
-			double probMutacion,int tamPobl) {
+			double probMutacion,int tamPobl,int[] totMut) {
 		
 		double prob;
 		for(int i=0;i<tamPobl;i++) {
 			prob=Math.random();
 			if(prob<probMutacion) {
+				totMut[0]++;
 				double fitness1,fitness2;
 				fitness1=poblacion.get(i).getFitness();
 				Individuo<Character> aux=new IndividuoPerm();

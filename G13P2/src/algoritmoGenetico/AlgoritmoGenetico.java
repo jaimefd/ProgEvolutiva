@@ -18,6 +18,8 @@ public class AlgoritmoGenetico {
 	private int maxGeneraciones;
 	private double probCruce;
 	private double probMutacion;
+	private int[] totalCruces;
+	private int[] totalMutaciones;
 	//private int tamTorneo;  he puesto directamente 3
 	private int genActual;
 	//Tipos selecc. , cruce y mutacion
@@ -41,12 +43,14 @@ public class AlgoritmoGenetico {
 	//PANEL MEJOR INDIVIDUO
 	JTextField mejorFitnessPanel;
 	JTextField mejorCromosomaPanel;
+	JTextField totCruc;
+	JTextField totMut;
 	JTextArea textoSalida;
 	private Plot2DPanel _plot;
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
 			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
-			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,String textoIntr,JTextArea textoSalida) throws IOException {
+			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,String textoIntr,JTextArea textoSalida,JTextField totCruc,JTextField totMut) throws IOException {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -72,7 +76,10 @@ public class AlgoritmoGenetico {
 		new Ngrams();
 		this.textoSalida=textoSalida;
 		this.mejorTexto="";
-		
+		this.totalCruces=new int[1];
+		this.totalMutaciones=new int[1];
+		this.totCruc=totCruc;
+		this.totMut=totMut;
 		//this.tamTorneo = tamTorneo;
 	}
 
@@ -101,10 +108,10 @@ public class AlgoritmoGenetico {
 			gen.seleccion(this.algoritmoSeleccion); 
 			
 			// cruce
-			gen.cruce(tipoCruce, probCruce);
+			gen.cruce(tipoCruce, probCruce,totalCruces);
 			
 			// mutacion
-			gen.mutar(tipoMutacion, probMutacion);
+			gen.mutar(tipoMutacion, probMutacion,totalMutaciones);
 			
 			if(hayElite) {
 				gen.introducirElite(tamElite, elite);
@@ -156,6 +163,8 @@ public class AlgoritmoGenetico {
 		//Actualizamos panel mejor individuo
 		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto[this.genActual-1]));
 		mejorCromosomaPanel.setText(this.mejorTraduccion);
+		totCruc.setText(String.valueOf(this.totalCruces[0]));
+		totMut.setText(String.valueOf(this.totalMutaciones[0]));
 		textoSalida.setText(mejorTexto);
 	}
 	

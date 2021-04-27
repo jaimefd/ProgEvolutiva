@@ -8,7 +8,7 @@ import algoritmoGenetico.individuos.Individuo;
 public class OX {
 
 	public static ArrayList<Individuo<Character>> cruce(int cruce, ArrayList<Individuo<Character>> poblacion,
-			double probCruce, int tamPobl, ArrayList<Individuo<Character>> nuevaPobl) {
+			double probCruce, int tamPobl, ArrayList<Individuo<Character>> nuevaPobl,int[] totCruces) {
 		
 		for(int i=0;i<tamPobl;i++) { //ponemos cruce a true para los individuos que cumplen rand < ProbCruce
 			double rand = Math.random();
@@ -27,6 +27,7 @@ public class OX {
 				while(encontrado==false && x<tamPobl) { //buscamos el segundo
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
+						totCruces[0]++;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
 						int tamañoCruce = (int) (Math.random()*(tamañoCromosoma-2)) + 1;
 						int punto1 =(int) (Math.random()*(tamañoCromosoma-tamañoCruce+1));

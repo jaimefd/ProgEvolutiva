@@ -6,12 +6,13 @@ import algoritmoGenetico.individuos.Individuo;
 public class insercion {
 		
 		static ArrayList<Individuo<Character>> mutar(int tipo, ArrayList<Individuo<Character>> poblacion,
-				double probMutacion,int tamPobl) {
+				double probMutacion,int tamPobl,int[] totMut) {
 			
 			double prob;
 			for(int i=0;i<tamPobl;i++) {
 				prob=Math.random();
 				if(prob<probMutacion) {
+					totMut[0]++;
 					int posIni=(int)(Math.random()*poblacion.get(i).getTamTotal());
 					int posFin=(int)(Math.random()*poblacion.get(i).getTamTotal());
 					if(posIni>posFin) {

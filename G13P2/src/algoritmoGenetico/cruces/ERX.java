@@ -9,7 +9,7 @@ import algoritmoGenetico.individuos.Individuo;
 public class ERX {
 	
 	public static ArrayList<Individuo<Character>> cruce(int cruce, ArrayList<Individuo<Character>> poblacion, double probCruce, int tamPobl,
-			ArrayList<Individuo<Character>> nuevaPobl) {
+			ArrayList<Individuo<Character>> nuevaPobl,int[] totCruces) {
 		
 		for(int i=0;i<tamPobl;i++) { //ponemos cruce a true para los individuos que cumplen rand < ProbCruce
 			double rand = Math.random();
@@ -29,6 +29,7 @@ public class ERX {
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
 						int tamañoCromosoma=poblacion.get(j).getTamTotal();
+						totCruces[0]++;
 						
 						ArrayList<Character> aux1 = new ArrayList<Character>();
 						ArrayList<Character> aux2 = new ArrayList<Character>();

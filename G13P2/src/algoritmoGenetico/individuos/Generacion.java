@@ -13,6 +13,7 @@ public class Generacion {
 	private ArrayList<Double> puntAcu;  //Array con la puntuacion acumulada de cada individuo
 	private int tamPobl;
 	
+	
 
 	private double media;  //media de la generacio para la grafica!
 	private Individuo elMejor;  //el mejor individuo de la generacion para la grafica!
@@ -81,16 +82,15 @@ public class Generacion {
 		this.poblacion=nueva;
 	}
 	
-	public void cruce(int tipoCruce,double probCruce) {
+	public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
 		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
 		iniciarIndividuos(this.tamPobl,nueva);
-		
-		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva);
+		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva,totalCruces);
 		this.poblacion=nueva;
 	}
 	
-	public void mutar(int tipoMutacion,double probMutacion) {
-		this.poblacion=new ArrayList<Individuo<Character>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl));
+	public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {
+		this.poblacion=new ArrayList<Individuo<Character>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl,totalMutaciones));
 	}
 	
 	
