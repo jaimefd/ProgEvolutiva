@@ -132,7 +132,7 @@ public class Generacion {
 		}
 	}  
 	
-	public void introducirElite(int tamElite,ArrayList<Individuo<Character>> elite) {
+	public void introducirElite(int tamElite,ArrayList<Individuo<Arbol>> elite) {
 		for(int i=0;i<tamElite;i++) {
 			double peorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
