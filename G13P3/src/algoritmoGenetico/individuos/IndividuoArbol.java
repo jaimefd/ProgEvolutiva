@@ -2,7 +2,7 @@ package algoritmoGenetico.individuos;
 
 
 
-public class IndividuoArbol extends Individuo<Character> {
+public class IndividuoArbol extends Individuo<Arbol> {
 		
 		public IndividuoArbol(int profMin,int profMax) {
 			this.cruce=false;
