@@ -75,14 +75,14 @@ public class Generacion {
 		//desplazamiento_minimizar(); //por si hay valores negativos para seleccion
 	}
 	
-	/*public void seleccion(int algoritmo) {
-		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
+	public void seleccion(int algoritmo) {
+		ArrayList<Individuo<Arbol>> nueva= new ArrayList<Individuo<Arbol>>();
 		iniciarIndividuos(this.tamPobl,nueva);
 		FactoriaSeleccion.getAlgoritmoSeleccion(algoritmo, this.poblacion, this.puntAcu, this.puntuaciones, this.tamPobl,nueva);
 		this.poblacion=nueva;
 	}
 	
-	public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
+	/*public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
 		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
 		iniciarIndividuos(this.tamPobl,nueva);
 		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva,totalCruces);
