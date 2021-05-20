@@ -35,6 +35,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.EmptyBorder;
 
 
 public class Panel {
@@ -62,6 +63,7 @@ public class Panel {
 	private int selec;
 	private int cruc;
 	private int mut;
+	private int prof;
 	private boolean isElit;
 	private double elit;
 	private double probCruc;
@@ -70,6 +72,7 @@ public class Panel {
 	private JTextField totCruc;
 	
 	private JTable table;
+	private JTextField txtRastroDeFante;
 
 	/**
 	 * Launch the application.
@@ -110,9 +113,9 @@ public class Panel {
 		
 		
 		table = new JTable();
-		table.setBounds(562, 9, 613, 430);
+		table.setBounds(562, 48, 613, 419);
 		frmPractica.getContentPane().add(table);
-		table.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Rastro de Santa FE", TitledBorder.CENTER, TitledBorder.BOTTOM, null, new Color(0, 0, 0)));
+		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{""},
@@ -342,6 +345,7 @@ public class Panel {
 				elit=(double)elite.getValue();
 				probCruc=((double)probCruce.getValue())/100;
 				probMu=((double)probMut.getValue())/100;
+				prof=(int)profundidad.getValue();
 				_plot.removeAllPlots();
 				
 				
@@ -349,7 +353,7 @@ public class Panel {
 				//Cuando obtenemos todas las variables ejecutamos el AG
 				AlgoritmoGenetico alg = null;
 				try {
-					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,totCruc,totMut,9);
+					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,totCruc,totMut,prof);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -358,6 +362,13 @@ public class Panel {
 			}
 		});
 		panel.add(run);
+		
+		txtRastroDeFante = new JTextField();
+		txtRastroDeFante.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtRastroDeFante.setText("Rastro de Fante FE");
+		txtRastroDeFante.setBounds(810, 19, 109, 19);
+		frmPractica.getContentPane().add(txtRastroDeFante);
+		txtRastroDeFante.setColumns(10);
 		
 		
 		
