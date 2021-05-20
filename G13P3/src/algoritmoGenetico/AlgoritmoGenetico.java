@@ -39,15 +39,15 @@ public class AlgoritmoGenetico {
 	
 	//PANEL MEJOR INDIVIDUO
 	JTextField mejorFitnessPanel;
-	JTextField mejorCromosomaPanel;
+	JTextArea mejorCromosomaPanel;
 	JTextField totCruc;
 	JTextField totMut;
-	JTextArea textoSalida;
+
 	private Plot2DPanel _plot;
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
 			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
-			, JTextField mejorFitnessPanel, JTextField mejorCromosomaPanel,JTextField totCruc,JTextField totMut,int profundidad) throws IOException {
+			, JTextField mejorFitnessPanel, JTextArea mejorCromosomaPanel,JTextField totCruc,JTextField totMut,int profundidad) throws IOException {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
