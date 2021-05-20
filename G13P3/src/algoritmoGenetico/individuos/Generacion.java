@@ -48,7 +48,7 @@ public class Generacion {
 		double peorFitness=Double.MAX_VALUE;
 		
 		for(int i=0;i<this.tamPobl;i++) {
-			fitnessActual=this.poblacion.get(i).getFitness();
+			fitnessActual=this.poblacion.get(i).getValor();
 			fitnessTotal+=fitnessActual;
 			if(fitnessActual>mejorFitness) {
 				mejorFitness=fitnessActual;

@@ -7,6 +7,7 @@ public class IndividuoArbol extends Individuo<Arbol> {
 		public IndividuoArbol(int profMin,int profMax) {
 			this.cruce=false;
 			this.elite=false;
+			this.fitness=0;
 			Arbol arbol=new Arbol();
 			
 			//Inicializamos el arbol
@@ -17,6 +18,7 @@ public class IndividuoArbol extends Individuo<Arbol> {
 
 		@Override
 		public int getValor() { 
+			//this.fitness=resultado
 			return 0;
 		}
 
@@ -24,7 +26,7 @@ public class IndividuoArbol extends Individuo<Arbol> {
 		@Override
 		public int getFitness() {
 			// TODO Auto-generated method stub
-			return this.getValor();
+			return this.fitness;
 		}
 		
 

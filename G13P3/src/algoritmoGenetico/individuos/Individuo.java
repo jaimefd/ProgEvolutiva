@@ -5,6 +5,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	Arbol cromosoma;
 	boolean cruce;
 	boolean elite;
+	int fitness;
 	
 	
 	public abstract int getValor();
