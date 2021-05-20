@@ -114,7 +114,9 @@ public class Panel {
 		//PANEL
 		
 		table = new JTable();
-		table.setBounds(562, 48, 613, 419);
+		table.setRowHeight(10);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setBounds(504, 79, 873, 326);
 		frmPractica.getContentPane().add(table);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setModel(new DefaultTableModel(
@@ -156,6 +158,38 @@ public class Panel {
 				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(15);
+		table.getColumnModel().getColumn(1).setPreferredWidth(15);
+		table.getColumnModel().getColumn(2).setPreferredWidth(15);
+		table.getColumnModel().getColumn(3).setPreferredWidth(15);
+		table.getColumnModel().getColumn(4).setPreferredWidth(15);
+		table.getColumnModel().getColumn(5).setPreferredWidth(15);
+		table.getColumnModel().getColumn(6).setPreferredWidth(15);
+		table.getColumnModel().getColumn(7).setPreferredWidth(15);
+		table.getColumnModel().getColumn(8).setPreferredWidth(15);
+		table.getColumnModel().getColumn(9).setPreferredWidth(15);
+		table.getColumnModel().getColumn(10).setPreferredWidth(15);
+		table.getColumnModel().getColumn(11).setPreferredWidth(15);
+		table.getColumnModel().getColumn(12).setPreferredWidth(15);
+		table.getColumnModel().getColumn(13).setPreferredWidth(15);
+		table.getColumnModel().getColumn(14).setPreferredWidth(15);
+		table.getColumnModel().getColumn(15).setPreferredWidth(15);
+		table.getColumnModel().getColumn(16).setPreferredWidth(15);
+		table.getColumnModel().getColumn(17).setPreferredWidth(15);
+		table.getColumnModel().getColumn(18).setPreferredWidth(15);
+		table.getColumnModel().getColumn(19).setPreferredWidth(15);
+		table.getColumnModel().getColumn(20).setPreferredWidth(15);
+		table.getColumnModel().getColumn(21).setPreferredWidth(15);
+		table.getColumnModel().getColumn(22).setPreferredWidth(15);
+		table.getColumnModel().getColumn(23).setPreferredWidth(15);
+		table.getColumnModel().getColumn(24).setPreferredWidth(15);
+		table.getColumnModel().getColumn(25).setPreferredWidth(15);
+		table.getColumnModel().getColumn(26).setPreferredWidth(15);
+		table.getColumnModel().getColumn(27).setPreferredWidth(15);
+		table.getColumnModel().getColumn(28).setPreferredWidth(15);
+		table.getColumnModel().getColumn(29).setPreferredWidth(15);
+		table.getColumnModel().getColumn(30).setPreferredWidth(15);
+		table.getColumnModel().getColumn(31).setPreferredWidth(15);
 		
 	//	TableColumn columna = table.getColumnModel().getColumn(5);
 	//	TableCellRenderer.setColumna(5); //se le da por parametro la columna que se quiere modificar
@@ -182,7 +216,7 @@ public class Panel {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Mejor Individuo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(104, 477, 353, 259);
+		panel_2.setBounds(104, 477, 353, 269);
 		frmPractica.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -273,7 +307,7 @@ public class Panel {
 		txtRastroDeFante = new JTextField();
 		txtRastroDeFante.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtRastroDeFante.setText("Rastro de Fante FE");
-		txtRastroDeFante.setBounds(810, 19, 109, 19);
+		txtRastroDeFante.setBounds(886, 50, 109, 19);
 		frmPractica.getContentPane().add(txtRastroDeFante);
 		txtRastroDeFante.setColumns(10);
 		
@@ -343,7 +377,7 @@ public class Panel {
 		panel_2.add(scroll);
 		
 		_plot.addLegend("SOUTH");
-		_plot.setBounds(562, 477, 613, 286);
+		_plot.setBounds(504, 415, 873, 331);
 		frmPractica.getContentPane().add(_plot);
 		
 		JButton run = new JButton("Run");
