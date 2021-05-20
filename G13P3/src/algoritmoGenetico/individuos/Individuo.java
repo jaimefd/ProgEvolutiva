@@ -16,9 +16,9 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	public int compareTo(Individuo<T> comparingTo) {
 		double compareFitness=((Individuo<T>)comparingTo).getFitness() - this.getFitness();
 		if (compareFitness < 0) {
-			return 1;
-		} else if (compareFitness > 0) {
 			return -1;
+		} else if (compareFitness > 0) {
+			return 1;
 		} else {
 			return 0;
 		}

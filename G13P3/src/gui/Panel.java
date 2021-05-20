@@ -259,6 +259,12 @@ public class Panel {
 		panel_2.add(totMut);
 		totMut.setColumns(10);
 		
+		txtRastroDeFante = new JTextField();
+		txtRastroDeFante.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtRastroDeFante.setText("Rastro de Fante FE");
+		txtRastroDeFante.setBounds(810, 19, 109, 19);
+		frmPractica.getContentPane().add(txtRastroDeFante);
+		txtRastroDeFante.setColumns(10);
 		
 		
 		//Variables
@@ -363,12 +369,7 @@ public class Panel {
 		});
 		panel.add(run);
 		
-		txtRastroDeFante = new JTextField();
-		txtRastroDeFante.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtRastroDeFante.setText("Rastro de Fante FE");
-		txtRastroDeFante.setBounds(810, 19, 109, 19);
-		frmPractica.getContentPane().add(txtRastroDeFante);
-		txtRastroDeFante.setColumns(10);
+		
 		
 		
 		
