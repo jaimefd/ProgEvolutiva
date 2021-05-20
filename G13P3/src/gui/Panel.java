@@ -158,8 +158,8 @@ public class Panel {
 		TableColumn columna = table.getColumnModel().getColumn(0);
 		
 		FondoCelda TableCellRenderer = new FondoCelda();
-		TableCellRenderer.setColumns(0); //se le da por parametro la columna que se quiere modificar
-		TableCellRenderer.setRow(0);//se le da por parametro la fila que se quiere modificar
+		TableCellRenderer.setColumna(0); //se le da por parametro la columna que se quiere modificar
+		TableCellRenderer.setFila(0);//se le da por parametro la fila que se quiere modificar
 		columna.setCellRenderer(TableCellRenderer);
 		
 		JPanel panel = new JPanel();
