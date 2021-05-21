@@ -94,8 +94,9 @@ public class Panel {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public Panel() {
+	public Panel() throws IOException {
 		_plot = new Plot2DPanel();
 		initialize();
 		
@@ -103,8 +104,9 @@ public class Panel {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frmPractica = new JFrame();
 		frmPractica.setFont(new Font("Dialog", Font.BOLD, 12));
 		frmPractica.setTitle("Practica 3");
@@ -201,11 +203,14 @@ public class Panel {
 		table.setDefaultRenderer(Object.class, TableCellRenderer);
 		table.setEnabled(false);
 		
-		/*for(int i=0;i<32;i++) {
-			for(int j=0;j<32;j++) {                      AQUI HACER EL SETVALUE PARA INICIALIZAR EL TABLERO
-				table.setValueAt("-", i, j);
+	    Tablero tablero=new Tablero();
+		char tab[][];
+		tab=tablero.getTablero();
+			for(int i=0;i<32;i++) {
+			for(int j=0;j<32;j++) { // AQUI HACER EL SETVALUE PARA INICIALIZAR EL TABLERO	
+				table.setValueAt(Character.toString(tab[i][j]), i, j);
 			}
-		}*/
+		}
 		
 		
 		
@@ -404,12 +409,17 @@ public class Panel {
 				//Cuando obtenemos todas las variables ejecutamos el AG
 				AlgoritmoGenetico alg = null;
 				try {
-					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,totCruc,totMut,prof);
+					alg = new AlgoritmoGenetico(pobl,gen,probCruc,probMu,selec,cruc,mut,isElit,elit,_plot,fitnessMejor,mejorCromosoma,totCruc,totMut,prof,table);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				alg.run();
+				try {
+					alg.run();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel.add(run);

@@ -33,16 +33,20 @@ public Component getTableCellRendererComponent(JTable table, Object value, boole
     setText(String.valueOf(value)); // Se agrega el valor que viene por defecto en la celda
 }*/
 	
-	if(value=="@") {   //HORMIGA
+	if(value.equals("@")) {   //HORMIGA
 		this.setBackground(Color.red);
 	}
-	else if(value=="#"){ //COMIDA
+	else if(value.equals("#")){ //COMIDA
 		this.setBackground(Color.yellow);
 	}
-	else if(value=="-"){ //HABIA-COMIDA
+	else if(value.equals("x")){ //HABIA-COMIDA
 		this.setBackground(Color.MAGENTA);
 	}
-	{ //NO HAY NADA
+	else if(value.equals("-")) {
+		this.setBackground(Color.black);
+	}
+	else //NO HAY NADA
+	{ 
 		this.setBackground(Color.CYAN);
 	}
 	

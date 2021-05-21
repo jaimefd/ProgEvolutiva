@@ -22,7 +22,6 @@ public class AlgoritmoGenetico {
 	private int[] totalMutaciones;
 	//private int tamTorneo;  he puesto directamente 3
 	private int genActual;
-	private Tablero tablero;
 	//Tipos selecc. , cruce y mutacion
 	private int algoritmoSeleccion; 
 	private int tipoCruce; 
@@ -30,6 +29,8 @@ public class AlgoritmoGenetico {
 	private boolean hayElite; //si ha seleccionado elite
 	private int tamElite; //tamaño elite
 	private int profundidad;
+	private JTable table;
+	private Arbol mejorArbol;
 	//Grafica
 	private double[] media;
 	private double[] mejorGeneracion;
@@ -49,7 +50,7 @@ public class AlgoritmoGenetico {
 
 	public AlgoritmoGenetico(int tamPoblacion, int maxGeneraciones, double probCruce, 
 			double probMutacion,int algoritmoSeleccion,int tipoCruce,int tipoMutacion,boolean hayElite,double probElite,Plot2DPanel plot/*, int tamTorneo*/
-			, JTextField mejorFitnessPanel, JTextArea mejorCromosomaPanel,JTextField totCruc,JTextField totMut,int profundidad) throws IOException {
+			, JTextField mejorFitnessPanel, JTextArea mejorCromosomaPanel,JTextField totCruc,JTextField totMut,int profundidad,JTable table) throws IOException {
 
 		this.tamPoblacion = tamPoblacion;
 		this.maxGeneraciones = maxGeneraciones;
@@ -74,15 +75,17 @@ public class AlgoritmoGenetico {
 		this.totCruc=totCruc;
 		this.totMut=totMut;
 		this.profundidad=profundidad;
+		this.table=table;
 		//this.tamTorneo = tamTorneo;
 	}
 
-	public void run() {
+	public void run() throws IOException {
 		inicializar();
 		Generacion gen= new Generacion(this.tamPoblacion,this.profundidad); //numVariables4 es el numero de variables para la funcion4
 		gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 		media[0]=gen.getMedia();
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
+		mejorArbol=gen.getElMejor().getCromosoma();
 		mejorAbsoluto[0]=mejorGeneracion[0];
 		gener[0]=1;
 		
@@ -93,11 +96,13 @@ public class AlgoritmoGenetico {
 		ArrayList<Individuo<Arbol>> elite = new ArrayList<Individuo<Arbol>>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
 			
+
+			
 			if(hayElite) {
 				gen.generarElite(tamElite, elite);
 			}
 			// seleccion
-			//gen.seleccion(this.algoritmoSeleccion); 
+			gen.seleccion(this.algoritmoSeleccion); 
 			
 			// cruce
 			//gen.cruce(tipoCruce, probCruce,totalCruces);
@@ -120,7 +125,7 @@ public class AlgoritmoGenetico {
 			
 			if(mejorGeneracion[this.genActual]>mejorAbsoluto[(genActual-1)]) {
 				this.mejorAbsoluto[this.genActual]=mejorGeneracion[this.genActual];
-
+				mejorArbol=gen.getElMejor().getCromosoma();
 			}
 			else {
 				this.mejorAbsoluto[this.genActual]=this.mejorAbsoluto[genActual-1];
@@ -146,7 +151,7 @@ public class AlgoritmoGenetico {
 	}
 	
 	
-	public void generarGrafica(double[]media,double[] mejorFitnessAbsoluto,double[]mejorGeneracion,double[] peorAbsoluto) {
+	public void generarGrafica(double[]media,double[] mejorFitnessAbsoluto,double[]mejorGeneracion,double[] peorAbsoluto) throws IOException {
 		_plot.addLinePlot("Mejor Absoluto", this.gener, mejorFitnessAbsoluto);
 		_plot.addLinePlot("Mejor Generacion", this.gener, mejorGeneracion);
 		_plot.addLinePlot("Media", this.gener, media);
@@ -155,6 +160,19 @@ public class AlgoritmoGenetico {
 		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto[this.genActual-1]));
 		totCruc.setText(String.valueOf(this.totalCruces[0]));
 		totMut.setText(String.valueOf(this.totalMutaciones[0]));
+		
+		//Actualizamos tablero
+		Tablero mejor=new Tablero();
+		while((mejor.getPasos()>0) && mejor.getComidas()<89){
+			mejor.start(mejorArbol);
+		}
+		char tab[][];
+		tab=mejor.getTablero();
+			for(int i=0;i<32;i++) {
+			for(int j=0;j<32;j++) { // AQUI HACER EL SETVALUE PARA INICIALIZAR EL TABLERO	
+				table.setValueAt(Character.toString(tab[i][j]), i, j);
+			}
+		}
 		
 	}
 	

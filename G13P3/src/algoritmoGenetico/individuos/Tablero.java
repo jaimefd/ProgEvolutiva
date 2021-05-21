@@ -152,6 +152,12 @@ public class Tablero {
 	}
 
 
+	
+	public char[][] getTablero() {
+		return tablero;
+	}
+
+
 	public int getComidas() {
 		return comidas;
 	}
