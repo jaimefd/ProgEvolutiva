@@ -1,5 +1,7 @@
 package algoritmoGenetico.individuos;
 
+import java.io.IOException;
+
 public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	
 	Arbol cromosoma;
@@ -8,7 +10,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	int fitness;
 	
 	
-	public abstract int getValor();
+	public int getValor() throws IOException {return 0;}
 	public abstract int getFitness();
 	
 	

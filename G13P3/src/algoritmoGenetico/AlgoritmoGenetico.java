@@ -9,6 +9,7 @@ import org.math.plot.Plot2DPanel;
 import algoritmoGenetico.individuos.Arbol;
 import algoritmoGenetico.individuos.Generacion;
 import algoritmoGenetico.individuos.Individuo;
+import algoritmoGenetico.individuos.Tablero;
 
 public class AlgoritmoGenetico {
 	
@@ -21,6 +22,7 @@ public class AlgoritmoGenetico {
 	private int[] totalMutaciones;
 	//private int tamTorneo;  he puesto directamente 3
 	private int genActual;
+	private Tablero tablero;
 	//Tipos selecc. , cruce y mutacion
 	private int algoritmoSeleccion; 
 	private int tipoCruce; 

@@ -1,5 +1,6 @@
 package algoritmoGenetico.individuos;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import algoritmoGenetico.cruces.FactoriaCruce;
@@ -35,7 +36,7 @@ public class Generacion {
 	}
 	
 	
-	public void evaluarPoblacion() {
+	public void evaluarPoblacion() throws IOException{
 		//Vaciamos Arrays para volver a calcular puntuaciones
 		puntuaciones.clear();
 		puntAcu.clear();

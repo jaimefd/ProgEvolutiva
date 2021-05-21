@@ -23,6 +23,8 @@ import javax.swing.SpinnerNumberModel;
 import org.math.plot.*;
 
 import algoritmoGenetico.AlgoritmoGenetico;
+import algoritmoGenetico.individuos.Tablero;
+
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -70,7 +72,7 @@ public class Panel {
 	private double probMu;
 	private JTextField totMut;
 	private JTextField totCruc;
-	
+	private Tablero tablero;
 	private JTable table;
 	private JTextField txtRastroDeFante;
 
@@ -398,8 +400,6 @@ public class Panel {
 				probMu=((double)probMut.getValue())/100;
 				prof=(int)profundidad.getValue();
 				_plot.removeAllPlots();
-				
-				
 				
 				//Cuando obtenemos todas las variables ejecutamos el AG
 				AlgoritmoGenetico alg = null;

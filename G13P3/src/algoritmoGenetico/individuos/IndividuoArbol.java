@@ -1,6 +1,6 @@
 package algoritmoGenetico.individuos;
 
-
+import java.io.IOException;
 
 public class IndividuoArbol extends Individuo<Arbol> {
 		
@@ -17,9 +17,17 @@ public class IndividuoArbol extends Individuo<Arbol> {
 		}
 
 		@Override
-		public int getValor() { 
-			//this.fitness=resultado
-			return 0;
+		public int getValor() throws IOException{ 
+			//Creamos el tablero original
+			Tablero tablero=new Tablero();
+			//LLamamos a la funcion start donde la hormiga ira recorriendo el tablero y lo modificara
+			while((tablero.getPasos()>0) && tablero.getComidas()<89){
+				tablero.start(this.cromosoma);
+			}
+			//Guardamos los trozos de comida comidos
+			this.fitness=tablero.getComidas();
+
+			return this.fitness;
 		}
 
 

@@ -8,8 +8,7 @@ public class Arbol implements Cloneable{
 	Arbol hijoCen; //para PROGN3
 	int prof;
 	int numElementos;
-	
-	private enum Dato{
+	enum Dato{
 		AVANZA, DERECHA, IZQUIERDA,SIC,PROGN2,PROGN3
 	}
 	
@@ -76,12 +75,29 @@ public class Arbol implements Cloneable{
 	
 	
 	
+	public Dato getValor() {
+		return valor;
+	}
+
 	public int getProf() {
 		return prof;
 	}
 
 	public void setProf(int prof) {
 		this.prof = prof;
+	}
+
+	
+	public Arbol getHijoIzq() {
+		return hijoIzq;
+	}
+
+	public Arbol getHijoDer() {
+		return hijoDer;
+	}
+
+	public Arbol getHijoCen() {
+		return hijoCen;
 	}
 
 	public Object clone()
