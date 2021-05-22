@@ -8,6 +8,7 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			this.cruce=false;
 			this.elite=false;
 			this.fitness=0;
+			this.pasos=0;
 			Arbol arbol=new Arbol();
 			
 			//Inicializamos el arbol
@@ -24,9 +25,9 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			while((tablero.getPasos()>0) && tablero.getComidas()<89){
 				tablero.start(this.cromosoma);
 			}
-			//Guardamos los trozos de comida comidos
-			this.fitness=tablero.getComidas();
-
+			//Guardamos los trozos de comida comidos y los pasos dados que compondran el fitness. Cuanto mayor sea la variable pasos -> - pasos ha dado
+			this.fitness=tablero.getComidas() + tablero.getPasos();	
+			
 			return this.fitness;
 		}
 

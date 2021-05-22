@@ -8,6 +8,7 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	boolean cruce;
 	boolean elite;
 	int fitness;
+	int pasos;
 	
 	
 	public int getValor() throws IOException {return 0;}
