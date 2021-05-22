@@ -48,8 +48,8 @@ public class Tablero {
 		if(valor==Dato.AVANZA) {
 			accion(valor);
 			pasos--;
-			if(tablero[posY][posX]=='#') {
-				comidas++;
+			if(tablero[posY][posX]=='#'||tablero[posY][posX]=='X') {
+				if(tablero[posY][posX]=='#') {comidas++;}
 				tablero[posY][posX]='X'; //PONDREMOS 'x' cuando la hormiga haya comido
 			}
 			else {
@@ -75,7 +75,7 @@ public class Tablero {
 		}
 		else if(valor==Dato.SIC) {
 			posYaux=posY+0;
-			posXaux=posY+0;
+			posXaux=posX+0;
 			aux=true;
 			accion(Dato.AVANZA);
 			if(tablero[posYaux][posXaux]=='#') {
@@ -166,6 +166,18 @@ public class Tablero {
 	public int getPasos() {
 		return pasos;
 	}
+
+
+	public int getPosX() {
+		return posX;
+	}
+
+
+	public int getPosY() {
+		return posY;
+	}
+	
+	
 	
 	
 }

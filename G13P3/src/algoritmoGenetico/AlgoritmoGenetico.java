@@ -160,6 +160,8 @@ public class AlgoritmoGenetico {
 		mejorFitnessPanel.setText(String.valueOf(this.mejorAbsoluto[this.genActual-1]));
 		totCruc.setText(String.valueOf(this.totalCruces[0]));
 		totMut.setText(String.valueOf(this.totalMutaciones[0]));
+		mejorCromosomaPanel.setText(mejorArbol.getAlgoritmo());
+		
 		
 		//Actualizamos tablero
 		Tablero mejor=new Tablero();
@@ -173,6 +175,8 @@ public class AlgoritmoGenetico {
 				table.setValueAt(Character.toString(tab[i][j]), i, j);
 			}
 		}
+		table.setValueAt("X", 0, 0);
+		table.setValueAt("@", mejor.getPosY(), mejor.getPosX());
 		
 	}
 	

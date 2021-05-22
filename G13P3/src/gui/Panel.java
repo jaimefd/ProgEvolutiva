@@ -38,6 +38,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 
 public class Panel {
@@ -75,6 +76,15 @@ public class Panel {
 	private Tablero tablero;
 	private JTable table;
 	private JTextField txtRastroDeFante;
+	private JTextField textField;
+	private JTextField txtHormiga;
+	private JTextField textField_1;
+	private JTextField txtComida;
+	private JTextField textField_2;
+	private JTextField txtComidas;
+	private JTextField textField_3;
+	private JTextField txtCaminada;
+	private JTextField txtGrafica;
 
 	/**
 	 * Launch the application.
@@ -120,7 +130,7 @@ public class Panel {
 		table = new JTable();
 		table.setRowHeight(10);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.setBounds(504, 79, 873, 326);
+		table.setBounds(504, 79, 873, 320);
 		frmPractica.getContentPane().add(table);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setModel(new DefaultTableModel(
@@ -314,7 +324,7 @@ public class Panel {
 		txtRastroDeFante = new JTextField();
 		txtRastroDeFante.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtRastroDeFante.setText("Rastro de Fante FE");
-		txtRastroDeFante.setBounds(886, 50, 109, 19);
+		txtRastroDeFante.setBounds(861, 50, 109, 19);
 		frmPractica.getContentPane().add(txtRastroDeFante);
 		txtRastroDeFante.setColumns(10);
 		
@@ -384,7 +394,7 @@ public class Panel {
 		panel_2.add(scroll);
 		
 		_plot.addLegend("SOUTH");
-		_plot.setBounds(504, 415, 873, 331);
+		_plot.setBounds(504, 452, 873, 294);
 		frmPractica.getContentPane().add(_plot);
 		
 		JButton run = new JButton("Run");
@@ -423,6 +433,62 @@ public class Panel {
 			}
 		});
 		panel.add(run);
+		
+		textField = new JTextField();
+		textField.setBackground(Color.RED);
+		textField.setBounds(546, 54, 15, 15);
+		frmPractica.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		txtHormiga = new JTextField();
+		txtHormiga.setText("Hormiga");
+		txtHormiga.setBounds(571, 50, 52, 19);
+		frmPractica.getContentPane().add(txtHormiga);
+		txtHormiga.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBackground(Color.YELLOW);
+		textField_1.setBounds(664, 54, 15, 15);
+		frmPractica.getContentPane().add(textField_1);
+		
+		txtComida = new JTextField();
+		txtComida.setText("Bocados");
+		txtComida.setBounds(689, 50, 52, 19);
+		frmPractica.getContentPane().add(txtComida);
+		txtComida.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBackground(Color.ORANGE);
+		textField_2.setBounds(1073, 54, 15, 15);
+		frmPractica.getContentPane().add(textField_2);
+		
+		txtComidas = new JTextField();
+		txtComidas.setText("Comidas");
+		txtComidas.setBounds(1098, 50, 52, 19);
+		frmPractica.getContentPane().add(txtComidas);
+		txtComidas.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBackground(Color.BLACK);
+		textField_3.setBounds(1219, 54, 15, 15);
+		frmPractica.getContentPane().add(textField_3);
+		
+		txtCaminada = new JTextField();
+		txtCaminada.setText("Pasos vacios");
+		txtCaminada.setBounds(1244, 50, 96, 19);
+		frmPractica.getContentPane().add(txtCaminada);
+		txtCaminada.setColumns(10);
+		
+		txtGrafica = new JTextField();
+		txtGrafica.setHorizontalAlignment(SwingConstants.CENTER);
+		txtGrafica.setText("Grafica");
+		txtGrafica.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtGrafica.setColumns(10);
+		txtGrafica.setBounds(861, 423, 109, 19);
+		frmPractica.getContentPane().add(txtGrafica);
 		
 		
 		

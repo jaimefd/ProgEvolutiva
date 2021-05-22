@@ -39,8 +39,8 @@ public Component getTableCellRendererComponent(JTable table, Object value, boole
 	else if(value.equals("#")){ //COMIDA
 		this.setBackground(Color.yellow);
 	}
-	else if(value.equals("x")){ //HABIA-COMIDA
-		this.setBackground(Color.MAGENTA);
+	else if(value.equals("X")){ //HABIA-COMIDA
+		this.setBackground(Color.orange);
 	}
 	else if(value.equals("-")) {
 		this.setBackground(Color.black);

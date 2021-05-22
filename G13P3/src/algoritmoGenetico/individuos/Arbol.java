@@ -73,7 +73,18 @@ public class Arbol implements Cloneable{
 		}
 	}
 	
-	
+	public String getAlgoritmo(){
+		String ret="";
+		ret = valor.toString();
+		if (hijoIzq != null) {
+			ret += "(" + hijoIzq.getAlgoritmo() + ",";
+			if (hijoCen != null) { 
+				ret += hijoCen.getAlgoritmo() + ",";
+			}
+			ret += hijoDer.getAlgoritmo() + ")";
+		}
+		return ret;
+	}
 	
 	public Dato getValor() {
 		return valor;
