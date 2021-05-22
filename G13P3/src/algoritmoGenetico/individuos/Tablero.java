@@ -98,10 +98,10 @@ public class Tablero {
 						posX = (posX+1)%32;
 						break;
 					case NORTE:
-						posY = (posY-1+32)%32;
+						posY = (posY-1+32)%32; //+32 por si da negativo
 						break;
 					case OESTE:
-						posY = (posY-1+32)%32;
+						posX = (posX-1+32)%32;
 						break;
 					case SUR:
 						posY = (posY+1)%32;
@@ -118,7 +118,7 @@ public class Tablero {
 						posYaux = (posYaux-1+32)%32;
 						break;
 					case OESTE:
-						posYaux = (posYaux-1+32)%32;
+						posXaux = (posXaux-1+32)%32;
 						break;
 					case SUR:
 						posYaux = (posYaux+1)%32;
