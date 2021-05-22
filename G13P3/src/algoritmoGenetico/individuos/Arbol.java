@@ -3,6 +3,7 @@ package algoritmoGenetico.individuos;
 public class Arbol implements Cloneable{
 
 	private Dato valor;
+	boolean prim;
 	Arbol hijoIzq;
 	Arbol hijoDer;
 	Arbol hijoCen; //para PROGN3
@@ -19,7 +20,8 @@ public class Arbol implements Cloneable{
 	}
 	
 	public void crearArbol(Arbol arbol,int profMin,int profMax) {
-		if(profMin>0 ) { //es funcion
+		if(profMin>0 ||prim) { //es funcion
+			prim=false;
 			Dato valorAct;
 			valorAct=Dato.values()[(int) (Math.random()*3)+3];  //math.random()*3+3 da valores del 0 al 3, excluyendo el 3 y +3 para seleccionar SIC,PROGN2,PROGN3
 			arbol.valor=valorAct;
@@ -109,6 +111,12 @@ public class Arbol implements Cloneable{
 
 	public Arbol getHijoCen() {
 		return hijoCen;
+	}
+	
+	
+
+	public void setPrim(boolean prim) {
+		this.prim = prim;
 	}
 
 	public Object clone()

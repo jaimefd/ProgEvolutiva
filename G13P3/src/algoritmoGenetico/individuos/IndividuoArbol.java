@@ -10,7 +10,7 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			this.fitness=0;
 			this.pasos=0;
 			Arbol arbol=new Arbol();
-			
+			arbol.setPrim(true); //para que no ponga avanza o gira en el primer arbol
 			//Inicializamos el arbol
 			arbol.crearArbol(arbol, profMin, profMax);
 			arbol.setProf(profMax);
