@@ -25,6 +25,7 @@ public class Arbol implements Cloneable{
 	}
 	
 	public void crearArbol(Arbol arbol,int profMin,int profMax) {
+		prof = profMax;
 		if(profMin>0 ||prim) { //es funcion
 			prim=false;
 			Dato valorAct;
@@ -130,6 +131,10 @@ public class Arbol implements Cloneable{
 	
 	public int getNumElementos() {
 		return numElementos;
+	}
+	
+	public void setNumElementos(int elem) {
+		this.numElementos = elem;
 	}
 	
 	public Dato getValor() {

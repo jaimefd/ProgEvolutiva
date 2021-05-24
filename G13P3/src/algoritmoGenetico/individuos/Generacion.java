@@ -84,10 +84,7 @@ public class Generacion {
 	}
 	
 	public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
-		ArrayList<Individuo<Arbol>> nueva= new ArrayList<Individuo<Arbol>>();
-		iniciarIndividuos(this.tamPobl,nueva);
-		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva,totalCruces);
-		this.poblacion=nueva;
+		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,totalCruces);
 	}
 	
 	/*public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {

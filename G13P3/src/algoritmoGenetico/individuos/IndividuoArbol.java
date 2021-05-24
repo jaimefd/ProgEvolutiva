@@ -15,7 +15,6 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			arbol.setPrim(true); //para que no ponga avanza o gira en el primer arbol
 			//Inicializamos el arbol
 			arbol.crearArbol(arbol, profMin, profMax);
-			arbol.setProf(profMax);
 			arbol.setPadre(null);
 			arbol.tipoHijo = Hijo.RAIZ;
 			this.cromosoma=arbol;
