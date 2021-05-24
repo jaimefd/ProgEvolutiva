@@ -31,6 +31,7 @@ public class Intercambio {
 						totCruces[0]++;
 						Arbol aux1 = poblacion.get(j).getCromosoma();
 						Arbol aux2 = poblacion.get(x).getCromosoma();
+						
 						int rand1 = (int) (Math.random()*(aux1.getNumElementos()-1)+1);
 						Arbol hijo1 = aux1.getArbol(rand1);
 						int rand2 = (int) (Math.random()*(aux2.getNumElementos()-1)+1);

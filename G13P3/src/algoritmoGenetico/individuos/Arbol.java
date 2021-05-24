@@ -95,6 +95,7 @@ public class Arbol implements Cloneable{
 				}
 			}
 		}
+		this.updateProf();
 	}
 	
 	public String getAlgoritmo(){
@@ -127,6 +128,13 @@ public class Arbol implements Cloneable{
 			}
 		} 
 		return this;
+	}
+	
+	public int updateProf() {
+		if (hijoIzq != null) this.prof = hijoIzq.updateProf() + 1;
+		if (hijoCen != null) this.prof = Math.max(this.prof, hijoCen.updateProf() + 1);
+		if (hijoDer != null) this.prof = Math.max(this.prof, hijoDer.updateProf() + 1);
+		return this.prof;
 	}
 	
 	public int getNumElementos() {
