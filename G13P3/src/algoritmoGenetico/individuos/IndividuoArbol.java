@@ -2,6 +2,8 @@ package algoritmoGenetico.individuos;
 
 import java.io.IOException;
 
+import algoritmoGenetico.individuos.Arbol.Hijo;
+
 public class IndividuoArbol extends Individuo<Arbol> {
 		
 		public IndividuoArbol(int profMin,int profMax) {
@@ -14,6 +16,8 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			//Inicializamos el arbol
 			arbol.crearArbol(arbol, profMin, profMax);
 			arbol.setProf(profMax);
+			arbol.setPadre(null);
+			arbol.tipoHijo = Hijo.RAIZ;
 			this.cromosoma=arbol;
 		}
 

@@ -4,16 +4,21 @@ public class Arbol implements Cloneable{
 
 	private Dato valor;
 	boolean prim;
+	Arbol padre;
 	Arbol hijoIzq;
 	Arbol hijoDer;
 	Arbol hijoCen; //para PROGN3
 	int prof;
 	int numElementos;
+	public Hijo tipoHijo;
+	
 	enum Dato{
 		AVANZA, DERECHA, IZQUIERDA,SIC,PROGN2,PROGN3
 	}
 	
-	
+	public enum Hijo {
+		IZQUIERDO, CENTRAL, DERECHO, RAIZ
+	}
 	
 	public Arbol() {
 		numElementos=0;
@@ -29,14 +34,20 @@ public class Arbol implements Cloneable{
 			
 			arbol.hijoIzq=new Arbol();
 			crearArbol(arbol.hijoIzq,profMin-1,profMax-1);
+			arbol.hijoIzq.setPadre(arbol);
+			arbol.hijoIzq.tipoHijo = Hijo.IZQUIERDO;
 			
 			if(arbol.valor==Dato.values()[5]) {
 				arbol.hijoCen=new Arbol();
 				crearArbol(arbol.hijoCen,profMin-1,profMax-1);
+				arbol.hijoCen.setPadre(arbol);
+				arbol.hijoCen.tipoHijo = Hijo.CENTRAL;
 			}
 			
 			arbol.hijoDer=new Arbol();
 			crearArbol(arbol.hijoDer,profMin-1,profMax-1);
+			arbol.hijoDer.setPadre(arbol);
+			arbol.hijoDer.tipoHijo = Hijo.DERECHO;
 		}
 		else {
 			if(profMax==0) {  //hoja: no tiene hijos porque ha llegado a la prof. maxima  solo puede ser terminal
@@ -62,14 +73,20 @@ public class Arbol implements Cloneable{
 					
 					arbol.hijoIzq=new Arbol();
 					crearArbol(arbol.hijoIzq,profMin,profMax-1);
+					arbol.hijoIzq.setPadre(arbol);
+					arbol.hijoIzq.tipoHijo = Hijo.IZQUIERDO;
 					
 					if(arbol.valor==Dato.values()[5]) {
 						arbol.hijoCen=new Arbol();
 						crearArbol(arbol.hijoCen,profMin,profMax-1);
+						arbol.hijoCen.setPadre(arbol);
+						arbol.hijoCen.tipoHijo = Hijo.CENTRAL;
 					}
 					
 					arbol.hijoDer=new Arbol();
 					crearArbol(arbol.hijoDer,profMin,profMax-1);
+					arbol.hijoDer.setPadre(arbol);
+					arbol.hijoDer.tipoHijo = Hijo.DERECHO;
 				}
 			}
 		}
@@ -88,6 +105,29 @@ public class Arbol implements Cloneable{
 		return ret;
 	}
 	
+	public Arbol getArbol(int indice) {
+		int cont = indice;
+		if (indice > 0 && indice < numElementos) {
+			if (hijoIzq != null) {
+				if (hijoIzq.numElementos >= cont) return hijoIzq.getArbol(cont - 1);
+				else cont -= hijoIzq.numElementos;
+			}
+			if (hijoCen != null) {
+				if (hijoCen.numElementos >= cont) return hijoCen.getArbol(cont - 1);
+				else cont -= hijoCen.numElementos;
+			}
+			if (hijoDer != null) {
+				if (hijoDer.numElementos >= cont) return hijoDer.getArbol(cont - 1);
+				else cont -= hijoDer.numElementos;
+			}
+		} 
+		return this;
+	}
+	
+	public int getNumElementos() {
+		return numElementos;
+	}
+	
 	public Dato getValor() {
 		return valor;
 	}
@@ -100,6 +140,13 @@ public class Arbol implements Cloneable{
 		this.prof = prof;
 	}
 
+	public void setPadre(Arbol padre) {
+		this.padre = padre;
+	}
+	
+	public Arbol getPadre() {
+		return padre;
+	}
 	
 	public Arbol getHijoIzq() {
 		return hijoIzq;
@@ -113,7 +160,17 @@ public class Arbol implements Cloneable{
 		return hijoCen;
 	}
 	
+	public void setHijoIzq(Arbol nuevoHijo) {
+		this.hijoIzq = nuevoHijo;
+	}
 	
+	public void setHijoDer(Arbol nuevoHijo) {
+		this.hijoDer = nuevoHijo;
+	}
+	
+	public void setHijoCen(Arbol nuevoHijo) {
+		this.hijoCen = nuevoHijo;
+	}
 
 	public void setPrim(boolean prim) {
 		this.prim = prim;
