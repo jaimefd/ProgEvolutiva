@@ -30,31 +30,34 @@ public class Arbol implements Cloneable{
 			Dato valorAct;
 			valorAct=Dato.values()[(int) (Math.random()*3)+3];  //math.random()*3+3 da valores del 0 al 3, excluyendo el 3 y +3 para seleccionar SIC,PROGN2,PROGN3
 			arbol.valor=valorAct;
-			numElementos++;
+			
 			
 			arbol.hijoIzq=new Arbol();
 			crearArbol(arbol.hijoIzq,profMin-1,profMax-1);
 			arbol.hijoIzq.setPadre(arbol);
 			arbol.hijoIzq.tipoHijo = Hijo.IZQUIERDO;
+			arbol.numElementos=arbol.numElementos+arbol.hijoIzq.numElementos;
 			
 			if(arbol.valor==Dato.values()[5]) {
 				arbol.hijoCen=new Arbol();
 				crearArbol(arbol.hijoCen,profMin-1,profMax-1);
 				arbol.hijoCen.setPadre(arbol);
 				arbol.hijoCen.tipoHijo = Hijo.CENTRAL;
+				arbol.numElementos=arbol.numElementos+arbol.hijoCen.numElementos;
 			}
 			
 			arbol.hijoDer=new Arbol();
 			crearArbol(arbol.hijoDer,profMin-1,profMax-1);
 			arbol.hijoDer.setPadre(arbol);
 			arbol.hijoDer.tipoHijo = Hijo.DERECHO;
+			arbol.numElementos=arbol.numElementos+arbol.hijoDer.numElementos;
 		}
 		else {
 			if(profMax==0) {  //hoja: no tiene hijos porque ha llegado a la prof. maxima  solo puede ser terminal
 				Dato valorAct;
 				valorAct=Dato.values()[(int) (Math.random()*3)];
 				arbol.valor=valorAct;
-				numElementos++;
+				arbol.numElementos++;
 			}
 			else {  //puede ser funcion o terminal
 				double random=Math.random();
@@ -63,30 +66,33 @@ public class Arbol implements Cloneable{
 					Dato valorAct;
 					valorAct=Dato.values()[(int) (Math.random()*3)];
 					arbol.valor=valorAct;
-					numElementos++;
+					arbol.numElementos++;
 				}
 				else {  //funcion
 					Dato valorAct;
 					valorAct=Dato.values()[(int) (Math.random()*3)+3];
 					arbol.valor=valorAct;
-					numElementos++;
+					
 					
 					arbol.hijoIzq=new Arbol();
 					crearArbol(arbol.hijoIzq,profMin,profMax-1);
 					arbol.hijoIzq.setPadre(arbol);
 					arbol.hijoIzq.tipoHijo = Hijo.IZQUIERDO;
+					arbol.numElementos=arbol.numElementos+arbol.hijoIzq.numElementos;
 					
 					if(arbol.valor==Dato.values()[5]) {
 						arbol.hijoCen=new Arbol();
 						crearArbol(arbol.hijoCen,profMin,profMax-1);
 						arbol.hijoCen.setPadre(arbol);
 						arbol.hijoCen.tipoHijo = Hijo.CENTRAL;
+						arbol.numElementos=arbol.numElementos+arbol.hijoCen.numElementos;
 					}
 					
 					arbol.hijoDer=new Arbol();
 					crearArbol(arbol.hijoDer,profMin,profMax-1);
 					arbol.hijoDer.setPadre(arbol);
 					arbol.hijoDer.tipoHijo = Hijo.DERECHO;
+					arbol.numElementos=arbol.numElementos+arbol.hijoDer.numElementos;
 				}
 			}
 		}
