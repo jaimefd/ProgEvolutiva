@@ -15,12 +15,12 @@ public class TerminalSimple {
 			double rand= Math.random();
 			if(rand<probMutacion) {
 				Arbol arbol = poblacion.get(i).getCromosoma();
-				int randIndice = (int) (Math.random() * arbol.getNumElementos());
+				int randIndice = (int) (Math.random() * (arbol.getNumElementos()-1));
 				randIndice++;
 				Arbol hijo = arbol.getArbol(randIndice);
 				
 				while (!hijo.esTerminal()) {
-					randIndice = (int) (Math.random() * arbol.getNumElementos());
+					randIndice = (int) (Math.random() * (arbol.getNumElementos()-1));
 					randIndice++;
 					hijo = arbol.getArbol(randIndice);
 				}

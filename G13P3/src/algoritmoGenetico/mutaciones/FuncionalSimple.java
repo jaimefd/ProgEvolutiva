@@ -18,14 +18,16 @@ public class FuncionalSimple {
 				int randIndice = (int) (Math.random() * arbol.getNumElementos());
 				Arbol hijo = arbol.getArbol(randIndice);
 				
-				while (hijo.esTerminal() || hijo.getValor() == Dato.PROGN3) {
+				while (hijo.esTerminal()) {
 					randIndice = (int) (Math.random() * arbol.getNumElementos());
 					hijo = arbol.getArbol(randIndice);
 				}
 				
-				Dato nuevoDato = Dato.SIC;
-				if (hijo.getValor() == Dato.SIC) nuevoDato = Dato.PROGN2;
-				hijo.setValor(nuevoDato);
+				if (hijo.getValor() != Dato.PROGN3) {
+					Dato nuevoDato = Dato.SIC;
+					if (hijo.getValor() == Dato.SIC) nuevoDato = Dato.PROGN2;
+					hijo.setValor(nuevoDato);
+				}
 			}
 		}
 		
