@@ -138,6 +138,11 @@ public class Arbol implements Cloneable{
 		return this.prof;
 	}
 	
+	public boolean esTerminal() {
+		if (hijoIzq == null && hijoCen == null && hijoDer == null) return true;
+		else return false;
+	}
+	
 	public int getNumElementos() {
 		return numElementos;
 	}
