@@ -21,7 +21,7 @@ public class Arbol implements Cloneable{
 	}
 	
 	public Arbol() {
-		numElementos=0;
+		numElementos=1;
 	}
 	
 	public void crearArbol(Arbol arbol,int profMin,int profMax) {
@@ -57,7 +57,6 @@ public class Arbol implements Cloneable{
 				Dato valorAct;
 				valorAct=Dato.values()[(int) (Math.random()*3)];
 				arbol.valor=valorAct;
-				arbol.numElementos++;
 			}
 			else {  //puede ser funcion o terminal
 				double random=Math.random();
@@ -66,7 +65,6 @@ public class Arbol implements Cloneable{
 					Dato valorAct;
 					valorAct=Dato.values()[(int) (Math.random()*3)];
 					arbol.valor=valorAct;
-					arbol.numElementos++;
 				}
 				else {  //funcion
 					Dato valorAct;
