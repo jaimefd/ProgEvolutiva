@@ -12,7 +12,7 @@ public class Arbol implements Cloneable{
 	int numElementos;
 	public Hijo tipoHijo;
 	
-	enum Dato{
+	public enum Dato{
 		AVANZA, DERECHA, IZQUIERDA,SIC,PROGN2,PROGN3
 	}
 	
@@ -153,6 +153,10 @@ public class Arbol implements Cloneable{
 	
 	public Dato getValor() {
 		return valor;
+	}
+	
+	public void setValor(Dato valorNuevo) {
+		this.valor = valorNuevo;
 	}
 
 	public int getProf() {
