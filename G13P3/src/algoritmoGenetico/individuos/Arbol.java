@@ -109,16 +109,16 @@ public class Arbol implements Cloneable{
 		int cont = indice;
 		if (indice > 0 && indice < numElementos) {
 			if (hijoIzq != null) {
-				if (hijoIzq.numElementos >= cont) return hijoIzq.getArbol(cont - 1);
-				else cont -= hijoIzq.numElementos;
+				if (hijoIzq.getNumElementos() >= cont) return hijoIzq.getArbol(cont - 1);
+				else cont -= hijoIzq.getNumElementos();
 			}
 			if (hijoCen != null) {
-				if (hijoCen.numElementos >= cont) return hijoCen.getArbol(cont - 1);
-				else cont -= hijoCen.numElementos;
+				if (hijoCen.getNumElementos() >= cont) return hijoCen.getArbol(cont - 1);
+				else cont -= hijoCen.getNumElementos();
 			}
 			if (hijoDer != null) {
-				if (hijoDer.numElementos >= cont) return hijoDer.getArbol(cont - 1);
-				else cont -= hijoDer.numElementos;
+				if (hijoDer.getNumElementos() >= cont) return hijoDer.getArbol(cont - 1);
+				else cont -= hijoDer.getNumElementos();
 			}
 		} 
 		return this;
