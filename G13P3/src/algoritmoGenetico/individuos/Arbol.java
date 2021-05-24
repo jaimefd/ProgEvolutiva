@@ -25,7 +25,6 @@ public class Arbol implements Cloneable{
 	}
 	
 	public void crearArbol(Arbol arbol,int profMin,int profMax) {
-		prof = profMax;
 		if(profMin>0 ||prim) { //es funcion
 			prim=false;
 			Dato valorAct;
@@ -131,7 +130,10 @@ public class Arbol implements Cloneable{
 	}
 	
 	public int updateProf() {
-		if (hijoIzq == null && hijoCen == null && hijoDer == null) return 0;
+		if (hijoIzq == null && hijoCen == null && hijoDer == null) {
+			this.prof = 0;
+			return 0;
+		};
 		if (hijoIzq != null) this.prof = hijoIzq.updateProf() + 1;
 		if (hijoCen != null) this.prof = Math.max(this.prof, hijoCen.updateProf() + 1);
 		if (hijoDer != null) this.prof = Math.max(this.prof, hijoDer.updateProf() + 1);
