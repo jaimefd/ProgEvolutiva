@@ -203,6 +203,29 @@ public class Arbol implements Cloneable{
 		this.prim = prim;
 	}
 
+	public void copiaArbol(Arbol arbol) {
+		this.valor = arbol.valor;
+		if (arbol.hijoIzq != null) {
+			this.hijoIzq = new Arbol();
+			this.hijoIzq.copiaArbol(arbol.hijoIzq);
+			if (arbol.hijoCen != null) {
+				this.hijoCen = new Arbol();
+				this.hijoCen.copiaArbol(arbol.hijoCen);
+			} else this.hijoCen = null;
+			this.hijoDer = new Arbol();
+			this.hijoDer.copiaArbol(arbol.hijoDer);
+		}
+		else {
+			this.hijoIzq = null;
+			this.hijoCen = null;
+			this.hijoDer = null;
+		}
+		this.numElementos = arbol.numElementos;
+		this.padre = arbol.padre;
+		this.prim = arbol.prim;
+		this.prof = arbol.prof;
+		this.tipoHijo=arbol.tipoHijo;
+	}
 	public Object clone()
 	{
 	    Object clone = null;

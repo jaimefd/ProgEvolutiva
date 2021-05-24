@@ -85,7 +85,7 @@ public class AlgoritmoGenetico {
 		gen.evaluarPoblacion(); //evaluamos la poblacion para obtener la media, el mejor, peor de esa generacion...
 		media[0]=gen.getMedia();
 		mejorGeneracion[0]=gen.getElMejor().getFitness();
-		mejorArbol=gen.getElMejor().getCromosoma();
+		mejorArbol=copia(gen.getElMejor().getCromosoma());
 		mejorAbsoluto[0]=mejorGeneracion[0];
 		gener[0]=1;
 		
@@ -123,7 +123,7 @@ public class AlgoritmoGenetico {
 			
 			if(mejorGeneracion[this.genActual]>mejorAbsoluto[(genActual-1)]) {
 				this.mejorAbsoluto[this.genActual]=mejorGeneracion[this.genActual];
-				mejorArbol=gen.getElMejor().getCromosoma();
+				mejorArbol=copia(gen.getElMejor().getCromosoma());
 			}
 			else {
 				this.mejorAbsoluto[this.genActual]=this.mejorAbsoluto[genActual-1];
@@ -176,6 +176,13 @@ public class AlgoritmoGenetico {
 		table.setValueAt("X", 0, 0);
 		table.setValueAt("@", mejor.getPosY(), mejor.getPosX());
 		
+	}
+	
+	public Arbol copia(Arbol arbol) {
+		Arbol ar=new Arbol();
+		ar.copiaArbol(arbol);
+		return ar;
+	
 	}
 	
 }
