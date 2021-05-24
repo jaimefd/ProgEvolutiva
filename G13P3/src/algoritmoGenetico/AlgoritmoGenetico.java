@@ -96,13 +96,11 @@ public class AlgoritmoGenetico {
 		ArrayList<Individuo<Arbol>> elite = new ArrayList<Individuo<Arbol>>(); //luego vaciar
 		while(this.genActual < this.maxGeneraciones) {	
 			
-
-			
 			if(hayElite) {
 				gen.generarElite(tamElite, elite);
 			}
 			// seleccion
-			gen.seleccion(this.algoritmoSeleccion); 
+			gen.seleccion(this.algoritmoSeleccion);
 			
 			// cruce
 			gen.cruce(tipoCruce, probCruce,totalCruces);

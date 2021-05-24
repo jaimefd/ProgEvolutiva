@@ -131,6 +131,7 @@ public class Arbol implements Cloneable{
 	}
 	
 	public int updateProf() {
+		if (hijoIzq == null && hijoCen == null && hijoDer == null) return 0;
 		if (hijoIzq != null) this.prof = hijoIzq.updateProf() + 1;
 		if (hijoCen != null) this.prof = Math.max(this.prof, hijoCen.updateProf() + 1);
 		if (hijoDer != null) this.prof = Math.max(this.prof, hijoDer.updateProf() + 1);

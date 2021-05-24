@@ -31,9 +31,16 @@ public class Intercambio {
 						totCruces[0]++;
 						Arbol aux1 = poblacion.get(j).getCromosoma();
 						Arbol aux2 = poblacion.get(x).getCromosoma();
+						int profMax = aux2.getProf() - 1;
 						
 						int rand1 = (int) (Math.random()*(aux1.getNumElementos()-1)+1);
 						Arbol hijo1 = aux1.getArbol(rand1);
+						// nos aseguramos de que la profundidad de el hijo 1 no sea excesiva
+						while(hijo1.getProf() > profMax) {
+							rand1 = (int) (Math.random()*(aux1.getNumElementos()-1)+1);
+							hijo1 = aux1.getArbol(rand1);
+						}
+						
 						int rand2 = (int) (Math.random()*(aux2.getNumElementos()-1)+1);
 						Arbol hijo2 = aux2.getArbol(rand2);
 						// nos aseguramos de que ambos hijos tengan la misma profundidad para no aumentar la de los arboles
@@ -107,8 +114,8 @@ public class Intercambio {
 							padreAux = padreAux.getPadre();
 						}
 						
-						System.out.println(aux1.getAlgoritmo());
-						System.out.println(aux1.getNumElementos());
+						//System.out.println(aux1.getAlgoritmo());
+						//System.out.println(aux1.getNumElementos());
 						
 						poblacion.get(j).setCruce(false); //ponemos cruce a false para no volver a cruzarlo
 						poblacion.get(x).setCruce(false); //ponemos cruce a false y cuando vuelva a salir se añadira a nuevaPobl en su posion
