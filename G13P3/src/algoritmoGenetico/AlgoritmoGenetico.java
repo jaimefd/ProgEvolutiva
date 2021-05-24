@@ -105,7 +105,7 @@ public class AlgoritmoGenetico {
 			gen.seleccion(this.algoritmoSeleccion); 
 			
 			// cruce
-			//gen.cruce(tipoCruce, probCruce,totalCruces);
+			gen.cruce(tipoCruce, probCruce,totalCruces);
 			
 			// mutacion
 			//gen.mutar(tipoMutacion, probMutacion,totalMutaciones);

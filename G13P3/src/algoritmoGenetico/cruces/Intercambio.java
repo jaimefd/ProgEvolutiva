@@ -8,8 +8,8 @@ import algoritmoGenetico.individuos.Individuo;
 
 public class Intercambio {
 	
-	static ArrayList<Individuo> cruce(int cruce, ArrayList<Individuo> poblacion,
-			double probCruce,int tamPobl,ArrayList<Individuo> nuevaPobl) {
+	static ArrayList<Individuo<Arbol>> cruce(int cruce, ArrayList<Individuo<Arbol>> poblacion,
+			double probCruce,int tamPobl,ArrayList<Individuo<Arbol>> nuevaPobl,int[] totCruces) {
 
 		for(int i=0;i<tamPobl;i++) { //ponemos cruce a true para los individuos que cumplen rand < ProbCruce
 			double rand = Math.random();
@@ -28,6 +28,7 @@ public class Intercambio {
 				while(encontrado==false && x<tamPobl) { //buscamos el segundo
 					if(poblacion.get(x).isCruce()) { //lo encontramos
 						encontrado=true;
+						totCruces[0]++;
 						Arbol aux1 = poblacion.get(j).getCromosoma();
 						Arbol aux2 = poblacion.get(x).getCromosoma();
 						int rand1 = (int) (Math.random()*(aux1.getNumElementos()-1)+1);

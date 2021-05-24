@@ -83,14 +83,14 @@ public class Generacion {
 		this.poblacion=nueva;
 	}
 	
-	/*public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
-		ArrayList<Individuo<Character>> nueva= new ArrayList<Individuo<Character>>();
+	public void cruce(int tipoCruce,double probCruce,int[] totalCruces) {
+		ArrayList<Individuo<Arbol>> nueva= new ArrayList<Individuo<Arbol>>();
 		iniciarIndividuos(this.tamPobl,nueva);
 		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,nueva,totalCruces);
 		this.poblacion=nueva;
 	}
 	
-	public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {
+	/*public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {
 		this.poblacion=new ArrayList<Individuo<Character>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl,totalMutaciones));
 	}*/
 	
