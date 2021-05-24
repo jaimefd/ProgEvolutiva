@@ -87,9 +87,9 @@ public class Generacion {
 		FactoriaCruce.getTipoCruce(tipoCruce, this.poblacion, probCruce, this.tamPobl,totalCruces);
 	}
 	
-	/*public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {
-		this.poblacion=new ArrayList<Individuo<Character>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl,totalMutaciones));
-	}*/
+	public void mutar(int tipoMutacion,double probMutacion,int[] totalMutaciones) {
+		this.poblacion=new ArrayList<Individuo<Arbol>>(FactoriaMutacion.getTipoMutacion(tipoMutacion, poblacion, probMutacion, this.tamPobl,totalMutaciones));
+	}
 	
 	
 	/*public void desplazamiento_minimizar() {
