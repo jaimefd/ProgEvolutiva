@@ -14,6 +14,7 @@ public class FuncionalSimple {
 		for(int i=0;i<tamPobl;i++) {
 			double rand= Math.random();
 			if(rand<probMutacion) {
+				totMut[0]++;
 				Arbol arbol = poblacion.get(i).getCromosoma();
 				int randIndice = (int) (Math.random() * arbol.getNumElementos());
 				Arbol hijo = arbol.getArbol(randIndice);
