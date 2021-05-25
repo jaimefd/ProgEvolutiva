@@ -10,7 +10,6 @@ public class IndividuoArbol extends Individuo<Arbol> {
 			this.cruce=false;
 			this.elite=false;
 			this.fitness=0;
-			this.pasos=0;
 			Arbol arbol=new Arbol();
 			arbol.setPrim(true); //para que no ponga avanza o gira en el primer arbol
 			//Inicializamos el arbol
