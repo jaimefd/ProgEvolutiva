@@ -57,7 +57,7 @@ public class DeArbol {
 					padreAux = padreAux.getPadre();
 				}
 				
-				arbol.updateProf();
+				arbol.updateArbol();
 			}
 		}
 		

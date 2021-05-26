@@ -117,6 +117,9 @@ public class Intercambio {
 						//System.out.println(aux1.getAlgoritmo());
 						//System.out.println(aux1.getNumElementos());
 						
+						aux1.updateArbol();
+						aux2.updateArbol();
+						
 						poblacion.get(j).setCruce(false); //ponemos cruce a false para no volver a cruzarlo
 						poblacion.get(x).setCruce(false); //ponemos cruce a false y cuando vuelva a salir se añadira a nuevaPobl en su posion
 					} else {
