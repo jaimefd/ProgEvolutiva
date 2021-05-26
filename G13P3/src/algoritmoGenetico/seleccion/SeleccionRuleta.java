@@ -16,6 +16,7 @@ public class SeleccionRuleta {
 			posi = 0;
 			while (prob > puntAcu.get(posi) && posi < tamPobl - 1) posi++;
 			nuevaPobl.get(i).setCromosoma(poblacion.get(posi).getCromosoma()); 
+			nuevaPobl.get(i).setFitness(poblacion.get(posi).getFitness());
 		}
 		return nuevaPobl;
 	}
@@ -29,6 +30,7 @@ public class SeleccionRuleta {
 			posi = 0;
 			while (prob > puntAcu.get(posi) && posi < tamPobl - 1) posi++;
 			nuevaPobl.get(i).setCromosoma(poblacion.get(posi).getCromosoma()); 
+			nuevaPobl.get(i).setFitness(poblacion.get(posi).getFitness());
 		}
 		return nuevaPobl;
 	}

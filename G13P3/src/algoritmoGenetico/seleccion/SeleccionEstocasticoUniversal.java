@@ -18,6 +18,7 @@ public class SeleccionEstocasticoUniversal {
 				posi++;
 			}
 			nuevaPobl.get(i).setCromosoma(poblacion.get(posi).getCromosoma()); 
+			nuevaPobl.get(i).setFitness(poblacion.get(posi).getFitness());
 			prob+= 1/tamaño;
 		}
 		return nuevaPobl;

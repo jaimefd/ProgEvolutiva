@@ -34,8 +34,10 @@ public class SeleccionTorneoProbabilistico {
 		    double p = Math.random();
 		    if (p >= 0.5) {
 		    	nuevaPobl.get(i).setCromosoma(poblacion.get(pos_mejor).getCromosoma()); //añadimos el mejor si es 0.5 o mayor
+		    	nuevaPobl.get(i).setFitness(poblacion.get(pos_mejor).getFitness());
 		    } else {
 		    	nuevaPobl.get(i).setCromosoma(poblacion.get(pos_peor).getCromosoma());//añadimos el peor si el random es menos que 0.5
+		    	nuevaPobl.get(i).setFitness(poblacion.get(pos_mejor).getFitness());
 		    }
 		    mejorFitness=Double.MIN_VALUE;
 			peorFitness=Double.MAX_VALUE;

@@ -33,7 +33,8 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 		return cromosoma;
 	}
 	public void setCromosoma(Arbol cromosoma) {
-		this.cromosoma = (Arbol) cromosoma.clone();
+		this.cromosoma.copiaArbol(cromosoma);
+		//this.cromosoma = (Arbol) cromosoma.clone();
 	}
 
 	public boolean isCruce() {
@@ -47,6 +48,9 @@ public abstract class Individuo<T> implements Comparable<Individuo<T>> {
 	}
 	public void setElite(boolean elite) {
 		this.elite = elite;
+	}
+	public void setFitness(int fitness) {
+		this.fitness = fitness;
 	}
 	
 	

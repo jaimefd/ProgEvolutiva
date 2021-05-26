@@ -18,6 +18,7 @@ public class SeleccionTruncamiento {
 		while (x < tamPobl) {
 			while (j < tamElite && x < tamPobl) {
 				nuevaPobl.get(x).setCromosoma(poblacion.get(j).getCromosoma());
+				nuevaPobl.get(x).setFitness(poblacion.get(j).getFitness());
 				x++;
 				j++;
 			}

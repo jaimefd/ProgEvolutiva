@@ -18,6 +18,7 @@ public class SeleccionRestos {
 				int j=0;
 				while(j<pik && introducidos<tamPobl) {
 					nuevaPobl.get(introducidos).setCromosoma(poblacion.get(i).getCromosoma()); 
+					nuevaPobl.get(introducidos).setFitness(poblacion.get(i).getFitness());
 					introducidos++;
 					j++;
 				}

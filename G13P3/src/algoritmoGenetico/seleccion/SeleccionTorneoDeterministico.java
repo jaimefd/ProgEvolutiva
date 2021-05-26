@@ -26,6 +26,7 @@ public class SeleccionTorneoDeterministico {
 				}
 			}
 			nuevaPobl.get(i).setCromosoma(poblacion.get(pos_mejor).getCromosoma());  //añadimos a la nueva poblacion el mejor de los 3 elegidos aleatoriamente
+			nuevaPobl.get(i).setFitness(poblacion.get(pos_mejor).getFitness());
 			mejorFitness= Double.MIN_VALUE;
 			
 		}

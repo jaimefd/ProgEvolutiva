@@ -126,11 +126,12 @@ public class Generacion {
 			}
 			
 			elite.get(i).setCromosoma(this.poblacion.get(pos).getCromosoma());
+			elite.get(i).setFitness(this.poblacion.get(pos).getFitness());
 			this.poblacion.get(pos).setElite(true);
 		}
 	}  
 	
-	public void introducirElite(int tamElite,ArrayList<Individuo<Arbol>> elite) {
+	public void introducirElite(int tamElite,ArrayList<Individuo<Arbol>> elite) throws IOException {
 		for(int i=0;i<tamElite;i++) {
 			double peorFitness=this.poblacion.get(0).getFitness();
 			int pos=0;
@@ -144,6 +145,7 @@ public class Generacion {
 				
 			}
 			this.poblacion.get(pos).setCromosoma(elite.get(i).getCromosoma());
+			elite.get(i).setFitness(this.poblacion.get(pos).getFitness());
 		}
 		elite.clear(); //dejamos vacio array elite
 		
