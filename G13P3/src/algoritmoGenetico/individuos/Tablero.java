@@ -17,7 +17,7 @@ public class Tablero {
 	private int pasos;
 	
 	//Hormiga: direccion y coordenadas
-	private enum hormiga{NORTE,SUR,ESTE,OESTE}
+	private enum hormiga{NORTE,ESTE,SUR,OESTE}
 	private hormiga dir; //direccion actual
 	private int posX;
 	private int posY;
