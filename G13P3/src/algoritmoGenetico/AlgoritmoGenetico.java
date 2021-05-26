@@ -104,11 +104,11 @@ public class AlgoritmoGenetico {
 			
 			// cruce
 			gen.cruce(tipoCruce, probCruce,totalCruces);
-			
 			// mutacion
 			gen.mutar(tipoMutacion, probMutacion,totalMutaciones);
-			
+
 			if(hayElite) {
+				gen.evaluarPoblacion();
 				gen.introducirElite(tamElite, elite);
 			}
 			//evaluar
